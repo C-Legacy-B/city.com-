@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>City Legacy Bank</title>
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --blue: #1E3A8A;
+      --dark-yellow: #B8860B;
+      --light-yellow: #E8D48B;
+      --soft-yellow: #F5E6C8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: linear-gradient(160deg, #FFFCF5 0%, #FFFFFF 40%, #F8F1E0 100%);
+      color: #111;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    canvas#particles {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    /* Glass morphism — dark / light yellow tint */
+    .preloader {
+      text-align: center;
+      z-index: 2;
+      padding: 50px 40px;
+      background: linear-gradient(
+        145deg,
+        rgba(232, 212, 139, 0.35) 0%,
+        rgba(255, 255, 255, 0.28) 40%,
+        rgba(184, 134, 11, 0.18) 100%
+      );
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1.5px solid rgba(232, 212, 139, 0.65);
+      border-radius: 28px;
+      box-shadow:
+        0 8px 32px rgba(184, 134, 11, 0.15),
+        0 24px 64px rgba(30, 58, 138, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7),
+        inset 0 -1px 0 rgba(184, 134, 11, 0.12);
+      animation: fadeInScale 1.5s cubic-bezier(.22,1,.36,1);
+      width: 90%;
+      max-width: 480px;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .preloader::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 48%;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 252, 245, 0.55) 0%,
+        rgba(232, 212, 139, 0.08) 100%
+      );
+      border-radius: 28px 28px 0 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .preloader > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    body.fade-out .preloader,
+    body.fade-out #particles {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+    .logo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+    }
+    .logo-grid div {
+      width: 20px;
+      height: 20px;
+      background: var(--dark-yellow);
+      border-radius: 5px;
+      box-shadow: 0 0 12px rgba(184, 134, 11, 0.5);
+      animation: floatYellow 3s ease-in-out infinite;
+    }
+    .logo-grid div:nth-child(2) { animation-delay: 0.2s; }
+    .logo-grid div:nth-child(3) { animation-delay: 0.4s; }
+    .logo-grid div:nth-child(4) { animation-delay: 0.6s; }
+
+    .logo-text {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      line-height: 1.1;
+    }
+    .logo-text .city {
+      color: var(--blue);
+      display: block;
+    }
+    .logo-text .bank {
+      color: var(--dark-yellow);
+      font-size: 0.8rem;
+      letter-spacing: 8px;
+      font-weight: 600;
+      font-family: 'Segoe UI', sans-serif;
+      display: block;
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+      color: #4B5563;
+      margin-bottom: 35px;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      font-style: italic;
+    }
+
+    .crest {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 30px;
+      position: relative;
+    }
+    .crest-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      border-top: 2px solid var(--dark-yellow);
+      border-right: 2px solid rgba(184, 134, 11, 0.4);
+      animation: rotate 2s linear infinite;
+    }
+    .crest-ring:nth-child(2) {
+      inset: 12px;
+      border-top: 2px solid rgba(184, 134, 11, 0.4);
+      border-right: 2px solid var(--dark-yellow);
+      animation-duration: 3s;
+      animation-direction: reverse;
+    }
+    .crest-center {
+      position: absolute;
+      inset: 30px;
+      background: radial-gradient(circle, var(--light-yellow), var(--dark-yellow));
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(184, 134, 11, 0.6);
+      animation: pulseGlow 2s ease-in-out infinite;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 4px;
+      background: rgba(184, 134, 11, 0.15);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .progress {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, transparent, var(--blue), var(--dark-yellow), var(--light-yellow), var(--blue), transparent);
+      background-size: 300% 100%;
+      border-radius: 10px;
+      animation: load 7s linear forwards, shimmer 1.5s linear infinite;
+      box-shadow: 0 0 15px rgba(184, 134, 11, 0.35);
+    }
+
+    .loading-text {
+      font-size: 0.95rem;
+      color: var(--blue);
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      font-family: 'Segoe UI', sans-serif;
+      animation: fadePulse 1.5s infinite;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes pulseGlow {
+      0%,100% { transform: scale(1); box-shadow: 0 0 20px rgba(184, 134, 11, 0.6); }
+      50% { transform: scale(1.1); box-shadow: 0 0 30px rgba(184, 134, 11, 0.8); }
+    }
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.9) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    @keyframes floatYellow {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes shimmer {
+      0% { background-position: -300% 0; }
+      100% { background-position: 300% 0; }
+    }
+    @keyframes load {
+      from { width: 0%; }
+      to { width: 100%; }
+    }
+    @keyframes fadePulse {
+      0%,100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    @media(max-width: 480px){
+      .logo-text { font-size: 1.6rem; }
+      .preloader { padding: 40px 25px; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles"></canvas>
+  
+  <div class="preloader">
+    <div class="logo">
+      <div class="logo-grid"><div></div><div></div><div></div><div></div></div>
+      <div class="logo-text">
+        <span class="city">CITY LEGACY</span>
+        <span class="bank">BANK</span>
+      </div>
+    </div>
+
+    <p class="tagline">Building Wealth. Securing Legacies.</p>
+
+    <div class="crest">
+      <div class="crest-ring"></div>
+      <div class="crest-ring"></div>
+      <div class="crest-center"></div>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+    <div class="loading-text" id="count">The City Legacy since 1963</div>
+  </div>
+
+<script>
+(function () {
+  var TARGET = 'main.html';
+  var FLAG = 'clb_preloader_seen';
+
+  // Already completed preload this session → skip straight to main
+  // (covers browser Back into this page)
+  try {
+    if (sessionStorage.getItem(FLAG) === '1') {
+      location.replace(TARGET);
+      return;
+    }
+  } catch (e) {}
+
+  // Direct visit / refresh: show preload, then land on main.html
+  // location.replace removes this page from history so Back won't reopen preload
+  setTimeout(function () {
+    document.body.classList.add('fade-out');
+  }, 6200);
+
+  setTimeout(function () {
+    try { sessionStorage.setItem(FLAG, '1'); } catch (e) {}
+    location.replace(TARGET);
+  }, 7000);
+
+  // Dark yellow particles
+  var canvas = document.getElementById('particles');
+  var ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  var particles = [];
+  for (var i = 0; i < 50; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2 + 1,
+      dx: (Math.random() - 0.5) * 0.3,
+      dy: (Math.random() - 0.5) * 0.3,
+      opacity: Math.random() * 0.4 + 0.2
+    });
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(function (p) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(184, 134, 11, ' + p.opacity + ')';
+      ctx.fill();
+      p.x += p.dx;
+      p.y += p.dy;
+      if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    });
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+
+  window.addEventListener('resize', function () {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+})();
+</script>
+</body>
+</html>
