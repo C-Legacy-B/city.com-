@@ -1,0 +1,2575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<title>CITY LEGACY — Loan Application</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style id="clb-loan-page-styles">
+#page-loan.app-page {
+  display: block !important;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
+  overflow-x: hidden;
+  background: #F8FAFC;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+#page-loan.app-page.active {
+  display: block !important;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+#page-loan *, #page-loan *::before, #page-loan *::after{ box-sizing: border-box; margin: 0; padding: 0; }
+#page-loan{
+  --navy: #0B3D91;
+  --navy-2: #082E6E;
+  --gold: #D4AF37;
+  --gold-soft: #E8D48B;
+  --bg: #F8FAFC;
+  --ink: #0F172A;
+  --slate: #475569;
+  --line: #E2E8F0;
+  --green: #10B981;
+  --red: #DC2626;
+}
+#page-loan{ scroll-behavior: smooth; }
+#page-loan{
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+#page-loan h1, #page-loan h2, #page-loan h3, #page-loan h4{ font-family: 'Playfair Display', Georgia, serif; font-weight: 800; color: var(--navy); letter-spacing: -0.01em; }
+#page-loan a{ color: inherit; text-decoration: none; }
+
+
+#page-loan /* Date & time — overlays top of hero */
+.clb-datetime{
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  pointer-events: none;
+}
+#page-loan .clb-datetime-inner{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  pointer-events: auto;
+}
+#page-loan .clb-time{
+  display: inline-flex;
+  align-items: center;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  padding: 6px 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+}
+#page-loan .clb-date{
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  padding: 6px 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1.5px solid rgba(212, 175, 55, 0.5);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+}
+@media (max-width: 480px) {
+  #page-loan .clb-datetime-inner{ padding: 10px 14px; }
+  #page-loan .clb-time{ font-size: 12.5px; padding: 5px 11px; }
+  #page-loan .clb-date{ font-size: 12px; padding: 5px 11px; }
+}
+
+
+
+#page-loan header{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.94);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid rgba(226,232,240,0.9);
+  box-shadow: 0 4px 20px -8px rgba(15,23,42,0.1);
+}
+#page-loan .nav-inner{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+#page-loan .brand{ display: flex; align-items: center; gap: 10px; }
+#page-loan .brand-mark{
+  width: 36px; height: 36px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+}
+#page-loan .brand-mark span{ border-radius: 5px; }
+#page-loan .brand-mark span:nth-child(1){ background: #E8D48B; }
+#page-loan .brand-mark span:nth-child(2){ background: var(--gold); }
+#page-loan .brand-mark span:nth-child(3){ background: var(--gold); }
+#page-loan .brand-mark span:nth-child(4){ background: #E8D48B; }
+#page-loan .brand-text{ display: flex; flex-direction: column; line-height: 1.1; }
+#page-loan .brand-name{ font-family: 'Playfair Display', serif; font-weight: 800; font-size: 15px; color: var(--navy); }
+#page-loan .brand-sub{ font-size: 9px; font-weight: 700; letter-spacing: 0.28em; color: var(--gold); }
+#page-loan .nav-links{ display: flex; align-items: center; gap: 22px; font-size: 14px; font-weight: 600; color: var(--navy); }
+#page-loan .nav-links a:hover{ color: var(--gold); }
+#page-loan .nav-cta{
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--gold), #B8960C);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(212,175,55,0.28);
+}
+#page-loan .nav-cta:hover{ filter: brightness(1.05); }
+@media (max-width: 700px) { #page-loan .nav-links{ display: none; } }
+
+#page-loan .hero{
+  position: relative;
+  color: #fff;
+  padding: 88px 24px 72px;
+  text-align: center;
+  overflow: hidden;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#page-loan .hero-media{ position: absolute; inset: 0; z-index: 0; }
+#page-loan .hero-slide{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#page-loan .hero-slide.active{ opacity: 1; z-index: 1; }
+#page-loan .hero-slide::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, rgba(11,61,145,0.88) 0%, rgba(8,46,110,0.72) 45%, rgba(11,61,145,0.55) 100%);
+}
+#page-loan .hero-slide video{ width: 100%; height: 100%; object-fit: cover; display: block; }
+#page-loan .hero-slide.video-slide::after{
+  background: linear-gradient(105deg, rgba(11,61,145,0.75) 0%, rgba(8,46,110,0.6) 45%, rgba(11,61,145,0.5) 100%);
+}
+#page-loan .hero-dots{
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+#page-loan .hero-dot{
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.7);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+#page-loan .hero-dot.active{ background: var(--gold); border-color: var(--gold); transform: scale(1.15); }
+#page-loan .hero-nav{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  background: rgba(11,61,145,0.35);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  transition: background 0.15s, border-color 0.15s;
+}
+#page-loan .hero-nav:hover{ background: rgba(212,175,55,0.45); border-color: var(--gold); }
+#page-loan .hero-nav.prev{ left: 14px; }
+#page-loan .hero-nav.next{ right: 14px; }
+@media (max-width: 560px) {
+  #page-loan .hero-nav{ width: 36px; height: 36px; font-size: 16px; }
+  #page-loan .hero-nav.prev{ left: 8px; }
+  #page-loan .hero-nav.next{ right: 8px; }
+}
+#page-loan .hero-inner{ position: relative; z-index: 10; max-width: 720px; margin: 0 auto; }
+
+#page-loan .hero-eyebrow{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+#page-loan .hero-eyebrow::before{
+  content: '';
+  width: 24px; height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+#page-loan .hero h1{
+  color: #fff;
+  font-size: clamp(28px, 5vw, 48px);
+  line-height: 1.15;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.35);
+}
+#page-loan .hero h1 em{ font-style: italic; color: var(--gold); }
+#page-loan .hero p{
+  font-size: clamp(15px, 1.6vw, 17px);
+  color: rgba(255,255,255,0.9);
+  max-width: 560px;
+  margin: 0 auto 28px;
+  line-height: 1.55;
+}
+#page-loan .hero-actions{ display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+#page-loan .btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 14.5px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.12s ease, filter 0.15s ease, box-shadow 0.2s ease;
+}
+#page-loan .btn:active{ transform: scale(0.97); }
+#page-loan .btn-gold{
+  background: linear-gradient(135deg, var(--gold), #B8960C);
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(212,175,55,0.35);
+}
+#page-loan .btn-gold:hover{ filter: brightness(1.06); }
+#page-loan .btn-ghost{
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.35);
+}
+#page-loan .btn-ghost:hover{ background: rgba(255,255,255,0.18); border-color: var(--gold); color: var(--gold); }
+
+#page-loan section{ padding: 64px 24px; }
+#page-loan .wrap{ max-width: 1100px; margin: 0 auto; }
+#page-loan .section-head{ text-align: center; max-width: 560px; margin: 0 auto 40px; }
+#page-loan .section-head .eyebrow{
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+#page-loan .section-head h2{ font-size: clamp(24px, 3vw, 32px); margin-bottom: 10px; }
+#page-loan .section-head p{ color: var(--slate); font-size: 15px; }
+
+#page-loan .cards{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 800px) { #page-loan .cards{ grid-template-columns: 1fr; } }
+#page-loan .card{
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 28px 24px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+#page-loan .card::before{
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-soft));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+#page-loan .card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 18px 36px -16px rgba(15,23,42,0.18);
+  border-color: var(--gold);
+}
+#page-loan .card:hover::before{ opacity: 1; }
+#page-loan .card-icon{
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+#page-loan .card h3{ font-size: 17px; margin-bottom: 8px; }
+#page-loan .card p{ font-size: 14px; color: var(--slate); line-height: 1.55; }
+
+#page-loan /* ========== LOAN ACCORDION PRODUCTS ========== */
+.loan-stack{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 820px;
+  margin: 0 auto;
+}
+#page-loan .loan-item{
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(15,23,42,0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+#page-loan .loan-item.open{
+  border-color: var(--gold);
+  box-shadow: 0 12px 36px -12px rgba(212,175,55,0.22), 0 4px 16px rgba(15,23,42,0.06);
+}
+#page-loan .loan-toggle{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 24px;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.15s ease;
+}
+#page-loan .loan-toggle:hover{ background: #FFFCF5; }
+#page-loan .loan-item.open .loan-toggle{
+  background: linear-gradient(180deg, #FFFCF5, #fff);
+  border-bottom: 1px solid rgba(212,175,55,0.25);
+}
+#page-loan .loan-icon{
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+#page-loan .loan-item.open .loan-icon{
+  background: linear-gradient(135deg, var(--gold), #B8960C);
+}
+#page-loan .loan-meta{ flex: 1; min-width: 0; }
+#page-loan .loan-meta h3{
+  font-size: 18px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+#page-loan .loan-meta p{
+  font-size: 13.5px;
+  color: var(--slate);
+  line-height: 1.45;
+  margin: 0;
+}
+#page-loan .loan-range{
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  margin-top: 6px;
+}
+#page-loan .loan-chev{
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, background 0.15s ease, border-color 0.15s ease;
+  color: var(--navy);
+  font-size: 18px;
+  font-weight: 700;
+}
+#page-loan .loan-item.open .loan-chev{
+  transform: rotate(180deg);
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #fff;
+}
+#page-loan .loan-apply-hint{
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: #EFF6FF;
+  padding: 5px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+#page-loan .loan-item.open .loan-apply-hint{
+  background: rgba(212,175,55,0.18);
+  color: #A68B1A;
+}
+
+#page-loan /* Collapsible form panel */
+.loan-panel{
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#page-loan .loan-item.open .loan-panel{
+  grid-template-rows: 1fr;
+}
+#page-loan .loan-panel-inner{
+  overflow: hidden;
+  min-height: 0;
+}
+#page-loan .loan-form-wrap{
+  padding: 8px 24px 28px;
+  border-top: none;
+}
+#page-loan .loan-form-intro{
+  font-size: 14px;
+  color: var(--slate);
+  margin-bottom: 18px;
+  line-height: 1.5;
+  padding: 12px 14px;
+  background: #F8FAFC;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+}
+#page-loan .loan-form-intro strong{ color: var(--navy); }
+
+#page-loan .form-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 560px) {
+  #page-loan .form-row{ grid-template-columns: 1fr; }
+  #page-loan .loan-toggle{ padding: 18px 16px; gap: 12px; }
+  #page-loan .loan-form-wrap{ padding: 8px 16px 22px; }
+  #page-loan .loan-icon{ width: 44px; height: 44px; font-size: 20px; }
+}
+#page-loan .field{ margin-bottom: 16px; }
+#page-loan .field label{
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+#page-loan .field input, #page-loan .field select, #page-loan .field textarea{
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #E8D48B;
+  border-radius: 11px;
+  font-size: 15px;
+  font-family: inherit;
+  background: #fff;
+  color: var(--ink);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+#page-loan .field input:focus, #page-loan .field select:focus, #page-loan .field textarea:focus{
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(212,175,55,0.16);
+  background: #FFFef8;
+}
+#page-loan .field textarea{ min-height: 80px; resize: vertical; }
+#page-loan .field input[readonly]{
+  background: #F8FAFC;
+  color: var(--navy);
+  font-weight: 700;
+  cursor: default;
+}
+#page-loan .agree{
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--slate);
+  margin: 4px 0 16px;
+  line-height: 1.45;
+}
+#page-loan .agree input{
+  margin-top: 3px;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--gold);
+  flex-shrink: 0;
+}
+#page-loan .btn-submit{
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--navy), var(--navy-2));
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 10px 28px rgba(11,61,145,0.28);
+  transition: transform 0.12s ease, filter 0.15s ease;
+}
+#page-loan .btn-submit:hover{ filter: brightness(1.06); }
+#page-loan .btn-submit:active{ transform: scale(0.98); }
+#page-loan .btn-submit:disabled{
+  opacity: 0.7;
+  cursor: not-allowed;
+  filter: none;
+}
+#page-loan .form-error{
+  display: none;
+  margin-bottom: 12px;
+  padding: 11px 13px;
+  border-radius: 10px;
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  color: var(--red);
+  font-size: 13px;
+  font-weight: 600;
+}
+#page-loan .form-error.show{ display: block; }
+
+#page-loan /* Success (shared, #page-loan shown after any form) */
+.success-shell{
+  display: none;
+  max-width: 720px;
+  margin: 40px auto 0;
+  background: #fff;
+  border: 1.5px solid var(--gold);
+  border-radius: 20px;
+  box-shadow: 0 24px 56px rgba(8,46,110,0.12);
+  overflow: hidden;
+  position: relative;
+}
+#page-loan .success-shell.show{ display: block; animation: fadeUp 0.4s ease both; }
+#page-loan .success-shell::before{
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-soft), var(--navy), var(--gold));
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+#page-loan .success-panel{ padding: 32px 28px; }
+#page-loan .success-icon{
+  width: 64px; height: 64px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  color: var(--green);
+}
+#page-loan .success-panel h3{
+  text-align: center;
+  font-size: 24px;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+#page-loan .success-panel .lead{
+  text-align: center;
+  font-size: 14.5px;
+  color: var(--slate);
+  max-width: 480px;
+  margin: 0 auto 24px;
+  line-height: 1.55;
+}
+#page-loan .cred-box{
+  background: linear-gradient(180deg, #FFFCF5, #EFF6FF);
+  border: 1.5px solid var(--gold);
+  border-radius: 14px;
+  padding: 20px 18px;
+  margin-bottom: 18px;
+}
+#page-loan .cred-box .cred-title{
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+  text-align: center;
+}
+#page-loan .cred-row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(226,232,240,0.9);
+  font-size: 14px;
+}
+#page-loan .cred-row:last-child{ border-bottom: none; }
+#page-loan .cred-row .lbl{ color: #64748B; font-weight: 600; flex-shrink: 0; }
+#page-loan .cred-row .val{
+  color: var(--navy);
+  font-weight: 800;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  text-align: right;
+  word-break: break-all;
+}
+#page-loan .cred-row .copy-btn{
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--navy);
+  cursor: pointer;
+  font-family: inherit;
+}
+#page-loan .cred-row .copy-btn:hover{ border-color: var(--gold); color: var(--gold); }
+#page-loan .cred-note{
+  font-size: 13px;
+  color: var(--slate);
+  line-height: 1.55;
+  padding: 14px 16px;
+  background: #F8FAFC;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  margin-bottom: 20px;
+}
+#page-loan .cred-note strong{ color: var(--navy); }
+#page-loan .success-actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+#page-loan .btn-navy{
+  background: linear-gradient(135deg, var(--navy), var(--navy-2));
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(11,61,145,0.25);
+}
+#page-loan .btn-outline{
+  background: #fff;
+  color: var(--navy);
+  border: 1.5px solid var(--line);
+}
+#page-loan .btn-outline:hover{ border-color: var(--gold); color: var(--gold); }
+
+#page-loan .loader{
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(15,23,42,0.5);
+  backdrop-filter: blur(3px);
+  align-items: center;
+  justify-content: center;
+}
+#page-loan .loader.show{ display: flex; }
+#page-loan .loader-card{
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 36px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  min-width: 260px;
+}
+#page-loan .spinner{
+  width: 36px; height: 36px;
+  border: 3px solid #E2E8F0;
+  border-top-color: var(--gold);
+  border-right-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+  margin: 0 auto 14px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+#page-loan .loader-card p{ font-size: 14px; font-weight: 600; color: var(--ink); }
+
+#page-loan /* Legal accordion dropdowns */
+.legal-section{
+  background: #fff;
+  border-top: 1px solid var(--line);
+}
+#page-loan .legal-stack{
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+#page-loan .legal-item{
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+#page-loan .legal-item.open{
+  border-color: var(--gold);
+  box-shadow: 0 8px 28px -10px rgba(212,175,55,0.2);
+}
+#page-loan .legal-toggle{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+#page-loan .legal-toggle:hover{ background: #FFFCF5; }
+#page-loan .legal-item.open .legal-toggle{
+  background: linear-gradient(180deg, #FFFCF5, #fff);
+  border-bottom: 1px solid rgba(212,175,55,0.25);
+}
+#page-loan .legal-toggle h3{
+  font-size: 17px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#page-loan .legal-toggle .legal-icon{
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+#page-loan .legal-item.open .legal-icon{
+  background: linear-gradient(135deg, var(--gold), #B8960C);
+}
+#page-loan .legal-chev{
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  transition: transform 0.25s, background 0.15s, border-color 0.15s, color 0.15s;
+}
+#page-loan .legal-item.open .legal-chev{
+  transform: rotate(180deg);
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #fff;
+}
+#page-loan .legal-body{
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#page-loan .legal-item.open .legal-body{ grid-template-rows: 1fr; }
+#page-loan .legal-body-inner{
+  overflow: hidden;
+  min-height: 0;
+}
+#page-loan .legal-content{
+  padding: 8px 20px 22px;
+}
+#page-loan .legal-content .updated{
+  font-size: 12.5px;
+  color: var(--slate);
+  margin-bottom: 14px;
+}
+#page-loan .legal-content h4{
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 16px 0 6px;
+}
+#page-loan .legal-content p, #page-loan .legal-content li{
+  font-size: 14px;
+  color: var(--slate);
+  line-height: 1.6;
+}
+#page-loan .legal-content ul{ margin: 0 0 8px 18px; }
+#page-loan .legal-content li{ margin-bottom: 5px; }
+#page-loan .legal-content p{ margin-bottom: 8px; }
+
+#page-loan footer{
+  background: var(--navy-2);
+  color: rgba(255,255,255,0.85);
+  text-align: center;
+  padding: 36px 24px;
+}
+#page-loan footer .f-brand{
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 6px;
+}
+#page-loan footer p{ font-size: 13.5px; margin-bottom: 4px; }
+#page-loan footer .copy{ margin-top: 12px; font-size: 12.5px; color: rgba(255,255,255,0.55); }
+#page-loan footer .f-links{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin: 12px 0 4px;
+  font-size: 13px;
+  font-weight: 600;
+}
+#page-loan footer .f-links a{ color: rgba(255,255,255,0.85); }
+#page-loan footer .f-links a:hover{ color: var(--gold); }
+
+
+#page-loan .toast{
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--navy);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.25);
+}
+#page-loan .toast.show{
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+#page-loan /* Apply-for-loan dropdown */
+.apply-dd{ position: relative; display: inline-block; }
+#page-loan .apply-dd-center{ display: flex; flex-direction: column; align-items: center; }
+#page-loan .apply-dd-btn{ position: relative; }
+#page-loan .apply-dd-chev{ display: inline-block; margin-left: 6px; transition: transform 0.2s ease; font-size: 12px; }
+#page-loan .apply-dd.open .apply-dd-chev{ transform: rotate(180deg); }
+#page-loan .apply-dd-menu{
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 240px;
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(15,23,42,0.16);
+  padding: 8px;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+#page-loan .apply-dd-menu[hidden]{ display: none !important; }
+#page-loan .apply-dd-opt{
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--navy);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+#page-loan .apply-dd-opt:hover{
+  background: linear-gradient(135deg, #FFFCF5, #EFF6FF);
+  color: var(--gold);
+}
+#page-loan .hero-actions .apply-dd-menu{
+  left: 0;
+  transform: none;
+}
+@media (max-width: 520px) {
+  #page-loan .hero-actions .apply-dd{ width: 100%; }
+  #page-loan .hero-actions .apply-dd-btn{ width: 100%; }
+  #page-loan .hero-actions .apply-dd-menu{ left: 0; right: 0; transform: none; min-width: 0; width: 100%; }
+}
+
+
+</style>
+<style>
+
+/* ===== Loan apply spinner overlay (main site) ===== */
+#clbLoanSpinOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: rgba(11, 61, 145, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 18px;
+}
+#clbLoanSpinOverlay.show { display: flex; }
+.clb-loan-spin-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 36px 44px;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(15,23,42,0.28);
+  min-width: 280px;
+  max-width: 90vw;
+  border: 1.5px solid rgba(212,175,55,0.35);
+}
+.clb-loan-spin-ring {
+  width: 52px; height: 52px;
+  border: 4px solid #E2E8F0;
+  border-top-color: #D4AF37;
+  border-right-color: #D4AF37;
+  border-radius: 50%;
+  animation: clbLoanSpin 0.8s linear infinite;
+  margin: 0 auto 18px;
+}
+@keyframes clbLoanSpin { to { transform: rotate(360deg); } }
+.clb-loan-spin-card h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  color: #0B3D91;
+  margin: 0 0 8px;
+}
+.clb-loan-spin-card p {
+  font-size: 14px;
+  color: #475569;
+  margin: 0 0 16px;
+  line-height: 1.45;
+}
+.clb-loan-spin-bar {
+  height: 5px;
+  background: #E2E8F0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.clb-loan-spin-bar > i {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #D4AF37, #E8D48B, #0B3D91);
+  border-radius: 999px;
+  transition: width 0.1s linear;
+}
+
+</style>
+<style>
+  html,body{margin:0;padding:0;min-height:100vh;font-family:Inter,Public Sans,system-ui,sans-serif;background:#F8FAFC;}
+  #page-loan.app-page{display:block!important;}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1e293b;color:#fff;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:600;z-index:999999;opacity:0;pointer-events:none;transition:opacity .25s;max-width:90%;text-align:center}
+  .toast.show{opacity:1}
+  .toast.ok,.toast.success{background:#059669}
+  .toast.err,.toast.error{background:#DC2626}
+</style>
+</head>
+<body>
+<div class="app-page active" id="page-loan">
+<header>
+  <div class="nav-inner">
+    <a href="index.html" onclick="event.preventDefault();location.href='index.html';" class="brand" aria-label="City Legacy Bank — Main">
+      <div class="brand-mark" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">CITY LEGACY</span>
+        <span class="brand-sub">BANK</span>
+      </div>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" onclick="event.preventDefault();location.href='index.html';">Main</a>
+      <a href="#why">Why us</a>
+      <a href="#products">Products</a>
+      <a href="#apply">Apply</a>
+      <a href="#legal">Terms</a>
+    </nav>
+    <a href="index.html" onclick="event.preventDefault();location.href='index.html';" class="nav-cta">Main</a>
+  </div>
+</header>
+
+<section class="hero" id="heroCarousel">
+  <div class="hero-media" aria-hidden="true">
+    <div class="hero-slide active" style="background-image:url('1000250606.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('1000250606.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('1000250606.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('1000250606.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('1000250606.jpg')"></div>
+  </div>
+  <div class="clb-datetime" aria-label="Current date and time">
+    <div class="clb-datetime-inner">
+      <span class="clb-time" id="clbLiveTime">—:—:—</span>
+      <span class="clb-date" id="clbLiveDate">—</span>
+    </div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Lending · CITY LEGACY BANK</div>
+    <h1>Fast, secure &amp; <em>trusted</em> loans</h1>
+    <p>
+      Get the financial support you need with competitive rates, quick decisions,
+      and flexible repayment — backed by City Legacy banking security.
+    </p>
+    <div class="hero-actions">
+      <div class="apply-dd" id="applyDdHero">
+        <button type="button" class="btn btn-gold apply-dd-btn" aria-expanded="false" aria-haspopup="true">
+          Apply for loan <span class="apply-dd-chev">▾</span>
+        </button>
+        <div class="apply-dd-menu" hidden>
+          <button type="button" class="apply-dd-opt" data-open-loan="personal">👤 Personal Loan</button>
+          <button type="button" class="apply-dd-opt" data-open-loan="business">🏢 Business Loan</button>
+          <button type="button" class="apply-dd-opt" data-open-loan="mortgage">🏠 Mortgage Loan</button>
+        </div>
+      </div>
+      <a href="index.html" onclick="event.preventDefault();location.href='index.html';" class="btn btn-ghost">Main</a>
+    </div>
+  </div>
+  <button type="button" class="hero-nav prev" aria-label="Previous slide">‹</button>
+  <button type="button" class="hero-nav next" aria-label="Next slide">›</button>
+  <div class="hero-dots" role="tablist" aria-label="Hero slides">
+    <button type="button" class="hero-dot active" data-index="0" aria-label="Slide 1"></button>
+    <button type="button" class="hero-dot" data-index="1" aria-label="Slide 2"></button>
+    <button type="button" class="hero-dot" data-index="2" aria-label="Slide 3"></button>
+    <button type="button" class="hero-dot" data-index="3" aria-label="Slide 4"></button>
+    <button type="button" class="hero-dot" data-index="4" aria-label="Video ad"></button>
+  </div>
+</section>
+
+
+<section id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Why choose us</div>
+      <h2>Banking-grade lending</h2>
+      <p>Every application opens a City Legacy account so your funds can be disbursed securely once approved.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Fast decisions</h3>
+        <p>Loan decisions typically within 24–48 hours after successful identity verification.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📅</div>
+        <h3>Flexible repayment</h3>
+        <p>Choose plans that fit your income with transparent schedules and no hidden surprises.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <h3>Secure process</h3>
+        <p>Your data is protected with bank-grade controls. Funds go only to your City Legacy account.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="products" style="background:#fff; border-top:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head" id="apply">
+      <div class="eyebrow">Products &amp; apply</div>
+      <h2>Choose your loan type</h2>
+      <p>Click <strong>Apply for loan</strong> and pick Personal, Business, or Mortgage to open that application form. Your account is created when you submit.</p>
+      <div class="apply-dd apply-dd-center" id="applyDdSection" style="margin-top:22px;">
+        <button type="button" class="btn btn-gold apply-dd-btn" aria-expanded="false" aria-haspopup="true">
+          Apply for loan <span class="apply-dd-chev">▾</span>
+        </button>
+        <div class="apply-dd-menu" hidden>
+          <button type="button" class="apply-dd-opt" data-open-loan="personal">👤 Personal Loan</button>
+          <button type="button" class="apply-dd-opt" data-open-loan="business">🏢 Business Loan</button>
+          <button type="button" class="apply-dd-opt" data-open-loan="mortgage">🏠 Mortgage Loan</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="loan-stack" id="loanStack">
+
+      <!-- PERSONAL -->
+      <div class="loan-item" data-loan="Personal Loan" id="loan-personal">
+        <button type="button" class="loan-toggle" aria-expanded="false" aria-controls="panel-personal">
+          <div class="loan-icon">👤</div>
+          <div class="loan-meta">
+            <h3>Personal Loan <span class="loan-apply-hint">Apply</span></h3>
+            <p>Cover life events, consolidate debt, or fund a major purchase.</p>
+            <div class="loan-range">$1,000 – $100,000</div>
+          </div>
+          <span class="loan-chev" aria-hidden="true">▾</span>
+        </button>
+        <div class="loan-panel" id="panel-personal">
+          <div class="loan-panel-inner">
+            <div class="loan-form-wrap">
+              <div class="loan-form-intro">
+                <strong>Personal Loan application.</strong> Complete the form below. On submit we create a City Legacy account for disbursement after approval.
+              </div>
+              <div class="form-error" data-error></div>
+              <form class="loan-form" data-type="Personal Loan" novalidate>
+                <div class="field">
+                  <label>Loan type</label>
+                  <input type="text" value="Personal Loan" readonly>
+                </div>
+                <div class="form-row">
+                  <div class="field">
+                    <label>Full name</label>
+                    <input type="text" name="fullName" placeholder="As on your ID" required autocomplete="name">
+                  </div>
+                  <div class="field">
+                    <label>Email address</label>
+                    <input type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="field">
+                    <label>Phone number</label>
+                    <input type="tel" name="phone" placeholder="+1 …" required autocomplete="tel">
+                  </div>
+                  <div class="field">
+                    <label>Employment status</label>
+                    <select name="employment" required>
+                      <option value="">Select…</option>
+                      <option>Employed full-time</option>
+                      <option>Employed part-time</option>
+                      <option>Self-employed</option>
+                      <option>Retired</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="field">
+                    <label>Loan amount ($)</label>
+                    <input type="number" name="loanAmount" min="1000" max="100000" step="100" placeholder="e.g. 15000" required>
+                  </div>
+                  <div class="field">
+                    <label>Monthly income ($)</label>
+                    <input type="number" name="monthlyIncome" min="0" step="100" placeholder="e.g. 4500" required>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Purpose of loan</label>
+                  <textarea name="purpose" placeholder="e.g. Debt consolidation, medical, home improvement"></textarea>
+                </div>
+                <div class="field">
+                  <label>Residential address</label>
+                  <input type="text" name="address" placeholder="Street, city, state, ZIP" required autocomplete="street-address">
+                </div>
+                <label class="agree">
+                  <input type="checkbox" name="agree" required>
+                  <span>I confirm this information is accurate and agree to City Legacy Bank’s account terms. An account will be created for loan disbursement.</span>
+                </label>
+                <button type="submit" class="btn-submit">Submit personal loan application</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUSINESS -->
+      <div class="loan-item" data-loan="Business Loan" id="loan-business">
+        <button type="button" class="loan-toggle" aria-expanded="false" aria-controls="panel-business">
+          <div class="loan-icon">🏢</div>
+          <div class="loan-meta">
+            <h3>Business Loan <span class="loan-apply-hint">Apply</span></h3>
+            <p>Grow inventory, equipment, or working capital with flexible financing.</p>
+            <div class="loan-range">Up to $250,000</div>
+          </div>
+          <span class="loan-chev" aria-hidden="true">▾</span>
+        </button>
+        <div class="loan-panel" id="panel-business">
+          <div class="loan-panel-inner">
+            <div class="loan-form-wrap">
+              <div class="loan-form-intro">
+                <strong>Business Loan application.</strong> Tell us about your business. On submit we create a City Legacy account for disbursement after approval.
+              </div>
+              <div class="form-error" data-error></div>
+              <form class="loan-form" data-type="Business Loan" novalidate>
+                <div class="field">
+                  <label>Loan type</label>
+                  <input type="text" value="Business Loan" readonly>
+                </div>
+                <div class="form-row">
+                  <div class="field">
+                    <label>Owner full name</label>
+                    <input type="text" name="fullName" placeholder="Primary owner / applicant" required autocomplete="name">
+                  </div>
+                  <div class="field">
+                    <label>Business email</label>
+                    <input type="email" name="email" placeholder="business@example.com" required autocomplete="email">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="field">
+                    <label>Phone number</label>
+                    <input type="tel" name="phone" placeholder="+1 …" required autocomplete="tel">
+                  </div>
+                  <div class="field">
+                    <label>Business name</label>
+                    <input type="text" name="businessName" placeholder="Legal business name" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="field">
+                    <label>Business type</label>
+                    <select name="businessType" required>
+                      <option value="">Select…</option>
+                      <option>Sole proprietorship</option>
+                      <option>Partnership</option>
+                      <option>LLC</option>
+                      <option>Corporation</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label>Years in operation</label>
+                    <input type="number" name="yearsOperating" min="0" max="100" step="1" placeholder="e.g. 3" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="field">
+                    <label>Loan amount ($)</label>
+                    <input type="number" name="loanAmount" min="1000" max="250000" step="100" placeholder="e.g. 50000" required>
+                  </div>
+                  <div class="field">
+                    <label>Monthly revenue ($)</label>
+                    <input type="number" name="monthlyIncome" min="0" step="100" placeholder="e.g. 20000" required>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Use of funds</label>
+                  <textarea name="purpose" placeholder="e.g. Inventory, equipment, expansion, working capital"></textarea>
+                </div>
+                <div class="field">
+                  <label>Business / mailing address</label>
+                  <input type="text" name="address" placeholder="Street, city, state, ZIP" required>
+                </div>
+                <label class="agree">
+                  <input type="checkbox" name="agree" required>
+                  <span>I confirm this information is accurate and agree to City Legacy Bank’s account terms. An account will be created for loan disbursement.</span>
+                </label>
+                <button type="submit" class="btn-submit">Submit business loan application</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MORTGAGE -->
+      <div class="loan-item" data-loan="Mortgage Loan" id="loan-mortgage">
+        <button type="button" class="loan-toggle" aria-expanded="false" aria-controls="panel-mortgage">
+          <div class="loan-icon">🏠</div>
+          <div class="loan-meta">
+            <h3>Mortgage Loan <span class="loan-apply-hint">Apply</span></h3>
+            <p>Own your dream home with competitive rates and long-term plans.</p>
+            <div class="loan-range">Custom terms</div>
+          </div>
+          <span class="loan-chev" aria-hidden="true">▾</span>
+        </button>
+        <div class="loan-panel" id="panel-mortgage">
+          <div class="loan-panel-inner">
+            <div class="loan-form-wrap">
+              <div class="loan-form-intro">
+                <strong>Mortgage Loan application.</strong> Share property and income details. On submit we create a City Legacy account for disbursement after approval.
+              </div>
+              <div class="form-error" data-error></div>
+              <form class="loan-form" data-type="Mortgage Loan" novalidate>
+                <div class="field">
+                  <label>Loan type</label>
+                  <input type="text" value="Mortgage Loan" readonly>
+                </div>
+                <div class="form-row">
+                  <div class="field">
+                    <label>Full name</label>
+                    <input type="text" name="fullName" placeholder="As on your ID" required autocomplete="name">
+                  </div>
+                  <div class="field">
+                    <label>Email address</label>
+                    <input type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="field">
+                    <label>Phone number</label>
+                    <input type="tel" name="phone" placeholder="+1 …" required autocomplete="tel">
+                  </div>
+                  <div class="field">
+                    <label>Property type</label>
+                    <select name="propertyType" required>
+                      <option value="">Select…</option>
+                      <option>Single-family home</option>
+                      <option>Condo / townhouse</option>
+                      <option>Multi-family (2–4 units)</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="field">
+                    <label>Estimated purchase price ($)</label>
+                    <input type="number" name="loanAmount" min="1000" step="1000" placeholder="e.g. 350000" required>
+                  </div>
+                  <div class="field">
+                    <label>Down payment ($)</label>
+                    <input type="number" name="downPayment" min="0" step="1000" placeholder="e.g. 70000" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="field">
+                    <label>Monthly household income ($)</label>
+                    <input type="number" name="monthlyIncome" min="0" step="100" placeholder="e.g. 8000" required>
+                  </div>
+                  <div class="field">
+                    <label>Credit score range</label>
+                    <select name="creditRange" required>
+                      <option value="">Select…</option>
+                      <option>Excellent (740+)</option>
+                      <option>Good (670–739)</option>
+                      <option>Fair (580–669)</option>
+                      <option>Below 580 / unsure</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Property address (or target area)</label>
+                  <input type="text" name="address" placeholder="Street, city, state, ZIP" required>
+                </div>
+                <div class="field">
+                  <label>Notes (optional)</label>
+                  <textarea name="purpose" placeholder="First-time buyer, refinance, pre-approval request…"></textarea>
+                </div>
+                <label class="agree">
+                  <input type="checkbox" name="agree" required>
+                  <span>I confirm this information is accurate and agree to City Legacy Bank’s account terms. An account will be created for loan disbursement.</span>
+                </label>
+                <button type="submit" class="btn-submit">Submit mortgage application</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Shared success panel — loan portal logins -->
+    <div class="success-shell" id="successShell">
+      <div class="success-panel">
+        <div class="success-icon">✓</div>
+        <h3>Application submitted successfully</h3>
+        <p class="lead">
+          Your loan application has been submitted successfully. Below are your <strong>loan logins</strong>, which you will always use to check your loan success rate / approval status.
+        </p>
+        <div class="cred-box">
+          <div class="cred-title">Your loan portal logins</div>
+          <div class="cred-row">
+            <span class="lbl">Loan username</span>
+            <span class="val" id="outUser">—</span>
+            <button type="button" class="copy-btn" data-copy="outUser">Copy</button>
+          </div>
+          <div class="cred-row">
+            <span class="lbl">Loan password</span>
+            <span class="val" id="outPass">—</span>
+            <button type="button" class="copy-btn" data-copy="outPass">Copy</button>
+          </div>
+          <div class="cred-row" style="display:none">
+            <span class="lbl">Account number</span>
+            <span class="val" id="outAcc">—</span>
+          </div>
+          <div class="cred-row" style="display:none">
+            <span class="lbl">Routing number</span>
+            <span class="val" id="outRoute">—</span>
+          </div>
+        </div>
+        <div class="cred-note">
+          <strong>Save these logins now.</strong> Use <em>Withdraw loan to account</em> on this page to sign in, track approval (Pending / Approved / Rejected), and transfer your loan once approved. When your loan is approved, City Legacy will generate bank account details for disbursement — copy or write them down carefully.
+        </div>
+        <div class="success-actions">
+          <button type="button" class="btn btn-navy" id="btnCopyAll">Copy loan logins</button>
+          <button type="button" class="btn btn-outline" id="btnOpenLoanPortal">Open loan portal</button>
+          <button type="button" class="btn btn-outline" id="btnNewApp">Apply for another loan</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Withdraw loan CTA -->
+    <div class="loan-withdraw-bar" id="loanWithdrawBar" style="margin-top:28px;text-align:center;padding:28px 16px;background:linear-gradient(135deg,#0B3D91,#082E6E);border-radius:16px;color:#fff">
+      <h3 style="font-family:'Playfair Display',serif;font-size:22px;margin:0 0 8px;color:#fff">Already applied?</h3>
+      <p style="margin:0 0 16px;opacity:.85;font-size:14.5px">Sign in with your loan logins to check status and withdraw an approved loan to your City Legacy account.</p>
+      <button type="button" class="btn btn-gold" id="btnWithdrawLoan" style="padding:14px 28px;font-weight:800;border:none;border-radius:10px;background:linear-gradient(135deg,#E8D48B,#D4AF37);color:#0B3D91;cursor:pointer;font-size:15px">Withdraw loan to account</button>
+    </div>
+
+    <!-- Loan portal login overlay -->
+    <div id="loanPortalLogin" style="display:none;position:fixed;inset:0;z-index:200000;background:rgba(15,23,42,.72);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px">
+      <div style="background:#fff;border-radius:16px;padding:32px 28px;width:100%;max-width:400px;box-shadow:0 24px 60px rgba(0,0,0,.28);position:relative">
+        <button type="button" id="loanPortalLoginX" style="position:absolute;top:12px;right:14px;width:34px;height:34px;border:none;border-radius:8px;background:#f3f4f6;font-size:1.2rem;cursor:pointer;color:#6b7280">×</button>
+        <div style="text-align:center;margin-bottom:18px">
+          <div style="font-size:28px;margin-bottom:8px">🏦</div>
+          <h3 style="margin:0 0 6px;font-family:'Playfair Display',serif;color:#0B3D91">Loan portal sign-in</h3>
+          <p style="margin:0;font-size:13.5px;color:#64748B">Use the loan username &amp; password from your application</p>
+        </div>
+        <div style="margin-bottom:12px">
+          <label style="display:block;font-size:12px;font-weight:700;color:#374151;margin-bottom:5px">Loan username</label>
+          <input id="lpUser" style="width:100%;padding:12px 14px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:15px;box-sizing:border-box" autocomplete="username"/>
+        </div>
+        <div style="margin-bottom:14px">
+          <label style="display:block;font-size:12px;font-weight:700;color:#374151;margin-bottom:5px">Loan password</label>
+          <input type="password" id="lpPass" style="width:100%;padding:12px 14px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:15px;box-sizing:border-box" autocomplete="current-password"/>
+        </div>
+        <div id="lpErr" style="display:none;color:#DC2626;font-size:13px;font-weight:600;margin-bottom:10px"></div>
+        <button type="button" id="lpSignIn" style="width:100%;padding:14px;border:none;border-radius:10px;background:#0B3D91;color:#fff;font-weight:800;font-size:15px;cursor:pointer">Sign in to loan portal</button>
+      </div>
+    </div>
+
+    <!-- Loan applicant dashboard -->
+    <div id="loanPortalDash" style="display:none;margin-top:24px">
+      <div style="background:#fff;border:1px solid #E2E8F0;border-radius:16px;overflow:hidden;box-shadow:0 8px 28px rgba(15,23,42,.08)">
+        <div style="background:linear-gradient(135deg,#0B3D91,#082E6E);color:#fff;padding:22px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+          <div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#D4AF37;margin-bottom:4px">Loan dashboard</div>
+            <h3 style="margin:0;font-family:'Playfair Display',serif;font-size:22px;color:#fff" id="lpName">—</h3>
+          </div>
+          <button type="button" id="lpLogout" style="padding:10px 16px;border-radius:8px;border:1.5px solid rgba(255,255,255,.35);background:transparent;color:#fff;font-weight:700;cursor:pointer">Log out</button>
+        </div>
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:22px">
+            <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:16px">
+              <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#64748B;margin-bottom:6px">Loan success rate</div>
+              <div id="lpStatus" style="font-size:20px;font-weight:800;color:#c27803">Pending</div>
+            </div>
+            <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:16px">
+              <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#64748B;margin-bottom:6px">Loan amount</div>
+              <div id="lpAmount" style="font-size:20px;font-weight:800;color:#0B3D91">$0.00</div>
+            </div>
+            <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:16px">
+              <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#64748B;margin-bottom:6px">Approved amount</div>
+              <div id="lpApproved" style="font-size:20px;font-weight:800;color:#10B981">$0.00</div>
+            </div>
+            <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:16px">
+              <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#64748B;margin-bottom:6px">Loan type</div>
+              <div id="lpType" style="font-size:16px;font-weight:700;color:#0B3D91">—</div>
+            </div>
+          </div>
+
+          <div id="lpBankBox" style="display:none;margin-bottom:22px;padding:18px;border:1.5px solid #D4AF37;border-radius:12px;background:linear-gradient(135deg,#FFFBEB,#FEF3C7)">
+            <div style="font-weight:800;color:#0B3D91;margin-bottom:8px">Bank account for loan disbursement</div>
+            <p style="font-size:13.5px;color:#475569;margin:0 0 12px">Copy or write down these account details — this is where your approved loan will be transferred. Sign in to main online banking with the username &amp; password below.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:14px">
+              <div><span style="color:#64748B;font-size:11px;font-weight:700;text-transform:uppercase">Account number</span><div id="lpBankAcc" style="font-weight:700;font-family:monospace">—</div></div>
+              <div><span style="color:#64748B;font-size:11px;font-weight:700;text-transform:uppercase">Routing number</span><div id="lpBankRoute" style="font-weight:700;font-family:monospace">—</div></div>
+              <div><span style="color:#64748B;font-size:11px;font-weight:700;text-transform:uppercase">Username</span><div id="lpBankUser" style="font-weight:700">—</div></div>
+              <div><span style="color:#64748B;font-size:11px;font-weight:700;text-transform:uppercase">Password</span><div id="lpBankPass" style="font-weight:700;font-family:monospace">—</div></div>
+            </div>
+            <button type="button" id="lpCopyBank" style="margin-top:12px;padding:10px 16px;border:none;border-radius:8px;background:#0B3D91;color:#fff;font-weight:700;cursor:pointer">Copy bank account details</button>
+          </div>
+
+          <div id="lpTransferWrap" style="margin-bottom:22px;display:none">
+            <button type="button" id="lpTransferBtn" style="width:100%;padding:16px;border:none;border-radius:12px;background:linear-gradient(135deg,#D4AF37,#B8960C);color:#0B3D91;font-weight:800;font-size:15px;cursor:pointer">Transfer loan to your bank account</button>
+            <p id="lpTransferNote" style="font-size:13px;color:#64748B;margin:10px 0 0;text-align:center">Funds will appear on your account as <strong style="color:#DC2626">pending</strong> until Master Admin settles the transfer.</p>
+          </div>
+          <div id="lpTransferDone" style="display:none;margin-bottom:22px;padding:14px;border-radius:10px;background:#ECFDF5;border:1px solid #A7F3D0;color:#065F46;font-weight:600;text-align:center">Loan transfer requested — awaiting admin settlement. Check online banking for a pending balance.</div>
+
+          <!-- Messages -->
+          <div style="border:1px solid #E2E8F0;border-radius:12px;overflow:hidden">
+            <div style="padding:14px 16px;background:#F8FAFC;border-bottom:1px solid #E2E8F0;font-weight:800;color:#0B3D91">Messages with City Legacy Bank</div>
+            <div id="lpMsgList" style="max-height:260px;overflow:auto;padding:14px;font-size:14px;min-height:80px">
+              <div style="text-align:center;color:#9ca3af;padding:16px">No messages yet</div>
+            </div>
+            <div style="padding:12px;border-top:1px solid #E2E8F0;display:flex;gap:8px">
+              <input id="lpMsgInput" placeholder="Message City Legacy Bank…" style="flex:1;padding:11px 12px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:14px"/>
+              <button type="button" id="lpMsgSend" style="padding:11px 18px;border:none;border-radius:10px;background:#0B3D91;color:#fff;font-weight:700;cursor:pointer">Send</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 20s transfer processing overlay -->
+    <div id="lpTransferSpin" style="display:none;position:fixed;inset:0;z-index:300000;background:rgba(11,61,145,.65);backdrop-filter:blur(6px);align-items:center;justify-content:center;flex-direction:column;padding:20px">
+      <div style="background:#fff;border-radius:20px;padding:36px 40px;text-align:center;max-width:360px;width:100%;box-shadow:0 24px 60px rgba(0,0,0,.3)">
+        <div id="lpSpinRing" style="width:56px;height:56px;margin:0 auto 18px;border:4px solid #E2E8F0;border-top-color:#D4AF37;border-radius:50%;animation:lpSpin 0.8s linear infinite"></div>
+        <h3 id="lpSpinTitle" style="margin:0 0 8px;font-family:'Playfair Display',serif;color:#0B3D91;font-size:20px">Your loan transfer is processing</h3>
+        <p id="lpSpinSub" style="margin:0 0 16px;color:#64748B;font-size:14px">Please wait while we prepare the disbursement…</p>
+        <div style="height:6px;background:#E2E8F0;border-radius:99px;overflow:hidden">
+          <i id="lpSpinBar" style="display:block;height:100%;width:0%;background:linear-gradient(90deg,#D4AF37,#0B3D91);border-radius:99px;transition:width .1s linear"></i>
+        </div>
+      </div>
+    </div>
+    <style>@keyframes lpSpin{to{transform:rotate(360deg)}}</style>
+  </div>
+</section>
+
+<section id="legal" class="legal-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Legal</div>
+      <h2>Terms, privacy &amp; policies</h2>
+      <p>Tap a section below to expand and read the full details before you apply.</p>
+    </div>
+    <div class="legal-stack" id="legalStack">
+
+      <div class="legal-item" data-legal="terms">
+        <button type="button" class="legal-toggle" aria-expanded="false">
+          <h3><span class="legal-icon">📜</span> Terms &amp; Conditions</h3>
+          <span class="legal-chev" aria-hidden="true">▾</span>
+        </button>
+        <div class="legal-body">
+          <div class="legal-body-inner">
+            <div class="legal-content">
+              <p class="updated">Last updated: August 1, 2026 · City Legacy Bank</p>
+              <h4>1. Eligibility</h4>
+              <p>To apply for a Personal, Business, or Mortgage loan you must be at least 18, provide accurate information, have a valid email and phone, and agree to open a City Legacy checking account for disbursement if approved.</p>
+              <h4>2. Application &amp; account creation</h4>
+              <p>Submitting an application creates a City Legacy customer account and a pending loan application. Credentials are shown only after successful submission. Keep them confidential.</p>
+              <h4>3. Credit assessment &amp; decisions</h4>
+              <p>We may review credit history, income, employment or business status, and other information. Approval is not guaranteed. Decisions are typically within 24–48 hours after identity verification. Additional documents may be requested.</p>
+              <h4>4. Loan amounts, rates &amp; repayment</h4>
+              <ul>
+                <li><strong>Personal:</strong> $1,000 – $100,000 subject to approval.</li>
+                <li><strong>Business:</strong> Up to $250,000 subject to approval.</li>
+                <li><strong>Mortgage:</strong> Custom terms based on property, down payment, credit, and income.</li>
+              </ul>
+              <p>Rates, fees, and schedules are disclosed in your formal offer before acceptance. Late payments may incur fees and affect credit.</p>
+              <h4>5. Disbursement</h4>
+              <p>Approved funds go only to your City Legacy account after verification and acceptance of the final agreement.</p>
+              <h4>6. Your responsibilities</h4>
+              <ul>
+                <li>Provide true, complete information.</li>
+                <li>Use proceeds only for the stated purpose.</li>
+                <li>Pay on time per the agreed schedule.</li>
+                <li>Update us if contact or financial circumstances change materially.</li>
+              </ul>
+              <h4>7. Default &amp; remedies</h4>
+              <p>Failure to pay or material breach may constitute default. We may accelerate the balance, report to credit bureaus, and pursue collection as permitted by law.</p>
+              <h4>8. Equal opportunity</h4>
+              <p>City Legacy Bank is an Equal Housing Lender and does not discriminate on protected characteristics.</p>
+              <h4>9. Changes &amp; governing law</h4>
+              <p>Terms may be updated; the version at application applies. Governed by the laws of the jurisdiction where City Legacy Bank is organized.</p>
+              <h4>10. Contact</h4>
+              <p>Questions: contact support through online banking or details provided after account creation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="legal-item" data-legal="privacy">
+        <button type="button" class="legal-toggle" aria-expanded="false">
+          <h3><span class="legal-icon">🔒</span> Privacy Policy</h3>
+          <span class="legal-chev" aria-hidden="true">▾</span>
+        </button>
+        <div class="legal-body">
+          <div class="legal-body-inner">
+            <div class="legal-content">
+              <p class="updated">Last updated: August 1, 2026 · City Legacy Bank</p>
+              <h4>1. Information we collect</h4>
+              <ul>
+                <li>Identity and contact data (name, email, phone, address).</li>
+                <li>Financial data (income, employment/business details, loan purpose, credit-related info).</li>
+                <li>Account and transaction data for your City Legacy account.</li>
+                <li>Technical data (device, browser, IP) for security.</li>
+              </ul>
+              <h4>2. How we use your information</h4>
+              <ul>
+                <li>Process applications and underwrite credit.</li>
+                <li>Open and maintain accounts and disburse funds.</li>
+                <li>Verify identity, prevent fraud, and meet KYC/AML obligations.</li>
+                <li>Communicate about applications, accounts, and payments.</li>
+                <li>Improve products and services.</li>
+              </ul>
+              <h4>3. Sharing</h4>
+              <p>We do not sell personal information. We may share with service providers, credit bureaus, regulators when required by law, and affiliates under confidentiality obligations.</p>
+              <h4>4. Security</h4>
+              <p>Bank-grade safeguards protect your data. You must also protect your credentials and device.</p>
+              <h4>5. Retention</h4>
+              <p>Records are kept as needed for services and legal retention requirements.</p>
+              <h4>6. Your choices</h4>
+              <ul>
+                <li>Request access or correction via online banking or support.</li>
+                <li>Opt out of non-essential marketing; transactional notices still apply.</li>
+                <li>Additional rights under applicable law will be honored subject to legal exceptions.</li>
+              </ul>
+              <h4>7. Cookies</h4>
+              <p>Essential cookies may be used for security and session management.</p>
+              <h4>8. Children</h4>
+              <p>Products are not directed at anyone under 18. We do not knowingly collect minors’ data for lending.</p>
+              <h4>9. Changes</h4>
+              <p>This policy may be updated; the “Last updated” date will change accordingly.</p>
+              <h4>10. Contact</h4>
+              <p>Privacy questions: contact support through your online banking portal.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="legal-item" data-legal="policies">
+        <button type="button" class="legal-toggle" aria-expanded="false">
+          <h3><span class="legal-icon">📋</span> Lending Policies</h3>
+          <span class="legal-chev" aria-hidden="true">▾</span>
+        </button>
+        <div class="legal-body">
+          <div class="legal-body-inner">
+            <div class="legal-content">
+              <p class="updated">Last updated: August 1, 2026 · City Legacy Bank</p>
+              <h4>1. Responsible lending</h4>
+              <p>We assess ability to repay using income, obligations, credit history, and (for business/mortgage) cash flow or property value. Key costs are disclosed before acceptance.</p>
+              <h4>2. Product overview</h4>
+              <ul>
+                <li><strong>Personal Loan:</strong> $1,000–$100,000 for life events, debt consolidation, or major purchases.</li>
+                <li><strong>Business Loan:</strong> Up to $250,000 for inventory, equipment, working capital, or expansion.</li>
+                <li><strong>Mortgage Loan:</strong> Purchase or refinance residential property. Equal Housing Lender.</li>
+              </ul>
+              <h4>3. Identity verification (KYC)</h4>
+              <p>Identity is verified before final approval and disbursement. ID, proof of address, and supporting documents may be required.</p>
+              <h4>4. Fees &amp; transparency</h4>
+              <p>Origination fees, late fees, and other charges are stated in your offer. APR and total cost estimates are provided before acceptance.</p>
+              <h4>5. Complaints</h4>
+              <p>Contact us via online banking or support. We investigate and respond in a reasonable time. External escalation may be available where applicable.</p>
+              <h4>6. Account restriction</h4>
+              <p>New accounts from loan applications may carry a compliance restriction until verification and underwriting are complete.</p>
+              <h4>7. Policy updates</h4>
+              <p>Policies may change with regulation or product design. Those in effect at application apply to that application.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-brand">CITY LEGACY BANK</div>
+  <p>Helping you build your financial future.</p>
+  <div class="f-links">
+    <a href="#legal">Terms &amp; Conditions</a>
+    <a href="#legal">Privacy Policy</a>
+    <a href="#legal">Lending Policies</a>
+    <a href="#apply">Apply</a>
+  </div>
+  <p>Member FDIC · Equal Housing Lender</p>
+  <p class="copy">© 2026 City Legacy Bank. All rights reserved.</p>
+</footer>
+
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-card">
+    <div class="spinner"></div>
+    <p id="loaderText">Submitting application…</p>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<div id="clbLoanSpinOverlay" aria-live="polite" aria-busy="true">
+  <div class="clb-loan-spin-card">
+    <div class="clb-loan-spin-ring" aria-hidden="true"></div>
+    <h3>Opening loan center</h3>
+    <p>Preparing secure application…</p>
+    <div class="clb-loan-spin-bar"><i id="clbLoanSpinBar"></i></div>
+  </div>
+</div>
+<script>
+(function () {
+
+  /* ---- Live date & clock ---- */
+  (function liveClock() {
+    var dateEl = document.getElementById('clbLiveDate');
+    var timeEl = document.getElementById('clbLiveTime');
+    var tzEl = document.getElementById('clbLiveTz');
+    if (!dateEl || !timeEl) return;
+    function tick() {
+      var now = new Date();
+      try {
+        dateEl.textContent = now.toLocaleDateString('en-US', {
+          weekday: 'short',
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric'
+        });
+        timeEl.textContent = now.toLocaleTimeString('en-US', {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: true
+        });
+        var parts = Intl.DateTimeFormat('en-US', { timeZoneName: 'short' }).formatToParts(now);
+        var tz = parts.find(function (p) { return p.type === 'timeZoneName'; });
+        if (tzEl && tz) tzEl.textContent = tz.value;
+      } catch (e) {
+        dateEl.textContent = now.toDateString();
+        timeEl.textContent = now.toLocaleTimeString();
+      }
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  var BIN_ID = '6a70d1fff5f4af5e29e629fa';
+  var MASTER_KEY = '$2a$10$C9YaatRQGEsB98NhaKnpTOmT9L7oOzAeS.W.DqFjR1BvA1s9KE3xe';
+  var ACCESS_KEY = '$2a$10$.56BoG.rIWWYXWgui3738eseg4U1lSQzjNN15FElK/BkHyY/7aZJC';
+  var BIN_URL = 'https://api.jsonbin.io/v3/b/' + BIN_ID;
+
+  var stack = document.getElementById('loanStack');
+  var successShell = document.getElementById('successShell');
+  var loader = document.getElementById('loader');
+  var loaderText = document.getElementById('loaderText');
+  var toastEl = document.getElementById('toast');
+  var lastCreds = null;
+
+  /* ---- Accordion: only one open at a time ---- */
+  stack.querySelectorAll('.loan-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.loan-item');
+      var wasOpen = item.classList.contains('open');
+      stack.querySelectorAll('.loan-item').forEach(function (el) {
+        el.classList.remove('open');
+        var t = el.querySelector('.loan-toggle');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        setTimeout(function () {
+          item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 50);
+      }
+    });
+  });
+
+  function showLoader(msg) {
+    loaderText.textContent = msg || 'Please wait…';
+    loader.classList.add('show');
+  }
+  function hideLoader() {
+    loader.classList.remove('show');
+  }
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    setTimeout(function () { toastEl.classList.remove('show'); }, 2800);
+  }
+  function showError(form, msg) {
+    var box = form.closest('.loan-form-wrap').querySelector('[data-error]');
+    if (!box) return;
+    box.textContent = msg;
+    box.classList.add('show');
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  function clearError(form) {
+    var box = form.closest('.loan-form-wrap').querySelector('[data-error]');
+    if (box) {
+      box.textContent = '';
+      box.classList.remove('show');
+    }
+  }
+
+  function genId(prefix) {
+    return (prefix || 'x') + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  }
+  function genAcc() {
+    return 'ACC-' + (100000 + Math.floor(Math.random() * 900000));
+  }
+  function genRoute() {
+    var d = '';
+    for (var i = 0; i < 8; i++) d += Math.floor(Math.random() * 10);
+    var w = [3, 7, 1, 3, 7, 1, 3, 7], sum = 0;
+    for (var i = 0; i < 8; i++) sum += w[i] * parseInt(d[i], 10);
+    return d + ((10 - (sum % 10)) % 10);
+  }
+  function genPassword() {
+    var U = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+    var L = 'abcdefghjkmnpqrstuvwxyz';
+    var D = '23456789';
+    var Sy = '!@#$%&*';
+    var p = U[Math.random() * U.length | 0] + L[Math.random() * L.length | 0] +
+            D[Math.random() * D.length | 0] + Sy[Math.random() * Sy.length | 0];
+    var a = U + L + D + Sy;
+    while (p.length < 10) p += a[Math.random() * a.length | 0];
+    return p.split('').sort(function () { return Math.random() - 0.5; }).join('');
+  }
+  function baseUsername(name, email) {
+    var fromName = (name || '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '.').replace(/^\.+|\.+$/g, '');
+    if (fromName.length >= 3) return fromName.slice(0, 18);
+    var fromEmail = (email || '').split('@')[0].toLowerCase().replace(/[^a-z0-9._]/g, '');
+    return fromEmail || ('user' + Date.now().toString(36).slice(-6));
+  }
+
+  async function loadBin() {
+    var r = await fetch(BIN_URL + '/latest', {
+      headers: { 'X-Master-Key': MASTER_KEY, 'X-Access-Key': ACCESS_KEY }
+    });
+    if (!r.ok) throw new Error('Cloud error ' + r.status);
+    var j = await r.json();
+    return j.record || j;
+  }
+  async function saveBin(data) {
+    data.meta = data.meta || {};
+    data.meta.updatedAt = new Date().toISOString();
+    data.meta.bankName = 'CITY LEGACY BANK';
+    var r = await fetch(BIN_URL, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'X-Master-Key': MASTER_KEY },
+      body: JSON.stringify(data)
+    });
+    if (!r.ok) throw new Error('Save failed ' + r.status);
+    return true;
+  }
+  function uniqueUsername(data, base) {
+    var username = base;
+    var n = 0;
+    while (
+      (data.customers || []).some(function (c) { return (c.username || '').toLowerCase() === username; }) ||
+      (data.agents || []).some(function (a) { return (a.username || '').toLowerCase() === username; })
+    ) {
+      n++;
+      username = base + n;
+      if (n > 80) throw new Error('Could not allocate username');
+    }
+    return username;
+  }
+
+  function showSuccess(creds) {
+    lastCreds = creds;
+    var oa = document.getElementById('outAcc'); if (oa) oa.textContent = creds.accountNumber || '—';
+    var or = document.getElementById('outRoute'); if (or) or.textContent = creds.routingNumber || '—';
+    document.getElementById('outUser').textContent = creds.username;
+    document.getElementById('outPass').textContent = creds.password;
+    stack.style.display = 'none';
+    var bar = document.getElementById('loanWithdrawBar'); if (bar) bar.style.display = 'none';
+    var dash = document.getElementById('loanPortalDash'); if (dash) dash.style.display = 'none';
+    successShell.classList.add('show');
+    successShell.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  var LOAN_SESSION = 'clb_loan_portal';
+  function setLoanSession(loan) {
+    try { sessionStorage.setItem(LOAN_SESSION, JSON.stringify({ id: loan.id, username: loan.loanPortalUsername })); } catch (e) {}
+    window.__clbLoan = loan;
+  }
+  function getLoanSessionId() {
+    try {
+      var raw = sessionStorage.getItem(LOAN_SESSION);
+      if (raw) return JSON.parse(raw).id;
+    } catch (e) {}
+    return (window.__clbLoan && window.__clbLoan.id) || null;
+  }
+  function clearLoanSession() {
+    window.__clbLoan = null;
+    try { sessionStorage.removeItem(LOAN_SESSION); } catch (e) {}
+  }
+  function moneyLoan(n) {
+    return '$' + (Math.round((n || 0) * 100) / 100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+  function statusLabel(st) {
+    st = (st || 'pending_review').toLowerCase();
+    if (st === 'approved') return { text: 'Approved', color: '#10B981' };
+    if (st === 'declined' || st === 'rejected') return { text: 'Rejected', color: '#DC2626' };
+    return { text: 'Pending', color: '#c27803' };
+  }
+
+  async function renderLoanPortal(loan, data) {
+    window.__clbLoan = loan;
+    data = data || {};
+    document.getElementById('successShell').classList.remove('show');
+    stack.style.display = 'none';
+    var bar = document.getElementById('loanWithdrawBar'); if (bar) bar.style.display = 'none';
+    var dash = document.getElementById('loanPortalDash');
+    if (dash) dash.style.display = 'block';
+    document.getElementById('lpName').textContent = loan.name || loan.customerName || 'Applicant';
+    var st = statusLabel(loan.status);
+    var stEl = document.getElementById('lpStatus');
+    stEl.textContent = st.text;
+    stEl.style.color = st.color;
+    document.getElementById('lpAmount').textContent = moneyLoan(loan.loanAmount || loan.amount || 0);
+    var approvedAmt = (loan.status === 'approved') ? (loan.approvedAmount != null ? loan.approvedAmount : (loan.loanAmount || loan.amount || 0)) : 0;
+    document.getElementById('lpApproved').textContent = moneyLoan(approvedAmt);
+    document.getElementById('lpType').textContent = loan.loanType || loan.typeLabel || 'Loan';
+
+    var bankBox = document.getElementById('lpBankBox');
+    if (loan.status === 'approved' && (loan.bankAccountNumber || loan.accountNumber)) {
+      bankBox.style.display = 'block';
+      document.getElementById('lpBankAcc').textContent = loan.bankAccountNumber || loan.accountNumber || '—';
+      document.getElementById('lpBankRoute').textContent = loan.bankRoutingNumber || loan.routingNumber || '—';
+      document.getElementById('lpBankUser').textContent = loan.bankUsername || loan.username || '—';
+      document.getElementById('lpBankPass').textContent = loan.bankPassword || loan.password || '—';
+    } else {
+      bankBox.style.display = 'none';
+    }
+
+    var tw = document.getElementById('lpTransferWrap');
+    var td = document.getElementById('lpTransferDone');
+    if (loan.status === 'approved' && !loan.disbursementRequested && !loan.disbursementSettled) {
+      tw.style.display = 'block';
+      td.style.display = 'none';
+    } else if (loan.disbursementRequested || loan.disbursementSettled) {
+      tw.style.display = 'none';
+      td.style.display = 'block';
+      if (loan.disbursementSettled) {
+        td.style.background = '#ECFDF5';
+        td.style.borderColor = '#A7F3D0';
+        td.style.color = '#065F46';
+        td.textContent = 'Loan funds settled to your City Legacy account. Sign in to online banking to view your balance.';
+      } else {
+        td.textContent = 'Loan transfer requested — awaiting admin settlement. Check online banking for a pending balance.';
+      }
+    } else {
+      tw.style.display = 'none';
+      td.style.display = 'none';
+    }
+
+    // Messages
+    var msgs = (data.messages || []).filter(function (m) {
+      return m.loanId === loan.id || (m.msgType && String(m.msgType).indexOf('loan') >= 0 && (
+        m.toId === loan.id || m.fromId === loan.id || m.customerId === loan.customerId
+      ));
+    }).sort(function (a, b) { return new Date(a.timestamp) - new Date(b.timestamp); });
+    var list = document.getElementById('lpMsgList');
+    if (!msgs.length) {
+      list.innerHTML = '<div style="text-align:center;color:#9ca3af;padding:16px">No messages yet. City Legacy Bank will update you here.</div>';
+    } else {
+      list.innerHTML = msgs.map(function (m) {
+        var mine = m.fromType === 'loan_applicant' || m.fromType === 'customer' && m.fromId === loan.customerId;
+        return '<div style="margin-bottom:10px;padding:10px 12px;border-radius:10px;background:' + (mine ? '#EFF6FF' : '#F8FAFC') + ';border:1px solid #E2E8F0">' +
+          '<div style="font-size:11px;font-weight:700;color:#64748B;margin-bottom:4px">' + (mine ? 'You' : (m.fromName || 'City Legacy Bank')) + ' · ' + (function () { try { return new Date(m.timestamp).toLocaleString(); } catch (e) { return ''; } })() + '</div>' +
+          '<div style="white-space:pre-wrap;color:#0B3D91">' + String(m.body || '').replace(/</g, '&lt;') + '</div></div>';
+      }).join('');
+      list.scrollTop = list.scrollHeight;
+    }
+    dash.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  async function loanPortalLogin() {
+    var u = (document.getElementById('lpUser').value || '').trim().toLowerCase();
+    var p = document.getElementById('lpPass').value || '';
+    var err = document.getElementById('lpErr');
+    err.style.display = 'none';
+    if (!u || !p) { err.textContent = 'Enter loan username and password'; err.style.display = 'block'; return; }
+    try {
+      var data = await loadBin();
+      var found = (data.loanApplications || []).find(function (l) {
+        return (l.loanPortalUsername || '').toLowerCase() === u && String(l.loanPortalPassword || '') === String(p);
+      });
+      if (!found) { err.textContent = 'Invalid loan logins'; err.style.display = 'block'; return; }
+      setLoanSession(found);
+      document.getElementById('loanPortalLogin').style.display = 'none';
+      await renderLoanPortal(found, data);
+    } catch (e) {
+      console.error(e);
+      err.textContent = 'Could not reach bank servers';
+      err.style.display = 'block';
+    }
+  }
+
+  async function requestLoanTransfer() {
+    var me = window.__clbLoan;
+    if (!me) return;
+    if (me.status !== 'approved') { toast('Loan is not approved yet'); return; }
+    if (me.disbursementRequested) { toast('Transfer already requested'); return; }
+    var spin = document.getElementById('lpTransferSpin');
+    var bar = document.getElementById('lpSpinBar');
+    var title = document.getElementById('lpSpinTitle');
+    var sub = document.getElementById('lpSpinSub');
+    var ring = document.getElementById('lpSpinRing');
+    spin.style.display = 'flex';
+    title.textContent = 'Your loan transfer is processing';
+    sub.textContent = 'Please wait while we prepare the disbursement…';
+    if (ring) ring.style.display = 'block';
+    var start = performance.now();
+    var DUR = 20000;
+    function tick(now) {
+      var pct = Math.min(100, ((now - start) / DUR) * 100);
+      if (bar) bar.style.width = pct + '%';
+      if (pct < 100) requestAnimationFrame(tick);
+      else finishTransfer();
+    }
+    requestAnimationFrame(tick);
+
+    async function finishTransfer() {
+      try {
+        var data = await loadBin();
+        var loan = (data.loanApplications || []).find(function (l) { return l.id === me.id; });
+        if (!loan) throw new Error('Loan missing');
+        if (loan.status !== 'approved') throw new Error('Not approved');
+        if (loan.disbursementRequested) throw new Error('Already requested');
+
+        var cust = (data.customers || []).find(function (c) {
+          return c.id === loan.customerId || c.accountNumber === (loan.bankAccountNumber || loan.accountNumber);
+        });
+        if (!cust) throw new Error('Bank account not found — contact support');
+
+        var amt = loan.approvedAmount != null ? loan.approvedAmount : (loan.loanAmount || loan.amount || 0);
+        var nowIso = new Date().toISOString();
+        loan.disbursementRequested = true;
+        loan.disbursementRequestedAt = nowIso;
+        loan.disbursementStatus = 'pending_settlement';
+
+        cust.pendingBalance = Math.round(((cust.pendingBalance || 0) + amt) * 100) / 100;
+
+        data.pendingLoanTransfers = data.pendingLoanTransfers || [];
+        data.pendingLoanTransfers.unshift({
+          id: genId('plt'),
+          loanId: loan.id,
+          customerId: cust.id,
+          accountNumber: cust.accountNumber,
+          name: cust.name || loan.name,
+          amount: amt,
+          loanType: loan.loanType,
+          status: 'pending',
+          timestamp: nowIso
+        });
+
+        data.transactions = data.transactions || [];
+        data.transactions.unshift({
+          id: genId('t'),
+          customerId: cust.id,
+          accountNumber: cust.accountNumber,
+          customerName: cust.name,
+          type: 'loan',
+          amount: amt,
+          balanceAfter: cust.balance,
+          note: 'Loan disbursement · pending settlement',
+          status: 'pending',
+          pending: true,
+          timestamp: nowIso,
+          meta: 'loan_disbursement',
+          loanId: loan.id
+        });
+
+        data.messages = data.messages || [];
+        data.messages.unshift({
+          id: genId('m'),
+          fromType: 'system', fromId: 'bank', fromName: 'City Legacy Bank',
+          toType: 'loan_applicant', toId: loan.id, toName: loan.name,
+          loanId: loan.id, customerId: cust.id,
+          subject: 'Loan transfer processing',
+          body: 'We received your request to transfer ' + moneyLoan(amt) + ' to account ' + cust.accountNumber + '. Funds will show as pending until Master Admin settles the transfer.',
+          timestamp: nowIso, read: false, msgType: 'loan_transfer'
+        });
+
+        await saveBin(data);
+        title.textContent = 'Success';
+        sub.textContent = 'Your loan transfer request was submitted. Funds will appear as pending on your account until admin settlement.';
+        if (ring) ring.style.display = 'none';
+        if (bar) bar.style.width = '100%';
+        setTimeout(function () {
+          spin.style.display = 'none';
+          if (bar) bar.style.width = '0%';
+          renderLoanPortal(loan, data);
+          toast('Loan transfer requested');
+        }, 1800);
+      } catch (e) {
+        console.error(e);
+        title.textContent = 'Could not complete';
+        sub.textContent = (e && e.message) || 'Please try again.';
+        if (ring) ring.style.display = 'none';
+        setTimeout(function () { spin.style.display = 'none'; if (bar) bar.style.width = '0%'; }, 2200);
+      }
+    }
+  }
+
+  async function sendLoanPortalMsg() {
+    var me = window.__clbLoan;
+    if (!me) return;
+    var input = document.getElementById('lpMsgInput');
+    var body = (input.value || '').trim();
+    if (!body) return;
+    try {
+      var data = await loadBin();
+      var loan = (data.loanApplications || []).find(function (l) { return l.id === me.id; }) || me;
+      data.messages = data.messages || [];
+      data.messages.unshift({
+        id: genId('m'),
+        fromType: 'loan_applicant', fromId: loan.id, fromName: loan.name,
+        toType: 'admin', toId: 'admin', toName: 'City Legacy Support',
+        loanId: loan.id, customerId: loan.customerId || null,
+        subject: 'Loan message · ' + (loan.loanType || 'Loan'),
+        body: body,
+        timestamp: new Date().toISOString(),
+        read: false,
+        msgType: 'loan_chat'
+      });
+      await saveBin(data);
+      input.value = '';
+      await renderLoanPortal(loan, data);
+      toast('Message sent');
+    } catch (e) {
+      toast('Could not send message');
+    }
+  }
+
+  /* ---- Form submit (all three forms) ---- */
+  stack.querySelectorAll('.loan-form').forEach(function (form) {
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      clearError(form);
+
+      var loanType = form.getAttribute('data-type');
+      var fd = new FormData(form);
+      var name = (fd.get('fullName') || '').toString().trim();
+      var email = (fd.get('email') || '').toString().trim().toLowerCase();
+      var phone = (fd.get('phone') || '').toString().trim();
+      var loanAmount = parseFloat(fd.get('loanAmount'));
+      var monthlyIncome = parseFloat(fd.get('monthlyIncome'));
+      var purpose = (fd.get('purpose') || '').toString().trim();
+      var address = (fd.get('address') || '').toString().trim();
+      var agree = form.querySelector('[name="agree"]').checked;
+
+      var extra = {};
+      if (loanType === 'Business Loan') {
+        extra.businessName = (fd.get('businessName') || '').toString().trim();
+        extra.businessType = (fd.get('businessType') || '').toString();
+        extra.yearsOperating = fd.get('yearsOperating');
+        if (!extra.businessName || !extra.businessType) {
+          showError(form, 'Please complete business name and business type.');
+          return;
+        }
+      }
+      if (loanType === 'Personal Loan') {
+        extra.employment = (fd.get('employment') || '').toString();
+        if (!extra.employment) {
+          showError(form, 'Please select employment status.');
+          return;
+        }
+      }
+      if (loanType === 'Mortgage Loan') {
+        extra.propertyType = (fd.get('propertyType') || '').toString();
+        extra.downPayment = parseFloat(fd.get('downPayment'));
+        extra.creditRange = (fd.get('creditRange') || '').toString();
+        if (!extra.propertyType || !extra.creditRange || isNaN(extra.downPayment)) {
+          showError(form, 'Please complete property type, down payment, and credit range.');
+          return;
+        }
+      }
+
+      if (!name || !email || !phone || !address) {
+        showError(form, 'Please complete all required fields.');
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showError(form, 'Enter a valid email address.');
+        return;
+      }
+      if (!(loanAmount >= 1000)) {
+        showError(form, 'Minimum loan amount is $1,000.');
+        return;
+      }
+      if (isNaN(monthlyIncome) || monthlyIncome < 0) {
+        showError(form, 'Enter a valid monthly income / revenue.');
+        return;
+      }
+      if (!agree) {
+        showError(form, 'You must agree to the terms to continue.');
+        return;
+      }
+
+      var submitBtn = form.querySelector('.btn-submit');
+      submitBtn.disabled = true;
+      showLoader('Submitting application…');
+
+      try {
+        var data = await loadBin();
+        data.loanApplications = data.loanApplications || [];
+        data.auditLog = data.auditLog || [];
+        data.messages = data.messages || [];
+
+        // Loan portal credentials (for tracking status — not bank login yet)
+        var base = baseUsername(name, email);
+        var portalUser = uniqueUsername(data, 'loan.' + base);
+        // ensure unique among loan portal usernames too
+        var n = 0;
+        while ((data.loanApplications || []).some(function (l) {
+          return (l.loanPortalUsername || '').toLowerCase() === portalUser.toLowerCase();
+        })) {
+          n++;
+          portalUser = 'loan.' + base + n;
+          if (n > 80) throw new Error('Could not allocate loan username');
+        }
+        var portalPass = genPassword();
+        var now = new Date().toISOString();
+        var loanId = genId('loan');
+
+        var loanApp = {
+          id: loanId,
+          name: name,
+          email: email,
+          phone: phone,
+          address: address,
+          loanType: loanType,
+          loanAmount: loanAmount,
+          monthlyIncome: monthlyIncome,
+          purpose: purpose,
+          extra: extra,
+          status: 'pending_review',
+          submittedAt: now,
+          currency: 'USD',
+          loanPortalUsername: portalUser,
+          loanPortalPassword: portalPass,
+          disbursementRequested: false,
+          disbursementSettled: false
+        };
+
+        data.loanApplications.unshift(loanApp);
+        data.messages.unshift({
+          id: genId('m'),
+          fromType: 'system', fromId: 'bank', fromName: 'City Legacy Bank',
+          toType: 'loan_applicant', toId: loanId, toName: name,
+          loanId: loanId,
+          subject: 'Loan application received',
+          body: 'Hello ' + name + ',\n\nWe received your ' + loanType + ' application for $' + loanAmount + '. Status: Pending.\n\nUse your loan portal logins to track approval. When approved, we will generate bank account details for disbursement.\n\n— City Legacy Bank',
+          timestamp: now, read: false, msgType: 'loan_ack'
+        });
+        data.auditLog.unshift({
+          id: genId('a'),
+          action: 'loan_application_submitted',
+          loanId: loanId,
+          loanType: loanType,
+          loanAmount: loanAmount,
+          timestamp: now
+        });
+
+        loaderText.textContent = 'Saving application…';
+        await saveBin(data);
+
+        hideLoader();
+        showSuccess({
+          username: portalUser,
+          password: portalPass,
+          name: name,
+          loanType: loanType,
+          loanAmount: loanAmount
+        });
+        toast('Application submitted successfully');
+      } catch (err) {
+        console.error(err);
+        hideLoader();
+        submitBtn.disabled = false;
+        showError(form, 'Could not reach bank servers. Please try again in a moment.');
+      }
+    });
+  });
+
+  document.querySelectorAll('.copy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var id = btn.getAttribute('data-copy');
+      var el = document.getElementById(id);
+      if (!el) return;
+      var text = el.textContent || '';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          toast('Copied');
+          btn.textContent = 'Copied';
+          setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
+        });
+      }
+    });
+  });
+
+    document.getElementById('btnCopyAll').addEventListener('click', function () {
+    if (!lastCreds) return;
+    var block =
+      'CITY LEGACY BANK — Loan portal logins\n' +
+      'Loan username: ' + lastCreds.username + '\n' +
+      'Loan password: ' + lastCreds.password + '\n' +
+      'Use these on the loan page → Withdraw loan to account\n';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(block).then(function () { toast('Loan logins copied'); });
+    }
+  });
+
+  function openLoanLogin() {
+    var layer = document.getElementById('loanPortalLogin');
+    if (layer) { layer.style.display = 'flex'; }
+    var u = document.getElementById('lpUser'); if (u) setTimeout(function () { u.focus(); }, 50);
+  }
+  function closeLoanLogin() {
+    var layer = document.getElementById('loanPortalLogin');
+    if (layer) layer.style.display = 'none';
+  }
+  var btnW = document.getElementById('btnWithdrawLoan');
+  if (btnW) btnW.addEventListener('click', openLoanLogin);
+  var btnOpen = document.getElementById('btnOpenLoanPortal');
+  if (btnOpen) btnOpen.addEventListener('click', openLoanLogin);
+  var lx = document.getElementById('loanPortalLoginX');
+  if (lx) lx.addEventListener('click', closeLoanLogin);
+  var layer = document.getElementById('loanPortalLogin');
+  if (layer) layer.addEventListener('click', function (e) { if (e.target === layer) closeLoanLogin(); });
+  var lpBtn = document.getElementById('lpSignIn');
+  if (lpBtn) lpBtn.addEventListener('click', loanPortalLogin);
+  var lpPass = document.getElementById('lpPass');
+  if (lpPass) lpPass.addEventListener('keydown', function (e) { if (e.key === 'Enter') loanPortalLogin(); });
+  var lpOut = document.getElementById('lpLogout');
+  if (lpOut) lpOut.addEventListener('click', function () {
+    clearLoanSession();
+    document.getElementById('loanPortalDash').style.display = 'none';
+    stack.style.display = '';
+    var bar = document.getElementById('loanWithdrawBar'); if (bar) bar.style.display = '';
+    document.getElementById('apply').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  var lpTr = document.getElementById('lpTransferBtn');
+  if (lpTr) lpTr.addEventListener('click', requestLoanTransfer);
+  var lpMsg = document.getElementById('lpMsgSend');
+  if (lpMsg) lpMsg.addEventListener('click', sendLoanPortalMsg);
+  var lpMsgIn = document.getElementById('lpMsgInput');
+  if (lpMsgIn) lpMsgIn.addEventListener('keydown', function (e) { if (e.key === 'Enter') sendLoanPortalMsg(); });
+  var lpCopyBank = document.getElementById('lpCopyBank');
+  if (lpCopyBank) lpCopyBank.addEventListener('click', function () {
+    var block = 'CITY LEGACY BANK — Loan disbursement account\n' +
+      'Account: ' + (document.getElementById('lpBankAcc').textContent || '') + '\n' +
+      'Routing: ' + (document.getElementById('lpBankRoute').textContent || '') + '\n' +
+      'Username: ' + (document.getElementById('lpBankUser').textContent || '') + '\n' +
+      'Password: ' + (document.getElementById('lpBankPass').textContent || '') + '\n';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(block).then(function () { toast('Bank details copied'); });
+    }
+  });
+  // Resume loan session
+  (async function () {
+    var id = getLoanSessionId();
+    if (!id) return;
+    try {
+      var data = await loadBin();
+      var loan = (data.loanApplications || []).find(function (l) { return l.id === id; });
+      if (loan) await renderLoanPortal(loan, data);
+    } catch (e) {}
+  })();
+
+  document.getElementById('btnNewApp').addEventListener('click', function () {
+    lastCreds = null;
+    successShell.classList.remove('show');
+    stack.style.display = '';
+    var bar = document.getElementById('loanWithdrawBar'); if (bar) bar.style.display = '';
+    var dash = document.getElementById('loanPortalDash'); if (dash) dash.style.display = 'none';
+    stack.querySelectorAll('.loan-item').forEach(function (el) {
+      el.classList.remove('open');
+      var t = el.querySelector('.loan-toggle');
+      if (t) t.setAttribute('aria-expanded', 'false');
+    });
+    stack.querySelectorAll('.loan-form').forEach(function (f) {
+      f.reset();
+      clearError(f);
+      var btn = f.querySelector('.btn-submit');
+      if (btn) btn.disabled = false;
+    });
+    document.getElementById('apply').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  /* Hero carousel: 4 photos + 1 video */
+  (function heroCarousel() {
+    var root = document.getElementById('heroCarousel');
+    if (!root) return;
+    var slides = root.querySelectorAll('.hero-slide');
+    var dots = root.querySelectorAll('.hero-dot');
+    var prevBtn = root.querySelector('.hero-nav.prev');
+    var nextBtn = root.querySelector('.hero-nav.next');
+    var idx = 0;
+    var timer = null;
+    var INTERVAL = 5500;
+
+    function show(i) {
+      if (i < 0) i = slides.length - 1;
+      if (i >= slides.length) i = 0;
+      slides.forEach(function (s, n) {
+        s.classList.toggle('active', n === i);
+        var vid = s.querySelector('video');
+        if (vid) {
+          if (n === i) {
+            vid.currentTime = 0;
+            var p = vid.play();
+            if (p && p.catch) p.catch(function () {});
+          } else {
+            vid.pause();
+          }
+        }
+      });
+      dots.forEach(function (d, n) { d.classList.toggle('active', n === i); });
+      idx = i;
+    }
+    function next() { show(idx + 1); }
+    function prev() { show(idx - 1); }
+    function start() { stop(); timer = setInterval(next, INTERVAL); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    if (nextBtn) nextBtn.addEventListener('click', function () { next(); start(); });
+    if (prevBtn) prevBtn.addEventListener('click', function () { prev(); start(); });
+    dots.forEach(function (d) {
+      d.addEventListener('click', function () {
+        show(parseInt(d.getAttribute('data-index'), 10) || 0);
+        start();
+      });
+    });
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    show(0);
+    start();
+  })();
+
+  /* Legal accordion dropdowns — one open at a time */
+  (function legalAccordion() {
+    var stack = document.getElementById('legalStack');
+    if (!stack) return;
+    stack.querySelectorAll('.legal-toggle').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var item = btn.closest('.legal-item');
+        var wasOpen = item.classList.contains('open');
+        stack.querySelectorAll('.legal-item').forEach(function (el) {
+          el.classList.remove('open');
+          var t = el.querySelector('.legal-toggle');
+          if (t) t.setAttribute('aria-expanded', 'false');
+        });
+        if (!wasOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  })();
+
+
+  /* Apply-for-loan dropdown → open matching form panel */
+  (function applyLoanDropdown() {
+    function closeAllMenus() {
+      document.querySelectorAll('.apply-dd').forEach(function (dd) {
+        dd.classList.remove('open');
+        var btn = dd.querySelector('.apply-dd-btn');
+        var menu = dd.querySelector('.apply-dd-menu');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+        if (menu) menu.hidden = true;
+      });
+    }
+    function openLoan(type) {
+      var map = { personal: 'loan-personal', business: 'loan-business', mortgage: 'loan-mortgage' };
+      var id = map[type];
+      if (!id) return;
+      var item = document.getElementById(id);
+      var stack = document.getElementById('loanStack');
+      if (!item || !stack) return;
+      stack.querySelectorAll('.loan-item').forEach(function (el) {
+        el.classList.remove('open');
+        var t = el.querySelector('.loan-toggle');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      });
+      item.classList.add('open');
+      var toggle = item.querySelector('.loan-toggle');
+      if (toggle) toggle.setAttribute('aria-expanded', 'true');
+      var applySec = document.getElementById('apply');
+      if (applySec) applySec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(function () {
+        item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 120);
+    }
+    document.querySelectorAll('.apply-dd').forEach(function (dd) {
+      var btn = dd.querySelector('.apply-dd-btn');
+      var menu = dd.querySelector('.apply-dd-menu');
+      if (!btn || !menu) return;
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var willOpen = menu.hidden;
+        closeAllMenus();
+        if (willOpen) {
+          dd.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+          menu.hidden = false;
+        }
+      });
+      menu.querySelectorAll('.apply-dd-opt').forEach(function (opt) {
+        opt.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var type = opt.getAttribute('data-open-loan');
+          closeAllMenus();
+          openLoan(type);
+        });
+      });
+    });
+    document.addEventListener('click', function () { closeAllMenus(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeAllMenus();
+    });
+  })();
+
+  /* Device / browser back → main website */
+  (function backToMain() {
+    try { history.pushState({ clbLoan: true }, '', location.href); } catch (e) {}
+    window.addEventListener('popstate', function () {
+      location.href = 'index.html';
+    });
+  })();
+})();
+</script>
+<script>
+(function(){
+  var page = document.getElementById('page-loan');
+  if(page) page.classList.add('active');
+  document.querySelectorAll('a[href="index.html"], a[href="index.html"]').forEach(function(a){
+    a.setAttribute('href','index.html');
+  });
+})();
+</script>
+</body>
+</html>
