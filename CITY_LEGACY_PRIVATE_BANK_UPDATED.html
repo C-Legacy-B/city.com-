@@ -1,0 +1,2379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><style>
+@font-face {
+  font-family: "Optimistic";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Optimistic Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
+}
+:where(html) {
+  font-family: "Optimistic", system-ui, sans-serif;
+}
+:where(code, pre, kbd, samp) {
+  font-family: "Optimistic Mono", ui-monospace, monospace;
+}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>CITY LEGACY PRIVATE BANK — The Private Capital House</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B3D91;
+  --navy-deep:#071F4A;
+  --navy-soft:#123A7A;
+  --gold:#D4AF37;
+  --gold-light:#E8D48B;
+  --gold-deep:#B8960C;
+  --bg:#FCFDFF;
+  --ink:#0F172A;
+  --muted:#64748B;
+  --line:#E6EBF2;
+  --card:#FFFFFF;
+  --success:#10B981;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3{font-family:'Playfair Display',serif}
+
+/* Header - Luxury private bank */
+.header-wrap{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,0.82);
+  backdrop-filter:blur(24px) saturate(180%);
+  -webkit-backdrop-filter:blur(24px) saturate(180%);
+  border-bottom:1px solid rgba(11,61,145,0.08);
+}
+.nav-inner{
+  max-width:1280px;margin:0 auto;
+  padding:18px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.brand-mark{
+  width:42px;height:42px;position:relative;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-deep) 100%);
+  border-radius:11px;
+  display:grid;place-items:center;
+  box-shadow:0 8px 24px rgba(11,61,145,0.22), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.brand-mark::after{
+  content:'CL';font-family:'Playfair Display';font-weight:800;
+  color:var(--gold-light);font-size:15px;letter-spacing:-0.02em
+}
+.brand-text{line-height:1}
+.brand-name{font-family:'Playfair Display';font-weight:800;font-size:18px;color:var(--navy);letter-spacing:-0.02em}
+.brand-sub{font-size:9px;font-weight:800;letter-spacing:0.38em;color:var(--gold);margin-top:2px;display:block}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:13.5px;font-weight:600;color:var(--navy);letter-spacing:0.01em;opacity:0.8;transition:.2s}
+.nav-links a:hover{opacity:1;color:var(--gold-deep)}
+.nav-cta{
+  padding:11px 20px;border-radius:100px;
+  background:var(--navy);color:#fff;font-size:13px;font-weight:700;
+  letter-spacing:0.02em;box-shadow:0 6px 18px rgba(11,61,145,0.18);transition:.2s
+}
+.nav-cta:hover{background:var(--navy-deep);transform:translateY(-1px)}
+@media(max-width:800px){.nav-links{display:none}}
+
+/* Top ticker */
+.clb-datetime{
+  position:absolute;top:0;left:0;right:0;z-index:5;
+  pointer-events:none;
+}
+.clb-datetime-inner{
+  max-width:1280px;margin:0 auto;padding:14px 32px;
+  display:flex;justify-content:space-between;pointer-events:auto;
+}
+.clb-time,.clb-date{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;font-weight:600;letter-spacing:0.08em;
+  color:rgba(255,255,255,0.9);
+  padding:7px 14px;border-radius:100px;
+  background:rgba(255,255,255,0.14);
+  border:1px solid rgba(255,255,255,0.18);
+  backdrop-filter:blur(12px);
+}
+
+/* HERO - Private bank */
+.hero{
+  position:relative;
+  min-height:720px;
+  display:flex;align-items:center;
+  overflow:hidden;
+  background:radial-gradient(120% 120% at 20% 20%, #14386F 0%, #0B3D91 28%, #081E44 100%);
+}
+.hero::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(800px 500px at 80% -10%, rgba(212,175,55,0.18), transparent),
+             radial-gradient(600px 600px at -10% 80%, rgba(212,175,55,0.12), transparent);
+  z-index:1;
+}
+.hero-media{position:absolute;inset:0;z-index:0;opacity:0.22}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease}
+.hero-slide.active{opacity:1}
+.hero-inner{
+  position:relative;z-index:2;
+  max-width:1280px;margin:0 auto;padding:120px 32px 80px;
+  width:100%;display:grid;grid-template-columns:1.15fr 0.85fr;gap:48px;align-items:center;
+}
+.hero-copy .eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:10.5px;font-weight:800;letter-spacing:0.32em;
+  color:var(--gold-light);text-transform:uppercase;
+  padding:8px 14px;border:1px solid rgba(212,175,55,0.28);
+  border-radius:100px;background:rgba(212,175,55,0.08);
+  margin-bottom:22px;
+}
+.hero-copy .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
+.hero-copy h1{
+  font-size:clamp(42px,5.2vw,68px);line-height:0.92;
+  font-weight:500;letter-spacing:-0.04em;color:#fff;
+}
+.hero-copy h1 em{
+  font-style:italic;font-weight:500;
+  background:linear-gradient(90deg,var(--gold-light),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-copy p{
+  margin-top:20px;font-size:17px;line-height:1.7;
+  color:rgba(255,255,255,0.72);max-width:520px;
+  font-family:'Cormorant Garamond';font-weight:500;font-size:19px;
+}
+.hero-stats{
+  display:flex;gap:28px;margin-top:36px;
+  border-top:1px solid rgba(255,255,255,0.12);padding-top:24px;
+}
+.hero-stat b{display:block;font-family:'Playfair Display';font-size:28px;font-weight:700;color:#fff;line-height:1}
+.hero-stat span{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);font-weight:700;margin-top:4px;display:block}
+.hero-actions{margin-top:36px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:16px 28px;border-radius:100px;font-size:13.5px;font-weight:700;
+  letter-spacing:0.02em;cursor:pointer;border:0;transition:.25s;text-decoration:none;
+}
+.btn-gold{
+  background:linear-gradient(135deg,var(--gold-light) 0%,var(--gold) 45%,var(--gold-deep) 100%);
+  color:#1A1400;box-shadow:0 12px 30px rgba(212,175,55,0.35), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(212,175,55,0.42)}
+.btn-ghost{
+  background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.18);
+  backdrop-filter:blur(12px);
+}
+.btn-ghost:hover{background:rgba(255,255,255,0.14)}
+
+/* Hero card - glass */
+.hero-card{
+  position:relative;
+  background:linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(248,250,252,0.94) 100%);
+  border-radius:28px;
+  padding:28px;
+  box-shadow:0 40px 80px -20px rgba(7,31,74,0.4), 0 0 0 1px rgba(255,255,255,0.6) inset;
+  border:1px solid rgba(255,255,255,0.8);
+}
+.hero-card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.hero-card-head b{font-family:'Playfair Display';font-size:16px;color:var(--navy)}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#10B981;box-shadow:0 0 0 4px rgba(16,185,129,0.15);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,0.4)}70%{box-shadow:0 0 0 8px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
+.loan-preview{
+  background:#F8FAFC;border:1px solid var(--line);border-radius:18px;padding:18px;
+}
+.loan-preview-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed #E2E8F0;font-size:13px}
+.loan-preview-row:last-child{border:0}
+.loan-preview-row span:first-child{color:var(--muted);font-weight:500}
+.loan-preview-row span:last-child{font-weight:700;color:var(--navy)}
+
+.hero-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);
+  color:#fff;font-size:20px;display:grid;place-items:center;cursor:pointer;
+  backdrop-filter:blur(12px);z-index:4;transition:.2s
+}
+.hero-nav:hover{background:rgba(255,255,255,0.22)}
+.hero-nav.prev{left:18px}.hero-nav.next{right:18px}
+.hero-dots{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:4}
+.hero-dot{width:32px;height:4px;border-radius:100px;background:rgba(255,255,255,0.24);border:0;cursor:pointer;transition:.3s}
+.hero-dot.active{background:var(--gold);width:48px}
+
+@media(max-width:980px){
+  .hero-inner{grid-template-columns:1fr;padding:96px 20px 48px}
+  .hero-card{order:-1}
+  .hero{min-height:auto}
+}
+
+/* Sections */
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+.section{padding:96px 0}
+.section-head{text-align:center;max-width:720px;margin:0 auto 56px}
+.eyebrow{font-size:10.5px;font-weight:800;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:12px}
+.section-head h2{font-size:clamp(32px,4vw,48px);line-height:0.95;letter-spacing:-0.03em;color:var(--navy);font-weight:600}
+.section-head p{margin-top:16px;color:var(--muted);font-size:17px;line-height:1.6;font-family:'Cormorant Garamond';font-size:19px}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;
+  box-shadow:0 8px 30px rgba(15,23,42,0.04);transition:.35s;position:relative;overflow:hidden
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg, transparent, var(--gold-light), transparent);
+  opacity:0;transition:.35s
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(15,23,42,0.08);border-color:rgba(212,175,55,0.28)}
+.card:hover::before{opacity:1}
+.card-icon{
+  width:48px;height:48px;border-radius:14px;
+  background:linear-gradient(135deg,#F8FAFC,#EEF2FF);
+  border:1px solid var(--line);display:grid;place-items:center;font-size:20px;margin-bottom:18px
+}
+.card h3{font-size:18px;font-weight:700;letter-spacing:-0.01em;margin-bottom:8px;color:var(--navy)}
+.card p{font-size:14px;line-height:1.65;color:var(--muted)}
+
+@media(max-width:860px){.cards{grid-template-columns:1fr}}
+
+/* Loan types - luxury */
+.loan-stack{display:grid;gap:18px;max-width:920px;margin:0 auto}
+.loan-item{
+  background:#fff;border:1px solid var(--line);border-radius:24px;
+  overflow:hidden;transition:.35s;
+  box-shadow:0 4px 24px rgba(15,23,42,0.03)
+}
+.loan-item:hover{border-color:rgba(212,175,55,0.35);box-shadow:0 16px 40px rgba(15,23,42,0.06)}
+.loan-item.open{border-color:var(--navy);box-shadow:0 24px 60px rgba(11,61,145,0.12)}
+.loan-toggle{
+  width:100%;display:flex;align-items:center;gap:18px;
+  padding:24px 26px;background:transparent;border:0;cursor:pointer;text-align:left;
+}
+.loan-icon{
+  width:52px;height:52px;border-radius:16px;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-soft) 100%);
+  color:var(--gold-light);display:grid;place-items:center;font-size:22px;
+  box-shadow:0 8px 20px rgba(11,61,145,0.2)
+}
+.loan-meta h3{font-size:19px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:10px}
+.loan-apply-hint{
+  font-family:'Inter';font-size:10px;font-weight:800;letter-spacing:0.14em;
+  text-transform:uppercase;padding:5px 10px;border-radius:100px;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));color:#1A1400;
+}
+.loan-meta p{font-size:13.5px;color:var(--muted);margin-top:3px}
+.loan-range{
+  margin-top:8px;display:inline-flex;
+  font-family:'JetBrains Mono';font-size:11px;font-weight:700;
+  letter-spacing:0.06em;color:var(--navy);
+  background:#F1F5F9;border:1px solid #E2E8F0;padding:5px 10px;border-radius:100px
+}
+.loan-chev{
+  margin-left:auto;width:36px;height:36px;border-radius:50%;
+  border:1px solid var(--line);display:grid;place-items:center;
+  color:var(--muted);transition:.3s
+}
+.loan-item.open .loan-chev{transform:rotate(180deg);background:var(--navy);color:#fff;border-color:var(--navy)}
+
+.loan-panel{display:none;padding:0 26px 28px}
+.loan-item.open .loan-panel{display:block;animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.loan-panel-inner{
+  border-top:1px solid var(--line);padding-top:24px;
+}
+.loan-form-intro{
+  background:linear-gradient(135deg,#F8FAFC 0%,#F1F5FF 100%);
+  border:1px solid #E0E7FF;border-radius:16px;padding:14px 16px;
+  font-size:13px;line-height:1.5;color:var(--navy);margin-bottom:20px
+}
+
+/* Forms - premium */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.form-row{grid-template-columns:1fr}}
+.field{margin-bottom:16px}
+.field label{
+  display:block;font-size:11px;font-weight:800;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--navy);margin-bottom:8px
+}
+.field input,.field select,.field textarea{
+  width:100%;padding:14px 16px;border-radius:14px;
+  border:1.5px solid #E2E8F0;background:#fff;
+  font-family:'Inter';font-size:14px;font-weight:500;color:var(--ink);
+  transition:.2s;outline:0
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  border-color:var(--navy);box-shadow:0 0 0 4px rgba(11,61,145,0.08)
+}
+.field textarea{min-height:84px;resize:vertical}
+.field input[readonly]{background:#F8FAFC;color:var(--muted)}
+
+.upload-box{
+  border:1.5px dashed #CBD5E1;border-radius:14px;padding:16px;
+  background:#F8FAFC;transition:.2s;position:relative
+}
+.upload-box:hover{border-color:var(--navy);background:#F1F5FF}
+.upload-box input{border:0;padding:0;background:transparent}
+
+.check-row{display:flex;gap:12px;align-items:flex-start;margin:18px 0;padding:14px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:14px}
+.check-row input{margin-top:3px}
+.check-row label{font-size:12.5px;line-height:1.5;color:#92400E}
+
+.btn-submit{
+  width:100%;padding:18px;border-radius:16px;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-deep) 100%);
+  color:#fff;font-size:14px;font-weight:800;letter-spacing:0.04em;
+  text-transform:uppercase;border:0;cursor:pointer;
+  box-shadow:0 12px 24px rgba(11,61,145,0.22);transition:.25s
+}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 18px 36px rgba(11,61,145,0.28)}
+.btn-submit:disabled{opacity:0.5;pointer-events:none}
+
+.form-error{
+  display:none;background:#FEF2F2;border:1px solid #FECACA;color:#991B1B;
+  padding:12px 14px;border-radius:12px;font-size:13px;font-weight:600;margin-bottom:16px
+}
+.form-error.show{display:block}
+
+/* Apply dropdown */
+.apply-dd{position:relative;display:inline-block}
+.apply-dd-menu{
+  position:absolute;top:calc(100% + 10px);left:0;min-width:240px;
+  background:#fff;border:1px solid var(--line);border-radius:18px;
+  box-shadow:0 24px 48px rgba(15,23,42,0.12);padding:8px;z-index:20;
+  animation:ddIn .22s ease
+}
+@keyframes ddIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.apply-dd-opt{
+  width:100%;text-align:left;padding:12px 14px;border-radius:12px;
+  border:0;background:transparent;font-size:13.5px;font-weight:600;color:var(--navy);
+  cursor:pointer;transition:.15s;display:flex;align-items:center;gap:10px
+}
+.apply-dd-opt:hover{background:#F8FAFC}
+.apply-dd-center .apply-dd-menu{left:50%;transform:translateX(-50%)}
+
+/* Fullpage loan */
+.clb-loan-fullpage{
+  position:fixed;inset:0;z-index:200;background:var(--bg);
+  overflow:auto;padding:24px;display:grid;place-items:start center;
+}
+.clb-loan-fullpage .loan-item{display:none}
+.clb-loan-fullpage .loan-item.open{display:block;width:100%;max-width:920px;margin-top:24px}
+.loan-full-back{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 16px;border-radius:100px;border:1px solid var(--line);
+  background:#fff;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:16px
+}
+
+/* Success / portal */
+.success-shell,.portal-dash{display:none}
+.success-shell.show{display:block}
+.lux-card{
+  max-width:720px;margin:0 auto;background:#fff;
+  border:1px solid var(--line);border-radius:28px;padding:32px;
+  box-shadow:0 32px 80px rgba(15,23,42,0.08)
+}
+.lux-card h2{font-size:28px;font-weight:600;color:var(--navy);margin-bottom:8px}
+.lux-badge{
+  display:inline-flex;padding:6px 12px;border-radius:100px;
+  background:#ECFDF5;border:1px solid #A7F3D0;color:#065F46;
+  font-size:11px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase
+}
+.kv{display:grid;grid-template-columns:140px 1fr;gap:12px;padding:12px 0;border-bottom:1px dashed #E2E8F0;font-size:13.5px}
+.kv b{color:var(--muted);font-weight:600}
+.copy-btn{padding:6px 10px;border-radius:100px;border:1px solid var(--line);background:#fff;font-size:11px;font-weight:700;cursor:pointer}
+
+/* Loader */
+.loader{
+  position:fixed;inset:0;z-index:300;background:rgba(252,253,255,0.9);
+  backdrop-filter:blur(16px);display:none;place-items:center
+}
+.loader.show{display:grid}
+.loader-box{
+  background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;
+  box-shadow:0 24px 48px rgba(15,23,42,0.1);text-align:center;min-width:280px
+}
+.spin{
+  width:36px;height:36px;border:3px solid #E2E8F0;border-top-color:var(--navy);
+  border-radius:50%;animation:spin 0.9s linear infinite;margin:0 auto 14px
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Toast */
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--navy);color:#fff;padding:12px 18px;border-radius:100px;
+  font-size:13px;font-weight:600;box-shadow:0 12px 30px rgba(11,61,145,0.3);
+  opacity:0;pointer-events:none;transition:.3s;z-index:400
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* Legal accordion */
+.legal-stack{max-width:920px;margin:0 auto;display:grid;gap:12px}
+.legal-item{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.legal-toggle{width:100%;padding:18px 20px;background:transparent;border:0;text-align:left;font-weight:700;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.legal-panel{display:none;padding:0 20px 18px;font-size:13px;line-height:1.7;color:var(--muted)}
+.legal-item.open .legal-panel{display:block}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding:32px;background:#fff;margin-top:64px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+
+/* Disclosure */
+.disclosure{max-width:920px;margin:0 auto 24px;padding:16px 18px;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:16px;font-size:12.5px;line-height:1.6;color:#334155}
+</style>
+
+<style id="luxury-restyle">
+/* =========================================================
+   CITY LEGACY — ULTRA LUXURY RESTYLE
+   Visual layer only: existing HTML + JavaScript/API logic retained.
+   ========================================================= */
+:root{
+  --navy:#071A33;
+  --navy-2:#0B2748;
+  --navy-3:#123A63;
+  --gold:#C9A227;
+  --gold-2:#E8D58A;
+  --gold-3:#8E6E16;
+  --cream:#F7F3EA;
+  --ivory:#FCFBF7;
+  --ink:#101827;
+  --muted:#687386;
+  --line:rgba(15,34,57,.12);
+  --glass:rgba(255,255,255,.72);
+  --shadow:0 30px 90px rgba(5,20,38,.12);
+  --shadow-deep:0 40px 120px rgba(3,15,29,.28);
+}
+html{background:var(--ivory)}
+body{
+  background:
+    radial-gradient(circle at 8% 10%,rgba(201,162,39,.055),transparent 28%),
+    radial-gradient(circle at 92% 25%,rgba(11,39,72,.05),transparent 30%),
+    var(--ivory);
+  color:var(--ink);
+}
+body:before{
+  content:"";
+  position:fixed; inset:0; pointer-events:none; z-index:-1;
+  background-image:linear-gradient(rgba(201,162,39,.025) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(201,162,39,.025) 1px,transparent 1px);
+  background-size:48px 48px;
+  mask-image:linear-gradient(to bottom,black,transparent 80%);
+}
+h1,h2,h3,.brand-name,.lux-card h2{
+  font-family:"Cormorant Garamond","Playfair Display",serif;
+}
+.header-wrap{
+  background:rgba(252,251,247,.82);
+  border-bottom:1px solid rgba(201,162,39,.18);
+  box-shadow:0 8px 40px rgba(7,26,51,.06);
+  backdrop-filter:blur(26px) saturate(150%);
+}
+.nav-inner{max-width:1380px;padding:15px 34px}
+.brand{gap:15px}
+.brand-mark{
+  width:46px;height:46px;border-radius:50%;
+  background:radial-gradient(circle at 35% 25%,#193E68,#06172C 72%);
+  border:1px solid rgba(232,213,138,.55);
+  box-shadow:0 10px 28px rgba(7,26,51,.25),inset 0 0 0 1px rgba(255,255,255,.08);
+}
+.brand-mark:before{
+  content:"";position:absolute;width:31px;height:31px;border:1px solid rgba(232,213,138,.55);
+  border-radius:50%;
+}
+.brand-mark:after{font-size:13px;letter-spacing:.08em}
+.brand-name{font-size:20px;letter-spacing:.04em;color:var(--navy)}
+.brand-sub{color:var(--gold-3);letter-spacing:.46em}
+.nav-links{gap:30px}
+.nav-links a{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--navy);opacity:.72}
+.nav-links a:hover{color:var(--gold-3)}
+.nav-cta{
+  background:linear-gradient(135deg,#102E4E,#06172C);
+  border:1px solid rgba(232,213,138,.45);
+  box-shadow:0 10px 26px rgba(7,26,51,.2),inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+.hero{
+  min-height:780px;
+  background:
+    radial-gradient(900px 650px at 78% 12%,rgba(201,162,39,.16),transparent 58%),
+    radial-gradient(850px 700px at 8% 85%,rgba(30,76,118,.35),transparent 60%),
+    linear-gradient(135deg,#071A33 0%,#0B2748 48%,#030D1B 100%);
+}
+.hero:after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,rgba(3,13,27,.8),rgba(3,13,27,.2) 65%,rgba(3,13,27,.6));
+}
+.hero-media{opacity:.27;mix-blend-mode:screen}
+.hero-inner{max-width:1380px;padding:138px 34px 92px;grid-template-columns:1.2fr .8fr;gap:72px}
+.hero-copy .eyebrow{
+  border:0;border-radius:0;padding:0 0 13px;margin-bottom:25px;
+  border-bottom:1px solid rgba(232,213,138,.3);
+  color:var(--gold-2);background:none;
+  letter-spacing:.4em;
+}
+.hero-copy .eyebrow:before{width:26px;height:1px;border-radius:0;box-shadow:none;background:var(--gold)}
+.hero-copy h1{
+  font-size:clamp(56px,7vw,92px);
+  line-height:.82;letter-spacing:-.045em;
+  text-shadow:0 18px 50px rgba(0,0,0,.25);
+}
+.hero-copy h1 em{
+  background:linear-gradient(90deg,#fff6c8,#C9A227 55%,#F2E4A8);
+}
+.hero-copy p{max-width:600px;font-size:21px;line-height:1.55;color:rgba(255,255,255,.7)}
+.hero-stats{gap:38px;margin-top:42px;padding-top:27px;border-color:rgba(255,255,255,.16)}
+.hero-stat b{font-size:32px}
+.hero-stat span{letter-spacing:.18em}
+.btn{min-height:54px;padding:16px 29px;border-radius:4px;text-transform:uppercase;letter-spacing:.1em;font-size:11px}
+.btn-gold{
+  background:linear-gradient(120deg,#9A7818 0%,#D8B83E 42%,#F0DF93 58%,#A77F18 100%);
+  border:1px solid rgba(255,247,201,.6);
+  box-shadow:0 16px 38px rgba(201,162,39,.28),inset 0 1px 0 rgba(255,255,255,.65);
+}
+.btn-ghost{border-radius:4px;background:rgba(255,255,255,.045);border-color:rgba(232,213,138,.35)}
+
+.hero-card{
+  border-radius:5px;
+  padding:32px;
+  background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(245,241,230,.93));
+  border:1px solid rgba(232,213,138,.5);
+  box-shadow:var(--shadow-deep);
+}
+.hero-card:before{
+  content:"PRIVATE CLIENT DESK";
+  display:block;margin:-8px 0 24px;
+  font-size:9px;letter-spacing:.34em;font-weight:800;color:var(--gold-3);
+}
+.loan-preview{
+  border-radius:4px;background:rgba(255,255,255,.62);
+  border-color:rgba(15,34,57,.1);padding:19px;
+}
+.loan-preview-row{padding:14px 0}
+.hero-card>div:last-child{border-radius:4px!important}
+
+.section{padding:118px 0}
+.wrap{max-width:1380px;padding:0 34px}
+.section-head{margin-bottom:64px}
+.section-head .eyebrow{letter-spacing:.38em;color:var(--gold-3)}
+.section-head h2{font-size:clamp(42px,5vw,64px);line-height:.9;color:var(--navy)}
+.section-head p{max-width:650px;margin-left:auto;margin-right:auto;font-size:20px;color:#727B88}
+.cards{gap:20px}
+.card{
+  border-radius:5px;padding:34px;
+  background:rgba(255,255,255,.75);
+  border:1px solid rgba(15,34,57,.09);
+  box-shadow:0 18px 55px rgba(7,26,51,.055);
+}
+.card:hover{transform:translateY(-8px);box-shadow:0 30px 70px rgba(7,26,51,.12);border-color:rgba(201,162,39,.42)}
+.card-icon{
+  border-radius:50%;width:54px;height:54px;
+  background:linear-gradient(145deg,#071A33,#163B60);
+  color:var(--gold-2);border-color:rgba(201,162,39,.28);
+}
+.card h3{font-size:24px}
+.card p{font-size:14px;line-height:1.8}
+
+#products{background:linear-gradient(180deg,#fff 0%,#F8F4EA 100%)!important;border-color:rgba(201,162,39,.12)!important}
+.loan-stack{max-width:1040px;gap:14px}
+.loan-item{
+  border-radius:5px;background:rgba(255,255,255,.9);
+  border-color:rgba(15,34,57,.1);
+  box-shadow:0 14px 42px rgba(7,26,51,.045);
+}
+.loan-item:hover{border-color:rgba(201,162,39,.38);box-shadow:0 25px 65px rgba(7,26,51,.09)}
+.loan-item.open{border-color:var(--gold-3);box-shadow:0 30px 80px rgba(7,26,51,.12)}
+.loan-toggle{padding:27px 30px}
+.loan-icon{
+  border-radius:50%;width:56px;height:56px;
+  background:radial-gradient(circle at 35% 20%,#173F68,#06172C);
+  border:1px solid rgba(232,213,138,.42);
+}
+.loan-meta h3{font-size:24px}
+.loan-apply-hint{background:transparent;color:var(--gold-3);border:1px solid rgba(201,162,39,.45);border-radius:2px}
+.loan-range{background:#F5F0E4;border-color:rgba(201,162,39,.18);color:var(--navy)}
+.loan-chev{border-radius:50%;width:38px;height:38px}
+.loan-panel{padding:0 30px 32px}
+.loan-form-intro{
+  border-radius:4px;
+  background:linear-gradient(120deg,#F7F3E8,#EEF3F7);
+  border-color:rgba(201,162,39,.22);
+  color:var(--navy);padding:17px 18px;
+}
+.field label{letter-spacing:.16em;color:#536074}
+.field input,.field select,.field textarea{
+  border-radius:3px;background:#FFFEFB;border-color:#D9DEE6;padding:15px 16px;
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  border-color:var(--gold-3);box-shadow:0 0 0 4px rgba(201,162,39,.09);
+}
+.upload-box{border-radius:3px;background:#FAF8F2;border-color:#CFC7AF}
+.check-row{border-radius:3px;background:#FBF7E8;border-color:#E5D28B}
+.btn-submit{
+  border-radius:3px;
+  background:linear-gradient(135deg,#0B2748,#06172C);
+  border:1px solid rgba(201,162,39,.42);
+  box-shadow:0 15px 35px rgba(7,26,51,.18);
+  letter-spacing:.12em;
+}
+.btn-submit:hover{box-shadow:0 22px 45px rgba(7,26,51,.25)}
+
+.disclosure{
+  border-radius:4px;background:#F7F3E8;border-color:rgba(201,162,39,.2);
+}
+.legal-stack{max-width:1040px}
+.legal-item{border-radius:4px;background:rgba(255,255,255,.82);border-color:rgba(15,34,57,.1)}
+.legal-toggle{padding:21px 24px;font-family:"Cormorant Garamond",serif;font-size:19px;letter-spacing:.01em}
+.legal-panel{padding:0 24px 22px;font-size:14px;line-height:1.8}
+
+.lux-card{
+  border-radius:5px;background:linear-gradient(145deg,#fff,#F8F4EA);
+  border-color:rgba(201,162,39,.25);box-shadow:var(--shadow);
+}
+.lux-badge{
+  border-radius:2px;background:#F7F0D8;border-color:#DCC77B;color:#765A0D;
+}
+footer{
+  background:#06172C;color:rgba(255,255,255,.62);
+  border-top:1px solid rgba(201,162,39,.28);
+  padding:44px 0;
+}
+footer .wrap{color:rgba(255,255,255,.62)}
+footer b{color:var(--gold-2)!important}
+
+.loader{background:rgba(3,13,27,.72)}
+.loader-box{
+  border-radius:4px;background:#FBFAF6;border-color:rgba(201,162,39,.35);box-shadow:0 35px 100px rgba(0,0,0,.35)
+}
+.spin{border-color:#D8DDE5;border-top-color:var(--gold-3)}
+.toast{border-radius:3px;background:#06172C;border:1px solid rgba(201,162,39,.4)}
+
+.clb-loan-fullpage{
+  background:
+    radial-gradient(circle at 15% 10%,rgba(201,162,39,.06),transparent 25%),
+    var(--ivory);
+}
+.clb-loan-fullpage .loan-item.open{max-width:1040px}
+.loan-full-back{border-radius:3px;background:#fff;border-color:rgba(201,162,39,.25);color:var(--navy)}
+
+@media(max-width:980px){
+  .hero-inner{padding:110px 22px 58px;gap:34px}
+  .hero-copy h1{font-size:clamp(52px,12vw,76px)}
+}
+@media(max-width:800px){
+  .nav-inner{padding:12px 18px}
+  .brand-name{font-size:17px}
+  .brand-sub{font-size:8px}
+  .nav-cta{padding:10px 13px}
+}
+@media(max-width:640px){
+  .wrap{padding:0 18px}
+  .section{padding:82px 0}
+  .hero{min-height:720px}
+  .hero-inner{padding:100px 18px 48px}
+  .hero-card{padding:24px}
+  .hero-stats{gap:18px}
+  .hero-stat b{font-size:25px}
+  .hero-stat span{font-size:9px}
+  .loan-toggle{padding:22px 18px}
+  .loan-panel{padding:0 18px 25px}
+}
+</style>
+
+
+<style id="responsive-screen-fit">
+/* =========================================================
+   SCREEN-FIT RESPONSIVE SYSTEM
+   Phone • iPhone/Android • iPad • Tablet • Laptop • Desktop
+   Prevents horizontal overflow and keeps every section inside
+   the viewport while preserving the existing application logic.
+   ========================================================= */
+
+*,
+*::before,
+*::after{box-sizing:border-box}
+
+html{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+  scroll-behavior:smooth;
+}
+
+body{
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  margin:0;
+  overflow-x:hidden;
+}
+
+img,video,svg,canvas{
+  max-width:100%;
+  height:auto;
+}
+
+button,input,select,textarea{
+  max-width:100%;
+  font:inherit;
+}
+
+input,select,textarea{
+  min-width:0;
+}
+
+table{
+  max-width:100%;
+}
+
+.header-wrap,
+header,
+.nav-inner,
+.hero,
+.hero-inner,
+.section,
+.wrap,
+main,
+footer{
+  width:100%;
+  max-width:100%;
+  min-width:0;
+}
+
+.nav-inner,
+.hero-inner,
+.wrap{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* Desktop / large monitors */
+.nav-inner,
+.hero-inner,
+.wrap{
+  width:min(100%,1380px);
+}
+
+.hero-inner{
+  min-width:0;
+}
+
+.hero-copy,
+.hero-card,
+.hero-copy > *,
+.cards > *,
+.loan-item,
+.loan-panel,
+.loan-toggle,
+.loan-meta,
+.loan-form,
+.field,
+.legal-item,
+.legal-panel,
+.lux-card{
+  min-width:0;
+  max-width:100%;
+}
+
+/* Avoid fixed-width children causing horizontal scrolling */
+.loan-stack,
+.legal-stack,
+.cards{
+  width:100%;
+  max-width:1040px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.cards{
+  max-width:1380px;
+}
+
+/* Long credentials, account numbers, messages and generated values */
+#outAcc,#outRoute,#outUser,#outPass,
+#lpBankAcc,#lpBankRoute,#lpBankUser,#lpBankPass,
+#lpStatusHint,#lpMsgList,
+.loan-panel,.legal-panel{
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+
+/* ===================== TABLETS / iPAD ===================== */
+@media (max-width:1100px){
+  .nav-inner{
+    padding-left:24px!important;
+    padding-right:24px!important;
+  }
+
+  .hero-inner{
+    grid-template-columns:minmax(0,1fr)!important;
+    padding:100px 24px 70px!important;
+  }
+
+  .hero-card{
+    width:min(100%,720px);
+    margin:0 auto;
+  }
+
+  .hero-copy{
+    text-align:left;
+  }
+
+  .hero-copy p{
+    max-width:720px;
+  }
+
+  .cards{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+
+  .loan-stack,
+  .legal-stack{
+    width:100%;
+  }
+}
+
+/* ===================== iPAD PORTRAIT / SMALL TABLETS ===================== */
+@media (max-width:820px){
+  .nav-inner{
+    padding:12px 18px!important;
+    gap:14px;
+  }
+
+  .nav-links{
+    gap:15px;
+    flex-wrap:wrap;
+  }
+
+  .hero{
+    min-height:auto!important;
+  }
+
+  .hero-inner{
+    padding:88px 20px 55px!important;
+  }
+
+  .hero-copy h1{
+    font-size:clamp(48px,9vw,72px)!important;
+  }
+
+  .hero-copy p{
+    font-size:18px!important;
+  }
+
+  .cards{
+    grid-template-columns:1fr!important;
+  }
+
+  .loan-toggle{
+    gap:14px!important;
+  }
+
+  .loan-apply-hint{
+    white-space:normal!important;
+    text-align:center;
+  }
+
+  .loan-form{
+    grid-template-columns:1fr!important;
+  }
+
+  .field.full,
+  .field.span-2,
+  .form-row{
+    grid-column:1 / -1!important;
+  }
+
+  .success-grid,
+  .portal-grid{
+    grid-template-columns:1fr!important;
+  }
+}
+
+/* ===================== MOBILE ===================== */
+@media (max-width:600px){
+  html,body{
+    width:100%!important;
+    min-width:0!important;
+    overflow-x:hidden!important;
+  }
+
+  .header-wrap{
+    position:relative!important;
+  }
+
+  .nav-inner{
+    width:100%!important;
+    padding:11px 14px!important;
+    flex-wrap:wrap!important;
+  }
+
+  .brand{
+    min-width:0;
+    flex:1 1 auto;
+  }
+
+  .brand-mark{
+    width:40px!important;
+    height:40px!important;
+    flex:0 0 40px;
+  }
+
+  .brand-name{
+    font-size:16px!important;
+    white-space:nowrap;
+  }
+
+  .brand-sub{
+    font-size:7px!important;
+    letter-spacing:.28em!important;
+  }
+
+  .nav-links{
+    width:100%;
+    order:3;
+    display:flex!important;
+    justify-content:center;
+    gap:13px!important;
+    padding-top:5px;
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+
+  .nav-links::-webkit-scrollbar{
+    display:none;
+  }
+
+  .nav-links a{
+    white-space:nowrap;
+    font-size:9px!important;
+  }
+
+  .nav-cta{
+    padding:10px 12px!important;
+    font-size:9px!important;
+    white-space:nowrap;
+  }
+
+  .hero-inner{
+    width:100%!important;
+    padding:78px 16px 42px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    gap:28px!important;
+  }
+
+  .hero-copy{
+    width:100%!important;
+  }
+
+  .hero-copy .eyebrow{
+    font-size:8px!important;
+    letter-spacing:.25em!important;
+  }
+
+  .hero-copy h1{
+    font-size:clamp(42px,14vw,62px)!important;
+    line-height:.88!important;
+    max-width:100%!important;
+    overflow-wrap:normal;
+  }
+
+  .hero-copy p{
+    font-size:16px!important;
+    line-height:1.55!important;
+    max-width:100%!important;
+  }
+
+  .hero-actions{
+    width:100%;
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+  }
+
+  .hero-actions .btn{
+    width:100%!important;
+  }
+
+  .hero-stats{
+    display:grid!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:10px!important;
+  }
+
+  .hero-stat{
+    min-width:0;
+  }
+
+  .hero-stat b{
+    font-size:22px!important;
+  }
+
+  .hero-stat span{
+    font-size:7px!important;
+    letter-spacing:.08em!important;
+    overflow-wrap:anywhere;
+  }
+
+  .hero-card{
+    width:100%!important;
+    padding:20px!important;
+  }
+
+  .section{
+    padding:70px 0!important;
+  }
+
+  .wrap{
+    padding-left:16px!important;
+    padding-right:16px!important;
+  }
+
+  .section-head{
+    margin-bottom:38px!important;
+  }
+
+  .section-head h2{
+    font-size:42px!important;
+  }
+
+  .section-head p{
+    font-size:16px!important;
+  }
+
+  .card{
+    padding:24px!important;
+  }
+
+  .loan-stack{
+    gap:10px!important;
+  }
+
+  .loan-item{
+    border-radius:5px!important;
+  }
+
+  .loan-toggle{
+    display:grid!important;
+    grid-template-columns:auto minmax(0,1fr) auto!important;
+    align-items:center!important;
+    padding:19px 15px!important;
+  }
+
+  .loan-icon{
+    width:44px!important;
+    height:44px!important;
+  }
+
+  .loan-meta h3{
+    font-size:19px!important;
+    line-height:1.05!important;
+  }
+
+  .loan-meta p{
+    font-size:12px!important;
+  }
+
+  .loan-range{
+    font-size:9px!important;
+    padding:5px 7px!important;
+  }
+
+  .loan-apply-hint{
+    display:none!important;
+  }
+
+  .loan-chev{
+    width:32px!important;
+    height:32px!important;
+  }
+
+  .loan-panel{
+    padding:0 15px 22px!important;
+  }
+
+  .loan-form{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:13px!important;
+  }
+
+  .field{
+    width:100%!important;
+  }
+
+  .field input,
+  .field select,
+  .field textarea{
+    width:100%!important;
+    min-height:48px;
+    font-size:16px!important; /* prevents iOS zoom */
+  }
+
+  .upload-grid{
+    grid-template-columns:1fr!important;
+  }
+
+  .check-row{
+    padding:13px!important;
+    font-size:12px!important;
+  }
+
+  .btn-submit,
+  .loan-form .btn{
+    width:100%!important;
+    min-height:52px!important;
+  }
+
+  .legal-stack{
+    width:100%!important;
+  }
+
+  .legal-toggle{
+    padding:17px 16px!important;
+    font-size:17px!important;
+    gap:12px!important;
+  }
+
+  .legal-panel{
+    padding:0 16px 18px!important;
+    font-size:13px!important;
+  }
+
+  .disclosure{
+    padding:16px!important;
+  }
+
+  .lux-card{
+    padding:20px!important;
+  }
+
+  footer .wrap{
+    padding-left:16px!important;
+    padding-right:16px!important;
+  }
+
+  /* Portal/dashboard */
+  #loanPortalDash,
+  #loanPortalLogin,
+  #successShell{
+    width:100%!important;
+    max-width:100%!important;
+    overflow:hidden;
+  }
+
+  #loanPortalDash .wrap,
+  #loanPortalLogin .wrap,
+  #successShell .wrap{
+    padding-left:16px!important;
+    padding-right:16px!important;
+  }
+
+  #lpTimeline{
+    overflow-x:auto!important;
+    max-width:100%;
+    white-space:nowrap;
+    padding-bottom:5px;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  #lpMsgList{
+    max-height:380px!important;
+    overflow-y:auto!important;
+  }
+
+  #lpMsgInput{
+    font-size:16px!important;
+  }
+
+  /* Full-page loan mode should be viewport-safe */
+  .clb-loan-fullpage{
+    width:100vw!important;
+    max-width:100vw!important;
+    left:0!important;
+    right:0!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+  }
+
+  .clb-loan-fullpage .loan-item.open{
+    width:100%!important;
+    max-width:100%!important;
+    min-height:100vh;
+    border-radius:0!important;
+  }
+
+  .loan-full-back{
+    width:100%!important;
+    margin-bottom:10px!important;
+  }
+
+  /* Prevent accidental fixed-width inline elements */
+  [style*="width:"]{
+    max-width:100%;
+  }
+}
+
+/* ===================== VERY SMALL PHONES ===================== */
+@media (max-width:380px){
+  .brand-name{
+    font-size:14px!important;
+  }
+
+  .nav-cta{
+    padding:9px 9px!important;
+    font-size:8px!important;
+  }
+
+  .hero-copy h1{
+    font-size:40px!important;
+  }
+
+  .hero-stats{
+    gap:5px!important;
+  }
+
+  .hero-stat b{
+    font-size:19px!important;
+  }
+
+  .hero-stat span{
+    font-size:6px!important;
+  }
+
+  .loan-toggle{
+    grid-template-columns:auto minmax(0,1fr) auto!important;
+    padding:16px 11px!important;
+  }
+
+  .loan-icon{
+    width:38px!important;
+    height:38px!important;
+  }
+
+  .loan-meta h3{
+    font-size:17px!important;
+  }
+}
+
+/* ===================== LANDSCAPE PHONES ===================== */
+@media (max-height:520px) and (orientation:landscape){
+  .hero-inner{
+    padding-top:45px!important;
+    padding-bottom:35px!important;
+  }
+
+  .hero-copy h1{
+    font-size:48px!important;
+  }
+
+  .hero-card{
+    display:none;
+  }
+}
+
+/* ===================== LARGE DESKTOP / 2K / 4K ===================== */
+@media (min-width:1600px){
+  .nav-inner,
+  .hero-inner,
+  .wrap{
+    width:min(100% - 80px,1500px);
+  }
+
+  .hero-inner{
+    padding-top:150px;
+    padding-bottom:120px;
+  }
+}
+
+/* Safe-area support for modern iPhones */
+@supports(padding:max(0px)){
+  .nav-inner{
+    padding-left:max(14px,env(safe-area-inset-left));
+    padding-right:max(14px,env(safe-area-inset-right));
+  }
+
+  .wrap{
+    padding-left:max(16px,env(safe-area-inset-left));
+    padding-right:max(16px,env(safe-area-inset-right));
+  }
+}
+</style>
+
+
+<style id="final-polish">
+/* --- Fix hero accent: no rectangular gold block behind the word --- */
+.hero-copy h1 em{
+  display:inline;
+  background:none !important;
+  background-image:none !important;
+  -webkit-background-clip:initial !important;
+  background-clip:initial !important;
+  -webkit-text-fill-color:initial !important;
+  color:#E8D58A !important;
+  font-style:italic;
+  font-weight:500;
+  text-shadow:0 8px 28px rgba(201,162,39,.12);
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+
+/* --- Our Standard premium dialog --- */
+.standard-modal{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+.standard-modal.open{display:flex}
+.standard-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(2,10,22,.76);
+  backdrop-filter:blur(14px) saturate(120%);
+}
+.standard-dialog{
+  position:relative;
+  width:min(920px,100%);
+  max-height:min(88vh,820px);
+  overflow:auto;
+  padding:48px;
+  border:1px solid rgba(232,213,138,.42);
+  border-radius:8px;
+  background:
+    radial-gradient(circle at 92% 0%,rgba(201,162,39,.13),transparent 32%),
+    linear-gradient(145deg,#fffefa,#f4f0e5);
+  box-shadow:0 45px 140px rgba(0,0,0,.42);
+}
+.standard-close{
+  position:absolute;
+  top:18px;
+  right:20px;
+  width:42px;
+  height:42px;
+  border:1px solid rgba(7,26,51,.12);
+  border-radius:50%;
+  background:rgba(255,255,255,.75);
+  color:#071A33;
+  font-size:28px;
+  line-height:1;
+  cursor:pointer;
+}
+.standard-kicker{
+  margin-bottom:13px;
+  color:#8E6E16;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+}
+.standard-dialog h2{
+  margin:0;
+  color:#071A33;
+  font-family:"Cormorant Garamond","Playfair Display",serif;
+  font-size:clamp(48px,6vw,72px);
+  line-height:.9;
+  letter-spacing:-.04em;
+}
+.standard-intro{
+  max-width:680px;
+  margin:20px 0 34px;
+  color:#657083;
+  font-size:17px;
+  line-height:1.7;
+}
+.standard-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.standard-point{
+  display:grid;
+  grid-template-columns:48px minmax(0,1fr);
+  gap:15px;
+  padding:22px;
+  border:1px solid rgba(7,26,51,.09);
+  border-radius:5px;
+  background:rgba(255,255,255,.66);
+}
+.standard-number{
+  display:grid;
+  place-items:center;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:#071A33;
+  color:#E8D58A;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.08em;
+}
+.standard-point h3{
+  margin:0 0 6px;
+  color:#071A33;
+  font-family:"Cormorant Garamond","Playfair Display",serif;
+  font-size:24px;
+}
+.standard-point p{
+  margin:0;
+  color:#697487;
+  font-size:13px;
+  line-height:1.65;
+}
+.standard-footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  margin-top:28px;
+  padding-top:22px;
+  border-top:1px solid rgba(7,26,51,.1);
+}
+.standard-footer>span{
+  color:#8E6E16;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.25em;
+}
+.standard-continue{
+  min-height:44px;
+  padding:12px 22px;
+  border:1px solid rgba(201,162,39,.42);
+  border-radius:3px;
+  background:#071A33;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.standard-continue:hover{background:#0B2748}
+
+@media(max-width:640px){
+  .standard-modal{
+    padding:10px;
+  }
+  .standard-dialog{
+    width:100%;
+    max-height:94vh;
+    padding:31px 18px 20px;
+    border-radius:6px;
+  }
+  .standard-close{
+    top:12px;
+    right:12px;
+  }
+  .standard-kicker{
+    padding-right:45px;
+    font-size:8px;
+    letter-spacing:.24em;
+  }
+  .standard-dialog h2{
+    font-size:48px;
+  }
+  .standard-intro{
+    font-size:15px;
+    margin-bottom:24px;
+  }
+  .standard-grid{
+    grid-template-columns:1fr;
+  }
+  .standard-point{
+    padding:17px;
+  }
+  .standard-footer{
+    align-items:stretch;
+    flex-direction:column;
+  }
+  .standard-continue{
+    width:100%;
+  }
+}
+</style>
+
+
+<style id="navigation-and-five-bank-slides">
+  /* Five-image banking hero carousel */
+  #heroCarousel .hero-media{
+    opacity:.38;
+    z-index:0;
+  }
+  #heroCarousel .hero-slide{
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+    transform:scale(1.015);
+    transition:opacity 1.15s ease, transform 7s ease;
+    filter:saturate(.88) contrast(1.04);
+  }
+  #heroCarousel .hero-slide.active{
+    opacity:1;
+    transform:scale(1);
+  }
+
+  /* The navigation buttons always land on real sections. */
+  #why, #products, #apply, #legal{
+    scroll-margin-top:88px;
+  }
+  .nav-links a{
+    position:relative;
+    cursor:pointer;
+  }
+  .nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-8px;
+    height:1px;
+    background:var(--gold);
+    transform:scaleX(0);
+    transform-origin:center;
+    transition:transform .25s ease;
+  }
+  .nav-links a:hover::after,
+  .nav-links a.nav-active::after{
+    transform:scaleX(1);
+  }
+
+  @media(max-width:800px){
+    .nav-links{
+      display:flex !important;
+      overflow-x:auto;
+      flex-wrap:nowrap !important;
+      scrollbar-width:none;
+      white-space:nowrap;
+    }
+    .nav-links::-webkit-scrollbar{display:none}
+  }
+</style>
+
+</head>
+<body>
+<div id="page-loan">
+<div class="header-wrap">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-mark"></div>
+      <div class="brand-text"><span class="brand-name">CITY LEGACY</span><span class="brand-sub">PRIVATE BANK</span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="#why" data-nav-target="why">Private Banking</a>
+      <a href="#products" data-nav-target="products">Lending</a>
+      <a href="#apply" data-nav-target="apply">Apply</a>
+      <a href="#legal" data-nav-target="legal">Disclosure</a>
+    </nav>
+    <a class="nav-cta" href="index.html" aria-label="Back to home page">← Back</a>
+  </div>
+</div>
+
+<section class="hero" id="heroCarousel">
+  <div class="hero-media">
+    <div class="hero-slide active" style="background-image:url('city-legacy-slides/city-legacy-private-banking.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('city-legacy-slides/city-legacy-lending.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('city-legacy-slides/city-legacy-investment.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('city-legacy-slides/city-legacy-wealth-management.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('city-legacy-slides/city-legacy-global-access.jpg')"></div>
+  </div>
+  <div class="clb-datetime">
+    <div class="clb-datetime-inner">
+      <span class="clb-time" id="clbLiveTime">--:--:--</span>
+      <span class="clb-date" id="clbLiveDate">---</span>
+    </div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow">Est. 1998 · Private Bank · Member FDIC</div>
+      <h1>Private capital,<br><em>perfectly</em> tailored.</h1>
+      <p>Experience lending as it should be — discreet, swift, and structured around you. Competitive rates, bank-grade security, and a dedicated City Legacy banker from application to funding.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><b>$2.4B+</b><span>Funded</span></div>
+        <div class="hero-stat"><b>24-48H</b><span>Decision</span></div>
+        <div class="hero-stat"><b>4.9/5</b><span>TrustScore</span></div>
+      </div>
+      <div class="hero-actions">
+        <div class="apply-dd" id="applyDdHero">
+          <button type="button" class="btn btn-gold apply-dd-btn" aria-expanded="false">Apply for Private Loan ▾</button>
+          <div class="apply-dd-menu" hidden>
+            <button class="apply-dd-opt" data-open-loan="personal">👤 Personal — $1k to $100k</button>
+            <button class="apply-dd-opt" data-open-loan="business">🏢 Business — Up to $250k</button>
+            <button class="apply-dd-opt" data-open-loan="mortgage">🏠 Mortgage — Bespoke</button>
+          </div>
+        </div>
+        <button type="button" class="btn btn-ghost" id="openStandardBtn" aria-haspopup="dialog" aria-controls="standardModal">Our Standard</button>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <b>Loan Estimator</b>
+        <span style="display:flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#10B981"><span class="live-dot"></span> Live Rates</span>
+      </div>
+      <div class="loan-preview">
+        <div class="loan-preview-row"><span>Personal APR</span><span>7.99% - 18.24%</span></div>
+        <div class="loan-preview-row"><span>Business APR</span><span>6.49% - 16.99%</span></div>
+        <div class="loan-preview-row"><span>Mortgage APR</span><span>from 5.85%</span></div>
+        <div class="loan-preview-row"><span>Decision</span><span style="color:#10B981">24–48 hours</span></div>
+      </div>
+      <div style="margin-top:16px;padding:14px 16px;background:linear-gradient(135deg,#0B3D91,#071F4A);border-radius:14px;color:#fff;display:flex;gap:12px;align-items:center">
+        <div style="width:36px;height:36px;border-radius:10px;background:rgba(212,175,55,0.18);display:grid;place-items:center">🔒</div>
+        <div style="font-size:12px;line-height:1.4"><b style="color:var(--gold-light)">Bank-grade security</b><br><span style="opacity:0.7">256-bit encryption · Funds only to your City Legacy account</span></div>
+      </div>
+    </div>
+  </div>
+  <button class="hero-nav prev">‹</button>
+  <button class="hero-nav next">›</button>
+  <div class="hero-dots">
+    <button class="hero-dot active" data-index="0"></button>
+    <button class="hero-dot" data-index="1"></button>
+    <button class="hero-dot" data-index="2"></button>
+    <button class="hero-dot" data-index="3"></button>
+    <button class="hero-dot" data-index="4"></button>
+  </div>
+</section>
+
+
+<div class="standard-modal" id="standardModal" aria-hidden="true">
+  <div class="standard-backdrop" data-close-standard></div>
+  <section class="standard-dialog" role="dialog" aria-modal="true"
+           aria-labelledby="standardTitle" aria-describedby="standardIntro">
+    <button type="button" class="standard-close" id="closeStandardBtn"
+            aria-label="Close standards">×</button>
+
+    <div class="standard-kicker">CITY LEGACY · PRIVATE BANKING</div>
+    <h2 id="standardTitle">Our Standard</h2>
+    <p id="standardIntro" class="standard-intro">
+      A private banking experience should feel considered at every step:
+      clear, secure, responsive and respectful of the client relationship.
+    </p>
+
+    <div class="standard-grid">
+      <article class="standard-point">
+        <span class="standard-number">01</span>
+        <div>
+          <h3>Clarity</h3>
+          <p>Clear application requirements, straightforward status updates and easy-to-understand lending information.</p>
+        </div>
+      </article>
+      <article class="standard-point">
+        <span class="standard-number">02</span>
+        <div>
+          <h3>Privacy</h3>
+          <p>Client information is treated with discretion, with secure access and controlled handling throughout the digital experience.</p>
+        </div>
+      </article>
+      <article class="standard-point">
+        <span class="standard-number">03</span>
+        <div>
+          <h3>Responsiveness</h3>
+          <p>Applications and client messages are designed to move through a focused workflow without unnecessary friction.</p>
+        </div>
+      </article>
+      <article class="standard-point">
+        <span class="standard-number">04</span>
+        <div>
+          <h3>Integrity</h3>
+          <p>Terms, decisions and account activity should be communicated accurately, consistently and professionally.</p>
+        </div>
+      </article>
+      <article class="standard-point">
+        <span class="standard-number">05</span>
+        <div>
+          <h3>Security</h3>
+          <p>Authentication, secure sessions and careful handling of sensitive information remain central to the client journey.</p>
+        </div>
+      </article>
+      <article class="standard-point">
+        <span class="standard-number">06</span>
+        <div>
+          <h3>Personal Service</h3>
+          <p>Technology should support the relationship—not replace thoughtful communication and a refined client experience.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="standard-footer">
+      <span>THE CITY LEGACY STANDARD</span>
+      <button type="button" class="standard-continue" data-close-standard>Continue</button>
+    </div>
+  </section>
+</div>
+
+<section class="section" id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The City Legacy Standard</div>
+      <h2>Not just a loan.<br>A private banking relationship.</h2>
+      <p>Every application opens a secure City Legacy account. No branch visits. No paperwork piles. Just a refined digital experience backed by real bankers.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">⚡</div><h3>Decision in 24–48 hours</h3><p>Underwritten by our private credit desk with transparent criteria and real-time status in your loan portal.</p></div>
+      <div class="card"><div class="card-icon">🛡️</div><h3>Disbursement Protection</h3><p>Funds are never wired externally. Settlement only to your newly created City Legacy account — fraud-safe by design.</p></div>
+      <div class="card"><div class="card-icon">💎</div><h3>Concierge Review</h3><p>Optional agent referral for expedited review. Your banker messages you directly inside the secure portal.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="products" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="section-head" id="apply">
+      <div class="eyebrow">Private Lending Suite</div>
+      <h2>Choose your facility</h2>
+      <p>Select Personal, Business, or Mortgage below. The form expands inline — fully secure, mobile-optimized, and creates your City Legacy credentials on submit.</p>
+      <div class="apply-dd apply-dd-center" id="applyDdSection" style="margin-top:22px">
+        <button class="btn btn-gold apply-dd-btn">Apply for Private Loan ▾</button>
+        <div class="apply-dd-menu" hidden>
+          <button class="apply-dd-opt" data-open-loan="personal">👤 Personal Loan</button>
+          <button class="apply-dd-opt" data-open-loan="business">🏢 Business Loan</button>
+          <button class="apply-dd-opt" data-open-loan="mortgage">🏠 Mortgage Loan</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="disclosure"><strong style="color:#0B3D91">Private disclosure.</strong> Illustrative ranges: Personal $1,000–$100,000 · Business $1,000–$250,000 · Mortgage from $1,000+. APR based on creditworthiness. Decision 24–48h after identity verification. This is not a commitment to lend until <em>approved and funded</em>. Equal Housing Lender.</div>
+
+    <div class="loan-stack" id="loanStack">
+
+      <div class="loan-item" id="loan-personal" data-loan="Personal Loan">
+        <button class="loan-toggle" aria-expanded="false"><div class="loan-icon">👤</div><div class="loan-meta"><h3>Personal Loan <span class="loan-apply-hint">Apply</span></h3><p>Life events, consolidation, major purchases — structured privately.</p><div class="loan-range">$1,000 – $100,000 · 7.99% APR from</div></div><span class="loan-chev">▾</span></button>
+        <div class="loan-panel" id="panel-personal">
+          <div class="loan-panel-inner">
+            <div class="loan-form-intro"><strong>Personal Private Loan.</strong> Complete securely. On approval we create your City Legacy account for private disbursement.</div>
+            <div class="form-error" data-error></div>
+            <form class="loan-form" data-type="Personal Loan" novalidate>
+              <div class="field"><label>Loan type</label><input type="text" value="Personal Loan" readonly></div>
+              <div class="form-row">
+                <div class="field"><label>Full name (as on ID)</label><input type="text" name="fullName" placeholder="Alexandra Morgan" required autocomplete="name"></div>
+                <div class="field"><label>Email address</label><input type="email" name="email" placeholder="you@private.com" required autocomplete="email"></div>
+              </div>
+              <div class="form-row">
+                <div class="field"><label>Phone number</label><input type="tel" name="phone" placeholder="+1 (555) 000-0000" required autocomplete="tel"></div>
+                <div class="field"><label>Employment status</label><select name="employment" required><option value="">Select…</option><option>Employed full-time</option><option>Employed part-time</option><option>Self-employed</option><option>Retired</option><option>Other</option></select></div>
+              </div>
+              <div class="form-row">
+                <div class="field"><label>Loan amount ($)</label><input type="number" name="loanAmount" min="1000" max="100000" step="100" placeholder="25000" required></div>
+                <div class="field"><label>Monthly income ($)</label><input type="number" name="monthlyIncome" min="0" step="100" placeholder="7500" required></div>
+              </div>
+              <div class="field"><label>Purpose</label><textarea name="purpose" placeholder="Debt consolidation, home improvement..."></textarea></div>
+              <div class="field"><label>Residential address</label><input type="text" name="address" placeholder="Street, City, State, ZIP" required></div>
+              <div class="field"><label>SSN</label><input type="text" name="ssn" placeholder="XXX-XX-XXXX" required inputmode="numeric" maxlength="11" pattern="[0-9]{3}-?[0-9]{2}-?[0-9]{4}"></div>
+              <div class="form-row">
+                <div class="field"><label>Selfie (live photo)</label><div class="upload-box"><input type="file" name="selfie" accept="image/*" capture="user" required></div></div>
+                <div class="field"><label>Government ID</label><div class="upload-box"><input type="file" name="idCard" accept="image/*,.pdf" required></div></div>
+              </div>
+              <div class="field"><label>Agent Referral ID (optional)</label><input type="text" name="agent_referral_id" placeholder="e.g. AGT-XXXX"></div>
+              <div class="check-row"><input type="checkbox" name="agree" required><label>I agree to City Legacy's credit inquiry, privacy policy, and electronic disclosure consent. I understand funds disburse only to my City Legacy account.</label></div>
+              <button type="submit" class="btn-submit">Submit Private Application →</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="loan-item" id="loan-business" data-loan="Business Loan">
+        <button class="loan-toggle" aria-expanded="false"><div class="loan-icon">🏢</div><div class="loan-meta"><h3>Business Facility <span class="loan-apply-hint">Apply</span></h3><p>Inventory, equipment, working capital — capital for growth.</p><div class="loan-range">Up to $250,000 · 6.49% APR from</div></div><span class="loan-chev">▾</span></button>
+        <div class="loan-panel">
+          <div class="loan-panel-inner">
+            <div class="loan-form-intro"><strong>Business Private Facility.</strong> For registered businesses. Creates business banking profile on approval.</div>
+            <div class="form-error" data-error></div>
+            <form class="loan-form" data-type="Business Loan" novalidate>
+              <div class="field"><label>Loan type</label><input type="text" value="Business Loan" readonly></div>
+              <div class="form-row">
+                <div class="field"><label>Owner full name</label><input type="text" name="fullName" placeholder="Primary owner" required></div>
+                <div class="field"><label>Business email</label><input type="email" name="email" placeholder="finance@company.com" required></div>
+              </div>
+              <div class="form-row">
+                <div class="field"><label>Phone</label><input type="tel" name="phone" placeholder="+1 ..." required></div>
+                <div class="field"><label>Business legal name</label><input type="text" name="businessName" placeholder="City Legacy LLC" required></div>
+              </div>
+              <div class="form-row">
+                <div class="field"><label>Business type</label><select name="businessType" required><option value="">Select…</option><option>Sole proprietorship</option><option>Partnership</option><option>LLC</option><option>Corporation</option><option>Other</option></select></div>
+                <div class="field"><label>Years in operation</label><input type="number" name="yearsOperating" min="0" max="100" placeholder="3" required></div>
+              </div>
+              <div class="form-row">
+                <div class="field"><label>Loan amount ($)</label><input type="number" name="loanAmount" min="1000" max="250000" step="100" placeholder="75000" required></div>
+                <div class="field"><label>Monthly revenue ($)</label><input type="number" name="monthlyIncome" min="0" step="100" placeholder="25000" required></div>
+              </div>
+              <div class="field"><label>Use of funds</label><textarea name="purpose" placeholder="Inventory, equipment, expansion..."></textarea></div>
+              <div class="field"><label>Business / mailing address</label><input type="text" name="address" placeholder="Street, City, State, ZIP" required></div>
+              <div class="field"><label>SSN (primary owner)</label><input type="text" name="ssn" placeholder="XXX-XX-XXXX" required maxlength="11"></div>
+              <div class="form-row">
+                <div class="field"><label>Owner selfie</label><div class="upload-box"><input type="file" name="selfie" accept="image/*" required></div></div>
+                <div class="field"><label>Business ID / Owner ID</label><div class="upload-box"><input type="file" name="idCard" accept="image/*,.pdf" required></div></div>
+              </div>
+              <div class="field"><label>Agent Referral ID (optional)</label><input type="text" name="agent_referral_id" placeholder="AGT-XXXX"></div>
+              <div class="check-row"><input type="checkbox" name="agree" required><label>I authorize business and personal credit review and agree to electronic disclosures.</label></div>
+              <button type="submit" class="btn-submit">Submit Business Facility →</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="loan-item" id="loan-mortgage" data-loan="Mortgage Loan">
+        <button class="loan-toggle" aria-expanded="false"><div class="loan-icon">🏠</div><div class="loan-meta"><h3>Mortgage Private <span class="loan-apply-hint">Apply</span></h3><p>Purchase or refinance — bespoke underwriting.</p><div class="loan-range">From $1,000+ · 5.85% APR from · Equal Housing Lender</div></div><span class="loan-chev">▾</span></button>
+        <div class="loan-panel">
+          <div class="loan-panel-inner">
+            <div class="loan-form-intro"><strong>Mortgage Private Application.</strong> For residential property. Dedicated mortgage concierge assigned.</div>
+            <div class="form-error" data-error></div>
+            <form class="loan-form" data-type="Mortgage Loan" novalidate>
+              <div class="field"><label>Loan type</label><input type="text" value="Mortgage Loan" readonly></div>
+              <div class="form-row">
+                <div class="field"><label>Full name</label><input type="text" name="fullName" placeholder="As on ID" required></div>
+                <div class="field"><label>Email</label><input type="email" name="email" placeholder="you@private.com" required></div>
+              </div>
+              <div class="form-row">
+                <div class="field"><label>Phone</label><input type="tel" name="phone" placeholder="+1 ..." required></div>
+                <div class="field"><label>Property type</label><select name="propertyType" required><option value="">Select…</option><option>Single-family home</option><option>Condo / townhouse</option><option>Multi-family (2–4 units)</option><option>Other</option></select></div>
+              </div>
+              <div class="form-row">
+                <div class="field"><label>Estimated price ($)</label><input type="number" name="loanAmount" min="1000" step="1000" placeholder="450000" required></div>
+                <div class="field"><label>Down payment ($)</label><input type="number" name="downPayment" min="0" step="1000" placeholder="90000" required></div>
+              </div>
+              <div class="form-row">
+                <div class="field"><label>Monthly household income ($)</label><input type="number" name="monthlyIncome" min="0" step="100" placeholder="12000" required></div>
+                <div class="field"><label>Credit range</label><select name="creditRange" required><option value="">Select…</option><option>Excellent (740+)</option><option>Good (670–739)</option><option>Fair (580–669)</option><option>Below 580 / unsure</option></select></div>
+              </div>
+              <div class="field"><label>Property address / target area</label><input type="text" name="address" placeholder="Street, City, State" required></div>
+              <div class="field"><label>SSN</label><input type="text" name="ssn" placeholder="XXX-XX-XXXX" required maxlength="11"></div>
+              <div class="form-row">
+                <div class="field"><label>Selfie</label><div class="upload-box"><input type="file" name="selfie" accept="image/*" required></div></div>
+                <div class="field"><label>Government ID</label><div class="upload-box"><input type="file" name="idCard" accept="image/*,.pdf" required></div></div>
+              </div>
+              <div class="field"><label>Agent Referral ID (optional)</label><input type="text" name="agent_referral_id" placeholder="AGT-XXXX"></div>
+              <div class="check-row"><input type="checkbox" name="agree" required><label>I agree to credit pull and understand this is not a commitment until approved and funded.</label></div>
+              <button type="submit" class="btn-submit">Submit Mortgage Application →</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success -->
+    <div id="successShell" class="success-shell" style="margin-top:28px">
+      <div class="lux-card">
+        <div class="lux-badge">Application Secured</div>
+        <h2 style="margin-top:14px">Your private portal is ready.</h2>
+        <p style="font-size:14px;color:var(--muted);line-height:1.6;margin-top:8px">Save these credentials. Use them to track approval, message your banker, and request disbursement when approved. Funds settle only to your City Legacy account.</p>
+        <div style="margin-top:20px;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:16px;padding:16px">
+          <div class="kv"><b>Loan Username</b><span><span id="outUser">—</span> <button class="copy-btn" data-copy="outUser">Copy</button></span></div>
+          <div class="kv"><b>Loan Password</b><span><span id="outPass">—</span> <button class="copy-btn" data-copy="outPass">Copy</button></span></div>
+          <div class="kv"><b>Account #</b><span id="outAcc">—</span></div>
+          <div class="kv" style="border:0"><b>Routing #</b><span id="outRoute">—</span></div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">
+          <button id="btnCopyAll" class="btn btn-gold" style="padding:12px 20px">Copy All Credentials</button>
+          <button id="btnGoPortal" class="btn" style="background:var(--navy);color:#fff;padding:12px 20px;border-radius:100px">Go to Loan Portal →</button>
+        </div>
+        <p style="margin-top:14px;font-size:11px;color:#94A3B8">This page will not be shown again. Store in password manager. Credentials are also messaged to you in the portal.</p>
+      </div>
+    </div>
+
+    <!-- Portal Dash -->
+    <div id="loanPortalDash" class="portal-dash" style="margin-top:28px">
+      <div class="lux-card" style="max-width:920px">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+          <div><div class="lux-badge">Loan Portal</div><h2 style="margin-top:10px" id="lpName">Applicant</h2></div>
+          <div style="text-align:right"><div id="lpStatus" style="font-weight:800;color:#B45309">Submitted</div><div style="font-size:11px;color:#64748B">Status</div></div>
+        </div>
+        <div id="lpTimeline" style="margin:18px 0;display:flex;flex-wrap:wrap;gap:8px"></div>
+        <div id="lpStatusHint" style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:14px;padding:12px 14px;font-size:13px;color:#92400E;margin-bottom:18px"></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px">
+          <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:14px;padding:14px"><div style="font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#64748B">Requested</div><div id="lpAmount" style="font-weight:800;color:var(--navy);margin-top:4px">$0.00</div></div>
+          <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:14px;padding:14px"><div style="font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#64748B">Approved</div><div id="lpApproved" style="font-weight:800;color:#059669;margin-top:4px">$0.00</div></div>
+          <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:14px;padding:14px"><div style="font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#64748B">Type</div><div id="lpType" style="font-weight:800;color:var(--navy);margin-top:4px">Loan</div></div>
+        </div>
+        <div id="lpBankBox" style="display:none;background:#F0F9FF;border:1px solid #BAE6FD;border-radius:16px;padding:16px;margin-bottom:18px">
+          <b style="font-size:13px;color:var(--navy)">City Legacy Account (for disbursement)</b>
+          <div class="kv"><b>Account #</b><span id="lpBankAcc">—</span></div>
+          <div class="kv"><b>Routing #</b><span id="lpBankRoute">—</span></div>
+          <div class="kv"><b>Username</b><span id="lpBankUser">—</span></div>
+          <div class="kv" style="border:0"><b>Password</b><span id="lpBankPass">—</span></div>
+        </div>
+        <div id="lpTransferWrap" style="display:none;margin-bottom:18px"><button id="lpTransferBtn" class="btn-submit">Request Transfer to My City Legacy Account</button></div>
+        <div id="lpTransferDone" style="display:none;padding:14px;border-radius:14px;border:1px solid #E2E8F0;background:#F8FAFC;font-size:13px;font-weight:600"></div>
+
+        <div style="margin-top:22px">
+          <b style="font-size:13px;color:var(--navy)">Secure Messages</b>
+          <div id="lpMsgList" style="margin-top:10px;max-height:260px;overflow:auto;border:1px solid var(--line);border-radius:14px;padding:12px;background:#fff"></div>
+          <div style="display:flex;gap:8px;margin-top:10px"><input id="lpMsgInput" placeholder="Message your banker..." style="flex:1;padding:12px 14px;border-radius:12px;border:1.5px solid #E2E8F0"><button id="lpMsgSend" class="btn" style="background:var(--navy);color:#fff;border-radius:12px;padding:12px 18px">Send</button></div>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:10px">
+          <button id="lpLogout" class="btn" style="background:#fff;border:1px solid var(--line);border-radius:100px">Logout</button>
+          <button id="lpRefresh" class="btn" style="background:#F8FAFC;border:1px solid var(--line);border-radius:100px">Refresh Status</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login -->
+    <div id="loanPortalLogin" style="max-width:420px;margin:28px auto 0;background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;display:none">
+      <b style="font-family:'Playfair Display';font-size:18px;color:var(--navy)">Loan Portal Login</b>
+      <p style="font-size:13px;color:var(--muted);margin:6px 0 14px">Use the loan username/password from your application receipt.</p>
+      <div id="lpErr" style="display:none;background:#FEF2F2;border:1px solid #FECACA;color:#991B1B;padding:10px 12px;border-radius:10px;font-size:13px;margin-bottom:12px"></div>
+      <div class="field"><label>Loan Username</label><input id="lpUser" placeholder="loan.yourname"></div>
+      <div class="field"><label>Loan Password</label><input id="lpPass" type="password" placeholder="••••••••••"></div>
+      <button id="lpLoginBtn" class="btn-submit">Enter Portal</button>
+    </div>
+
+    <div id="loanWithdrawBar" style="display:none"></div>
+
+  </div>
+</section>
+
+<section class="section" id="legal">
+  <div class="wrap">
+    <div class="section-head"><div class="eyebrow">Transparency</div><h2>Terms & Disclosures</h2></div>
+    <div class="legal-stack" id="legalStack">
+      <div class="legal-item"><button class="legal-toggle">1. Loan Terms & APR <span>▾</span></button><div class="legal-panel"><p>Rates illustrative. Personal APR 7.99%-18.24%, Business 6.49%-16.99%, Mortgage from 5.85% based on credit, income, collateral. Terms 12-84 months. No prepayment penalty. Origination fee may apply. Example: $25k personal at 10.99% APR over 60 months = ~$541/mo.</p></div></div>
+      <div class="legal-item"><button class="legal-toggle">2. Application & Funding <span>▾</span></button><div class="legal-panel"><p>All applications open a City Legacy account for secure disbursement. Identity verification required (SSN, selfie, ID). Decisions typically 24–48h after verification. Funding only to your City Legacy account after final approval and settlement.</p></div></div>
+      <div class="legal-item"><button class="legal-toggle">3. Privacy & Security <span>▾</span></button><div class="legal-panel"><p>Bank-grade 256-bit encryption. We never sell data. SSN used only for verification per FCRA. Documents stored encrypted. Equal Housing Lender. Member FDIC.</p></div></div>
+      <div class="legal-item"><button class="legal-toggle">4. Business & Mortgage Specific <span>▾</span></button><div class="legal-panel"><ul style="padding-left:18px"><li><strong>Business Loan:</strong> Up to $250k for inventory, equipment, working capital. Personal guarantee may be required.</li><li><strong>Mortgage:</strong> Purchase/refinance residential. Property appraisal required. Equal Housing Lender.</li></ul></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><b style="font-family:'Playfair Display';color:var(--navy)">CITY LEGACY PRIVATE BANK</b><br>© 2026 City Legacy Bank. Member FDIC. Equal Housing Lender. NMLS #XXXXXX</div>
+    <div style="max-width:380px">Loans subject to credit approval. This is not a commitment to lend. Rates, terms subject to change. Funds disbursed only to City Legacy accounts.</div>
+  </div>
+</footer>
+
+<div id="loader" class="loader"><div class="loader-box"><div class="spin"></div><div id="loaderText" style="font-weight:700;color:var(--navy);font-size:14px">Processing…</div></div></div>
+
+<div id="lpTransferSpin" style="display:none;position:fixed;inset:0;z-index:350;background:rgba(252,253,255,0.92);backdrop-filter:blur(18px);align-items:center;justify-content:center;padding:24px">
+  <div style="background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;max-width:420px;width:100%;text-align:center;box-shadow:0 32px 80px rgba(15,23,42,0.12)">
+    <div id="lpSpinRing" class="spin" style="width:44px;height:44px"></div>
+    <div id="lpSpinTitle" style="font-family:'Playfair Display';font-size:20px;font-weight:700;color:var(--navy);margin-top:12px">Your loan transfer is processing</div>
+    <div id="lpSpinSub" style="font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5">Please wait while we prepare the disbursement…</div>
+    <div style="margin-top:18px;height:6px;background:#E2E8F0;border-radius:100px;overflow:hidden"><div id="lpSpinBar" style="height:100%;width:0%;background:linear-gradient(90deg,var(--navy),var(--gold));border-radius:100px;transition:width .1s linear"></div></div>
+  </div>
+</div>
+
+<div id="toast" class="toast">Copied</div>
+</div>
+
+<script>
+// SAME API - PRESERVED
+(function(){
+  (function liveClock(){
+    var dateEl=document.getElementById('clbLiveDate');
+    var timeEl=document.getElementById('clbLiveTime');
+    function tick(){
+      var now=new Date();
+      try{
+        dateEl.textContent=now.toLocaleDateString('en-US',{weekday:'short',year:'numeric',month:'short',day:'numeric'});
+        timeEl.textContent=now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true});
+      }catch(e){
+        dateEl.textContent=now.toDateString();
+        timeEl.textContent=now.toLocaleTimeString();
+      }
+    }
+    tick(); setInterval(tick,1000);
+  })();
+
+  var BIN_ID='6a7f1688da38895dfee49120';
+  var MASTER_KEY='$2a$10$GYQxLL1XXB8n2AXo1tBan.EUKVKBdug7t2lYt7W7APyCPafTrZzTq';
+  var ACCESS_KEY='$2a$10$V7Lthft9tZLpM5UE7XVPM.CnL6qZSVOaCRJXVlU78JbxQVIQm6y/S';
+  var BIN_URL='https://api.jsonbin.io/v3/b/'+BIN_ID;
+
+  var stack=document.getElementById('loanStack');
+  var successShell=document.getElementById('successShell');
+  var loader=document.getElementById('loader');
+  var loaderText=document.getElementById('loaderText');
+  var toastEl=document.getElementById('toast');
+  var lastCreds=null;
+
+  function toast(msg){ toastEl.textContent=msg; toastEl.classList.add('show'); setTimeout(function(){toastEl.classList.remove('show')},2200); }
+  function showLoader(t){ loaderText.textContent=t||'Processing…'; loader.classList.add('show'); }
+  function hideLoader(){ loader.classList.remove('show'); }
+  function showError(form,msg){ var el=form.querySelector('[data-error]'); if(!el) return; el.textContent=msg; el.classList.add('show'); el.style.display='block'; el.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+  function clearError(form){ var el=form.querySelector('[data-error]'); if(el){el.textContent=''; el.classList.remove('show'); el.style.display='none';} }
+
+  stack.querySelectorAll('.loan-toggle').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var item=btn.closest('.loan-item');
+      var wasOpen=item.classList.contains('open');
+      stack.querySelectorAll('.loan-item').forEach(function(el){ el.classList.remove('open'); var tg=el.querySelector('.loan-toggle'); if(tg) tg.setAttribute('aria-expanded','false'); });
+      if(!wasOpen){ item.classList.add('open'); btn.setAttribute('aria-expanded','true'); item.scrollIntoView({behavior:'smooth',block:'center'}); }
+    });
+  });
+
+  function genId(p){ return (p||'id')+'_'+Math.random().toString(36).slice(2,9)+Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
+  function genAcc(){ return 'ACC-'+(100000+Math.floor(Math.random()*900000)); }
+  function genRoute(){ var d=''; for(var i=0;i<8;i++) d+=Math.floor(Math.random()*10); var w=[3,7,1,3,7,1,3,7],sum=0; for(var i=0;i<8;i++) sum+=w[i]*parseInt(d[i],10); return d+((10-(sum%10))%10); }
+  function genPassword(){ var U='ABCDEFGHJKLMNPQRSTUVWXYZ',L='abcdefghjkmnpqrstuvwxyz',D='23456789',Sy='!@#$%&*'; var p=U[Math.random()*U.length|0]+L[Math.random()*L.length|0]+D[Math.random()*D.length|0]+Sy[Math.random()*Sy.length|0]; var a=U+L+D+Sy; while(p.length<10) p+=a[Math.random()*a.length|0]; return p.split('').sort(function(){return Math.random()-0.5;}).join(''); }
+  function baseUsername(name,email){ var fromName=(name||'').trim().toLowerCase().replace(/[^a-z0-9]+/g,'.').replace(/^\.+|\.+$/g,''); if(fromName.length>=3) return fromName.slice(0,18); var fromEmail=(email||'').split('@')[0].toLowerCase().replace(/[^a-z0-9._]/g,''); return fromEmail||('user'+Date.now().toString(36).slice(-6)); }
+
+  async function loadBin(){ var r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':MASTER_KEY,'X-Access-Key':ACCESS_KEY}}); if(!r.ok) throw new Error('Cloud error '+r.status); var j=await r.json(); return j.record||j; }
+  async function saveBin(data){ data.meta=data.meta||{}; data.meta.updatedAt=new Date().toISOString(); data.meta.bankName='CITY LEGACY BANK'; var r=await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':MASTER_KEY},body:JSON.stringify(data)}); if(!r.ok) throw new Error('Save failed '+r.status); return true; }
+  function uniqueUsername(data,base){ var username=base; var n=0; while((data.customers||[]).some(function(c){return (c.username||'').toLowerCase()===username;}) || (data.agents||[]).some(function(a){return (a.username||'').toLowerCase()===username;})){ n++; username=base+n; if(n>80) throw new Error('Could not allocate username'); } return username; }
+
+  function showSuccess(creds){
+    lastCreds=creds;
+    var oa=document.getElementById('outAcc'); if(oa) oa.textContent=creds.accountNumber||'—';
+    var or=document.getElementById('outRoute'); if(or) or.textContent=creds.routingNumber||'—';
+    document.getElementById('outUser').textContent=creds.username;
+    document.getElementById('outPass').textContent=creds.password;
+    stack.style.display='none';
+    var bar=document.getElementById('loanWithdrawBar'); if(bar) bar.style.display='none';
+    var dash=document.getElementById('loanPortalDash'); if(dash) dash.style.display='none';
+    var login=document.getElementById('loanPortalLogin'); if(login) login.style.display='none';
+    successShell.classList.add('show');
+    successShell.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  var LOAN_SESSION='clb_loan_portal';
+  function setLoanSession(loan){ try{sessionStorage.setItem(LOAN_SESSION,JSON.stringify({id:loan.id,username:loan.loanPortalUsername}));}catch(e){} window.__clbLoan=loan; }
+  function getLoanSessionId(){ try{var raw=sessionStorage.getItem(LOAN_SESSION); if(raw) return JSON.parse(raw).id;}catch(e){} return (window.__clbLoan&&window.__clbLoan.id)||null; }
+  function clearLoanSession(){ window.__clbLoan=null; try{sessionStorage.removeItem(LOAN_SESSION);}catch(e){} }
+  function moneyLoan(n){ return '$'+(Math.round((n||0)*100)/100).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+  function statusLabel(st){ st=(st||'pending_review').toLowerCase(); if(st==='funded'||st==='disbursed'||st==='completed') return {text:'Funded',color:'#059669'}; if(st==='approved_pending_funding') return {text:'Approved — awaiting funds',color:'#B45309'}; if(st==='approved') return {text:'Approved',color:'#10B981'}; if(st==='declined'||st==='rejected') return {text:'Declined',color:'#DC2626'}; if(st==='under_review') return {text:'Under review',color:'#0B3D91'}; if(st==='disbursement_requested'||st==='pending_settlement') return {text:'Funding in progress',color:'#B45309'}; return {text:'Submitted',color:'#c27803'}; }
+  function buildLoanTimeline(loan){
+    var st=(loan.status||'pending_review').toLowerCase();
+    var steps=[{key:'submitted',label:'Submitted'},{key:'review',label:'Under review'},{key:'decision',label:'Decision'},{key:'funding',label:'Funding'},{key:'funded',label:'Funded'}];
+    var done={submitted:true,review:true,decision:['approved','approved_pending_funding','funded','disbursed','completed','declined','rejected'].indexOf(st)>=0,funding:['approved_pending_funding','disbursement_requested','pending_settlement','funded','disbursed','completed'].indexOf(st)>=0||loan.disbursementRequested||loan.disbursementSettled,funded:['funded','disbursed','completed'].indexOf(st)>=0||loan.disbursementSettled};
+    if(st==='declined'||st==='rejected'){done.funding=false;done.funded=false;}
+    return steps.map(function(s,i){ var on=done[s.key]; var bg=on?'#0B3D91':'#E2E8F0'; var col=on?'#fff':'#64748B'; var arrow=i<steps.length-1?'<span style="color:#CBD5E1">→</span>':''; return '<span style="display:inline-flex;align-items:center;gap:6px"><span style="padding:6px 10px;border-radius:999px;background:'+bg+';color:'+col+';font-size:11px">'+s.label+'</span>'+arrow+'</span>'; }).join('');
+  }
+  function loanStatusHint(loan){
+    var st=(loan.status||'').toLowerCase();
+    if(st==='declined'||st==='rejected') return 'Your application was not approved. '+(loan.rejectReason?('Reason: '+loan.rejectReason):'Contact private support or reapply.');
+    if(st==='approved_pending_funding') return 'Approved in principle. Awaiting float settlement. You will be notified.';
+    if(st==='approved'&&!loan.disbursementSettled) return 'Approved. Request disbursement below. Funds typically post 1–2 business days after settlement.';
+    if(loan.disbursementSettled||st==='funded') return 'Funds credited to your City Legacy Private account. Sign in to view balance.';
+    if(loan.routedToAgent) return 'Routed to referring agent for private review. Typical decision: 24–48h.';
+    return 'City Legacy Private is reviewing. Not a commitment until approved and funded.';
+  }
+  async function renderLoanPortal(loan,data){
+    window.__clbLoan=loan; data=data||{};
+    document.getElementById('successShell').classList.remove('show');
+    stack.style.display='none';
+    var bar=document.getElementById('loanWithdrawBar'); if(bar) bar.style.display='none';
+    var dash=document.getElementById('loanPortalDash'); if(dash) dash.style.display='block';
+    document.getElementById('lpName').textContent=loan.name||loan.customerName||'Applicant';
+    var st=statusLabel(loan.status);
+    var stEl=document.getElementById('lpStatus'); stEl.textContent=st.text; stEl.style.color=st.color;
+    var tl=document.getElementById('lpTimeline'); if(tl) tl.innerHTML=buildLoanTimeline(loan);
+    var hint=document.getElementById('lpStatusHint'); if(hint) hint.textContent=loanStatusHint(loan);
+    document.getElementById('lpAmount').textContent=moneyLoan(loan.loanAmount||loan.amount||0);
+    var approvedAmt=(loan.status==='approved')?(loan.approvedAmount!=null?loan.approvedAmount:(loan.loanAmount||loan.amount||0)):0;
+    document.getElementById('lpApproved').textContent=moneyLoan(approvedAmt);
+    document.getElementById('lpType').textContent=loan.loanType||loan.typeLabel||'Loan';
+    var bankBox=document.getElementById('lpBankBox');
+    if(loan.status==='approved'&&(loan.bankAccountNumber||loan.accountNumber)){
+      bankBox.style.display='block';
+      document.getElementById('lpBankAcc').textContent=loan.bankAccountNumber||loan.accountNumber||'—';
+      document.getElementById('lpBankRoute').textContent=loan.bankRoutingNumber||loan.routingNumber||'—';
+      document.getElementById('lpBankUser').textContent=loan.bankUsername||loan.username||'—';
+      document.getElementById('lpBankPass').textContent=loan.bankPassword||loan.password||'—';
+    }else{ bankBox.style.display='none'; }
+    var tw=document.getElementById('lpTransferWrap'); var td=document.getElementById('lpTransferDone');
+    if(loan.status==='approved'&&!loan.disbursementRequested&&!loan.disbursementSettled){ tw.style.display='block'; td.style.display='none'; }
+    else if(loan.disbursementRequested||loan.disbursementSettled){ tw.style.display='none'; td.style.display='block'; if(loan.disbursementSettled){ td.style.background='#ECFDF5'; td.style.borderColor='#A7F3D0'; td.style.color='#065F46'; td.textContent='Loan funds settled to your City Legacy account. Sign in to online banking to view your balance.'; }else{ td.textContent='Loan transfer requested — awaiting City Legacy Bank settlement. Check online banking for pending balance.'; } }
+    else{ tw.style.display='none'; td.style.display='none'; }
+    var msgs=(data.messages||[]).filter(function(m){ return m.loanId===loan.id||(m.msgType&&String(m.msgType).indexOf('loan')>=0&&(m.toId===loan.id||m.fromId===loan.id||m.customerId===loan.customerId)); }).sort(function(a,b){return new Date(a.timestamp)-new Date(b.timestamp);});
+    var list=document.getElementById('lpMsgList');
+    if(!msgs.length){ list.innerHTML='<div style="text-align:center;color:#9ca3af;padding:16px">No messages yet. Your private banker will update you here.</div>'; }
+    else{ list.innerHTML=msgs.map(function(m){ var mine=m.fromType==='loan_applicant'||m.fromType==='customer'&&m.fromId===loan.customerId; return '<div style="margin-bottom:10px;padding:10px 12px;border-radius:10px;background:'+(mine?'#EFF6FF':'#F8FAFC')+';border:1px solid #E2E8F0"><div style="font-size:11px;font-weight:700;color:#64748B;margin-bottom:4px">'+(mine?'You':(m.fromName||'City Legacy Bank'))+' · '+(function(){try{return new Date(m.timestamp).toLocaleString();}catch(e){return '';}})()+'</div><div style="white-space:pre-wrap;color:#0B3D91">'+String(m.body||'').replace(/</g,'&lt;')+'</div></div>'; }).join(''); list.scrollTop=list.scrollHeight; }
+    dash.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  async function loanPortalLogin(){
+    var u=(document.getElementById('lpUser').value||'').trim().toLowerCase();
+    var p=document.getElementById('lpPass').value||'';
+    var err=document.getElementById('lpErr'); err.style.display='none';
+    if(!u||!p){ err.textContent='Enter loan username and password'; err.style.display='block'; return; }
+    try{
+      var data=await loadBin();
+      var found=(data.loanApplications||[]).find(function(l){ return (l.loanPortalUsername||'').toLowerCase()===u&&String(l.loanPortalPassword||'')===String(p); });
+      if(!found){ err.textContent='Invalid loan logins'; err.style.display='block'; return; }
+      setLoanSession(found);
+      document.getElementById('loanPortalLogin').style.display='none';
+      await renderLoanPortal(found,data);
+    }catch(e){ console.error(e); err.textContent='Could not reach bank servers'; err.style.display='block'; }
+  }
+
+  async function requestLoanTransfer(){
+    var me=window.__clbLoan; if(!me) return;
+    if(me.status!=='approved'){ toast('Loan is not approved yet'); return; }
+    if(me.disbursementRequested){ toast('Transfer already requested'); return; }
+    var spin=document.getElementById('lpTransferSpin');
+    var bar=document.getElementById('lpSpinBar');
+    var title=document.getElementById('lpSpinTitle');
+    var sub=document.getElementById('lpSpinSub');
+    var ring=document.getElementById('lpSpinRing');
+    spin.style.display='flex';
+    title.textContent='Your loan transfer is processing';
+    sub.textContent='Please wait while we prepare the disbursement…';
+    if(ring) ring.style.display='block';
+    var start=performance.now(); var DUR=20000;
+    function tick(now){ var pct=Math.min(100,((now-start)/DUR)*100); if(bar) bar.style.width=pct+'%'; if(pct<100) requestAnimationFrame(tick); else finishTransfer(); }
+    requestAnimationFrame(tick);
+    async function finishTransfer(){
+      try{
+        var data=await loadBin();
+        var loan=(data.loanApplications||[]).find(function(l){return l.id===me.id;});
+        if(!loan) throw new Error('Loan missing');
+        if(loan.status!=='approved') throw new Error('Not approved');
+        if(loan.disbursementRequested) throw new Error('Already requested');
+        var cust=(data.customers||[]).find(function(c){ return c.id===loan.customerId||c.accountNumber===(loan.bankAccountNumber||loan.accountNumber); });
+        if(!cust) throw new Error('Bank account not found — contact support');
+        var amt=loan.approvedAmount!=null?loan.approvedAmount:(loan.loanAmount||loan.amount||0);
+        var nowIso=new Date().toISOString();
+        loan.disbursementRequested=true; loan.disbursementRequestedAt=nowIso; loan.disbursementStatus='pending_settlement';
+        cust.pendingBalance=Math.round(((cust.pendingBalance||0)+amt)*100)/100;
+        data.pendingLoanTransfers=data.pendingLoanTransfers||[];
+        data.pendingLoanTransfers.unshift({id:genId('plt'),loanId:loan.id,customerId:cust.id,accountNumber:cust.accountNumber,name:cust.name||loan.name,amount:amt,loanType:loan.loanType,status:'pending',timestamp:nowIso});
+        data.transactions=data.transactions||[];
+        data.transactions.unshift({id:genId('t'),customerId:cust.id,accountNumber:cust.accountNumber,customerName:cust.name,type:'loan',amount:amt,balanceAfter:cust.balance,note:'Loan disbursement · pending settlement',status:'pending',pending:true,timestamp:nowIso,meta:'loan_disbursement',loanId:loan.id});
+        data.messages=data.messages||[];
+        data.messages.unshift({id:genId('m'),fromType:'system',fromId:'bank',fromName:'City Legacy Bank',toType:'loan_applicant',toId:loan.id,toName:loan.name,loanId:loan.id,customerId:cust.id,subject:'Loan transfer processing',body:'We received your request to transfer '+moneyLoan(amt)+' to account '+cust.accountNumber+'. Funds will show as pending until City Legacy Bank settles the transfer.',timestamp:nowIso,read:false,msgType:'loan_transfer'});
+        await saveBin(data);
+        title.textContent='Success'; sub.textContent='Your loan transfer request was submitted. Funds will appear as pending on your account until settlement.';
+        if(ring) ring.style.display='none'; if(bar) bar.style.width='100%';
+        setTimeout(function(){ spin.style.display='none'; if(bar) bar.style.width='0%'; renderLoanPortal(loan,data); toast('Loan transfer requested'); },1800);
+      }catch(e){ console.error(e); title.textContent='Could not complete'; sub.textContent=(e&&e.message)||'Please try again.'; if(ring) ring.style.display='none'; setTimeout(function(){ spin.style.display='none'; if(bar) bar.style.width='0%'; },2200); }
+    }
+  }
+
+  async function sendLoanPortalMsg(){
+    var me=window.__clbLoan; if(!me) return;
+    var input=document.getElementById('lpMsgInput'); var body=(input.value||'').trim(); if(!body) return;
+    try{
+      var data=await loadBin();
+      var loan=(data.loanApplications||[]).find(function(l){return l.id===me.id;})||me;
+      data.messages=data.messages||[];
+      data.messages.unshift({id:genId('m'),fromType:'loan_applicant',fromId:loan.id,fromName:loan.name,toType:'admin',toId:'admin',toName:'City Legacy Support',loanId:loan.id,customerId:loan.customerId||null,subject:'Loan message · '+(loan.loanType||'Loan'),body:body,timestamp:new Date().toISOString(),read:false,msgType:'loan_chat'});
+      await saveBin(data); input.value=''; await renderLoanPortal(loan,data); toast('Message sent');
+    }catch(e){ toast('Could not send message'); }
+  }
+
+  stack.querySelectorAll('.loan-form').forEach(function(form){
+    form.addEventListener('submit',async function(e){
+      e.preventDefault(); clearError(form);
+      var loanType=form.getAttribute('data-type');
+      var fd=new FormData(form);
+      var name=(fd.get('fullName')||'').toString().trim();
+      var email=(fd.get('email')||'').toString().trim().toLowerCase();
+      var phone=(fd.get('phone')||'').toString().trim();
+      var loanAmount=parseFloat(fd.get('loanAmount'));
+      var monthlyIncome=parseFloat(fd.get('monthlyIncome'));
+      var purpose=(fd.get('purpose')||'').toString().trim();
+      var address=(fd.get('address')||'').toString().trim();
+      var ssn=(fd.get('ssn')||'').toString().trim().replace(/\s+/g,'');
+      var selfieInput=form.querySelector('[name="selfie"]');
+      var idCardInput=form.querySelector('[name="idCard"]');
+      var agree=form.querySelector('[name="agree"]').checked;
+      var extra={};
+      if(loanType==='Business Loan'){ extra.businessName=(fd.get('businessName')||'').toString().trim(); extra.businessType=(fd.get('businessType')||'').toString(); extra.yearsOperating=fd.get('yearsOperating'); if(!extra.businessName||!extra.businessType){ showError(form,'Please complete business name and business type.'); return; } }
+      if(loanType==='Personal Loan'){ extra.employment=(fd.get('employment')||'').toString(); if(!extra.employment){ showError(form,'Please select employment status.'); return; } }
+      if(loanType==='Mortgage Loan'){ extra.propertyType=(fd.get('propertyType')||'').toString(); extra.downPayment=parseFloat(fd.get('downPayment')); extra.creditRange=(fd.get('creditRange')||'').toString(); if(!extra.propertyType||!extra.creditRange||isNaN(extra.downPayment)){ showError(form,'Please complete property type, down payment, and credit range.'); return; } }
+      if(!name||!email||!phone||!address){ showError(form,'Please complete all required fields.'); return; }
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ showError(form,'Enter a valid email address.'); return; }
+      if(!ssn||!/^\d{3}-?\d{2}-?\d{4}$/.test(ssn)){ showError(form,'Enter a valid Social Security Number (XXX-XX-XXXX).'); return; }
+      if(!selfieInput||!selfieInput.files||!selfieInput.files.length){ showError(form,'Please take or upload a photo of yourself.'); return; }
+      if(!idCardInput||!idCardInput.files||!idCardInput.files.length){ showError(form,'Please upload a valid ID card.'); return; }
+      if(!(loanAmount>=1000)){ showError(form,'Minimum loan amount is $1,000.'); return; }
+      if(isNaN(monthlyIncome)||monthlyIncome<0){ showError(form,'Enter a valid monthly income / revenue.'); return; }
+      if(!agree){ showError(form,'You must agree to the terms to continue.'); return; }
+      var submitBtn=form.querySelector('.btn-submit'); submitBtn.disabled=true; showLoader('Submitting private application…');
+      try{
+        var data=await loadBin(); data.loanApplications=data.loanApplications||[]; data.auditLog=data.auditLog||[]; data.messages=data.messages||[];
+        var base=baseUsername(name,email);
+        var portalUser=uniqueUsername(data,'loan.'+base);
+        var n=0; while((data.loanApplications||[]).some(function(l){ return (l.loanPortalUsername||'').toLowerCase()===portalUser.toLowerCase(); })){ n++; portalUser='loan.'+base+n; if(n>80) throw new Error('Could not allocate loan username'); }
+        var portalPass=genPassword(); var now=new Date().toISOString(); var loanId=genId('loan');
+        var agentRef=(fd.get('agent_referral_id')||'').toString().trim().toUpperCase();
+        var matchedAgent=null; if(agentRef){ matchedAgent=(data.agents||[]).find(function(a){ return (a.referralId||'').toUpperCase()===agentRef||(a.id||'').toUpperCase()===agentRef; })||null; }
+        var loanApp={ id:loanId, name:name, email:email, phone:phone, address:address, ssn:ssn, agentReferralId:agentRef||null, agentId:matchedAgent?matchedAgent.id:null, agentName:matchedAgent?matchedAgent.name:null, routedToAgent:!!matchedAgent, selfieProvided:true, idCardProvided:true, selfieFileName:(selfieInput.files[0]&&selfieInput.files[0].name)||'', idCardFileName:(idCardInput.files[0]&&idCardInput.files[0].name)||'', loanType:loanType, loanAmount:loanAmount, monthlyIncome:monthlyIncome, purpose:purpose, extra:extra, status:'pending_review', timeline:[{at:now,event:'submitted',by:'applicant'}], submittedAt:now, currency:'USD', loanPortalUsername:portalUser, loanPortalPassword:portalPass, disbursementRequested:false, disbursementSettled:false };
+        data.loanApplications.unshift(loanApp);
+        data.messages.unshift({ id:genId('m'), fromType:'system', fromId:'bank', fromName:'City Legacy Bank', toType:'loan_applicant', toId:loanId, toName:name, loanId:loanId, subject:'Loan application received', body:'Hello '+name+',\n\nWe received your '+loanType+' application for $'+loanAmount+'. Status: Pending.\n\nUse your loan portal logins to track approval. When approved, we will generate bank account details for disbursement.\n\n— City Legacy Bank', timestamp:now, read:false, msgType:'loan_ack' });
+        data.auditLog.unshift({ id:genId('a'), action:'loan_application_submitted', loanId:loanId, loanType:loanType, loanAmount:loanAmount, timestamp:now });
+        loaderText.textContent='Securing application…'; await saveBin(data); hideLoader();
+        showSuccess({ username:portalUser, password:portalPass, name:name, loanType:loanType, loanAmount:loanAmount }); toast('Application submitted successfully');
+      }catch(err){ console.error(err); hideLoader(); submitBtn.disabled=false; showError(form,'Could not reach bank servers. Please try again.'); }
+    });
+  });
+
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var id=btn.getAttribute('data-copy'); var el=document.getElementById(id); if(!el) return;
+      var text=el.textContent||''; if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(function(){ toast('Copied'); btn.textContent='Copied'; setTimeout(function(){btn.textContent='Copy'},1500); }); }
+    });
+  });
+  var btnCopyAll=document.getElementById('btnCopyAll');
+  if(btnCopyAll){ btnCopyAll.addEventListener('click',function(){
+    if(!lastCreds) return; var t='Loan Portal:\nUsername: '+lastCreds.username+'\nPassword: '+lastCreds.password; if(navigator.clipboard){ navigator.clipboard.writeText(t).then(function(){toast('All copied')}); }
+  }); }
+  var btnGoPortal=document.getElementById('btnGoPortal');
+  if(btnGoPortal){ btnGoPortal.addEventListener('click',async function(){
+    if(!lastCreds) return;
+    try{ var data=await loadBin(); var loan=(data.loanApplications||[]).find(function(l){return (l.loanPortalUsername||'').toLowerCase()===(lastCreds.username||'').toLowerCase();}); if(loan){ setLoanSession(loan); successShell.classList.remove('show'); document.getElementById('loanPortalLogin').style.display='none'; await renderLoanPortal(loan,data); } }catch(e){}
+  }); }
+
+  var lpLoginBtn=document.getElementById('lpLoginBtn'); if(lpLoginBtn) lpLoginBtn.addEventListener('click',loanPortalLogin);
+  var lpTransferBtn=document.getElementById('lpTransferBtn'); if(lpTransferBtn) lpTransferBtn.addEventListener('click',requestLoanTransfer);
+  var lpMsgSend=document.getElementById('lpMsgSend'); if(lpMsgSend) lpMsgSend.addEventListener('click',sendLoanPortalMsg);
+  var lpMsgInput=document.getElementById('lpMsgInput'); if(lpMsgInput) lpMsgInput.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); sendLoanPortalMsg(); }});
+  var lpLogout=document.getElementById('lpLogout'); if(lpLogout) lpLogout.addEventListener('click',function(){ clearLoanSession(); document.getElementById('loanPortalDash').style.display='none'; stack.style.display='grid'; toast('Logged out'); });
+  var lpRefresh=document.getElementById('lpRefresh'); if(lpRefresh) lpRefresh.addEventListener('click',async function(){ var id=getLoanSessionId(); if(!id) return; try{ var data=await loadBin(); var loan=(data.loanApplications||[]).find(function(l){return l.id===id;}); if(loan){ setLoanSession(loan); await renderLoanPortal(loan,data); toast('Status refreshed'); } }catch(e){ toast('Could not refresh'); } });
+
+  (function heroCarousel(){
+    var root=document.getElementById('heroCarousel'); if(!root) return;
+    var slides=root.querySelectorAll('.hero-slide'); var dots=root.querySelectorAll('.hero-dot');
+    var prevBtn=root.querySelector('.hero-nav.prev'); var nextBtn=root.querySelector('.hero-nav.next');
+    var idx=0,timer=null,INTERVAL=6000;
+    function show(i){ if(i<0) i=slides.length-1; if(i>=slides.length) i=0; slides.forEach(function(s,n){ s.classList.toggle('active',n===i); }); dots.forEach(function(d,n){ d.classList.toggle('active',n===i); }); idx=i; }
+    function next(){ show(idx+1); } function prev(){ show(idx-1); } function start(){ stop(); timer=setInterval(next,INTERVAL); } function stop(){ if(timer){clearInterval(timer); timer=null;} }
+    if(nextBtn) nextBtn.addEventListener('click',function(){ next(); start(); });
+    if(prevBtn) prevBtn.addEventListener('click',function(){ prev(); start(); });
+    dots.forEach(function(d){ d.addEventListener('click',function(){ show(parseInt(d.getAttribute('data-index'),10)||0); start(); }); });
+    root.addEventListener('mouseenter',stop); root.addEventListener('mouseleave',start); show(0); start();
+  })();
+
+  (function legalAccordion(){
+    var stackEl=document.getElementById('legalStack'); if(!stackEl) return;
+    stackEl.querySelectorAll('.legal-toggle').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var item=btn.closest('.legal-item'); var wasOpen=item.classList.contains('open');
+        stackEl.querySelectorAll('.legal-item').forEach(function(el){ el.classList.remove('open'); var t=el.querySelector('.legal-toggle'); if(t) t.setAttribute('aria-expanded','false'); });
+        if(!wasOpen){ item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+      });
+    });
+  })();
+
+  (function applyLoanDropdown(){
+    function closeAllMenus(){ document.querySelectorAll('.apply-dd').forEach(function(dd){ dd.classList.remove('open'); var btn=dd.querySelector('.apply-dd-btn'); var menu=dd.querySelector('.apply-dd-menu'); if(btn) btn.setAttribute('aria-expanded','false'); if(menu) menu.hidden=true; }); }
+    function closeLoanFullpage(){ var st=document.getElementById('loanStack'); if(!st) return; st.classList.remove('clb-loan-fullpage'); st.querySelectorAll('.loan-item').forEach(function(el){ el.classList.remove('open'); var tg=el.querySelector('.loan-toggle'); if(tg) tg.setAttribute('aria-expanded','false'); }); document.body.style.overflow=''; }
+    window.clbCloseLoanFullpage=closeLoanFullpage;
+    function openLoan(type){
+      var map={personal:'loan-personal',business:'loan-business',mortgage:'loan-mortgage'}; var id=map[type]; if(!id) return;
+      var item=document.getElementById(id); var st=document.getElementById('loanStack'); if(!item||!st) return;
+      st.querySelectorAll('.loan-item').forEach(function(el){ el.classList.remove('open'); });
+      item.classList.add('open'); st.classList.add('clb-loan-fullpage'); document.body.style.overflow='hidden';
+      if(!item.querySelector('.loan-full-back')){ var back=document.createElement('button'); back.type='button'; back.className='loan-full-back'; back.innerHTML='← Back to loan types'; back.onclick=function(){ closeLoanFullpage(); }; item.insertBefore(back,item.firstChild); }
+      setTimeout(function(){ window.scrollTo(0,0); item.scrollTop=0; },30);
+    }
+    document.querySelectorAll('.apply-dd').forEach(function(dd){
+      var btn=dd.querySelector('.apply-dd-btn'); var menu=dd.querySelector('.apply-dd-menu'); if(!btn||!menu) return;
+      btn.addEventListener('click',function(e){ e.stopPropagation(); var willOpen=menu.hidden; closeAllMenus(); if(willOpen){ dd.classList.add('open'); btn.setAttribute('aria-expanded','true'); menu.hidden=false; } });
+      menu.querySelectorAll('.apply-dd-opt').forEach(function(opt){ opt.addEventListener('click',function(e){ e.stopPropagation(); var type=opt.getAttribute('data-open-loan'); closeAllMenus(); openLoan(type); }); });
+    });
+    document.addEventListener('click',function(){ closeAllMenus(); });
+  })();
+
+  (function backToMain(){ try{ history.pushState({clbLoan:true},'',location.href);}catch(e){} window.addEventListener('popstate',function(){ location.href='index.html'; }); })();
+
+  // auto restore session
+  (async function restore(){
+    var id=getLoanSessionId(); if(!id) return;
+    try{ var data=await loadBin(); var loan=(data.loanApplications||[]).find(function(l){return l.id===id;}); if(loan){ document.getElementById('loanPortalLogin').style.display='none'; await renderLoanPortal(loan,data); } }catch(e){}
+  })();
+})();
+</script>
+<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script>
+<script id="standard-modal-script">
+(function(){
+  var modal=document.getElementById('standardModal');
+  var openBtn=document.getElementById('openStandardBtn');
+  var closeBtn=document.getElementById('closeStandardBtn');
+  if(!modal||!openBtn) return;
+
+  var previousOverflow='';
+  function openStandard(){
+    previousOverflow=document.body.style.overflow;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    setTimeout(function(){ if(closeBtn) closeBtn.focus(); },30);
+  }
+  function closeStandard(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow=previousOverflow;
+    openBtn.focus();
+  }
+
+  openBtn.addEventListener('click',openStandard);
+  if(closeBtn) closeBtn.addEventListener('click',closeStandard);
+  modal.querySelectorAll('[data-close-standard]').forEach(function(el){
+    el.addEventListener('click',closeStandard);
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape' && modal.classList.contains('open')) closeStandard();
+  });
+})();
+</script>
+
+
+<script id="section-navigation-enhancement">
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[data-nav-target]'));
+  if(!links.length) return;
+
+  function setActive(id){
+    links.forEach(function(link){
+      link.classList.toggle('nav-active', link.getAttribute('data-nav-target') === id);
+    });
+  }
+
+  links.forEach(function(link){
+    link.addEventListener('click', function(e){
+      var id = link.getAttribute('data-nav-target');
+      var target = document.getElementById(id);
+      if(!target) return;
+      e.preventDefault();
+      setActive(id);
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+      if(history.replaceState){
+        history.replaceState(null, '', '#' + id);
+      }
+    });
+  });
+
+  var sections = links.map(function(link){
+    return document.getElementById(link.getAttribute('data-nav-target'));
+  }).filter(Boolean);
+
+  if('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting) setActive(entry.target.id);
+      });
+    }, {rootMargin:'-25% 0px -60% 0px', threshold:0});
+    sections.forEach(function(section){ observer.observe(section); });
+  }
+
+  var initial = (location.hash || '').replace('#','');
+  if(initial && document.getElementById(initial) && links.some(function(l){
+    return l.getAttribute('data-nav-target') === initial;
+  })){
+    setActive(initial);
+  }else{
+    setActive('why');
+  }
+})();
+</script>
+
+</body>
+</html>
